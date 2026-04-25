@@ -7,6 +7,7 @@ import com.swna.server.product.entity.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
@@ -18,7 +19,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
 
-    @Id @GeneratedValue
+    @Id     
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,25 +29,34 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
-    private int quantity;
-
+    // =========================
+    // Snapshot (핵심)
+    // =========================
+    private String productBarcode;
+    private String productName;
     private BigDecimal price;
     
+    private int quantity;
+
     // =========================
     // Factory
     // =========================
-
     public static OrderItem of(Product product, int quantity) {
 
         OrderItem item = new OrderItem();
 
+        // relation (optional)
         item.product = product;
-        item.quantity = quantity;
+
+        // snapshot (핵심)
+        item.productBarcode = product.getBarcode();
+        item.productName = product.getName();
         item.price = product.getPrice();
+
+        item.quantity = quantity;
 
         return item;
     }
-
     // =========================
     // Business
     // =========================

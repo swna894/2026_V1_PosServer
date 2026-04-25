@@ -24,7 +24,7 @@ public class DataInitializer implements CommandLineRunner {
 
         if (!userRepository.existsByEmail("admin@swna.com")) {
 
-            User admin = new User("admin", "admin@swna.com");
+            User admin = new User("admin", "admin@gmail.com");
             admin.setPassword(passwordEncoder.encode("1234"));
             admin.setRole(Role.ADMIN); // 관리자 권한
 
