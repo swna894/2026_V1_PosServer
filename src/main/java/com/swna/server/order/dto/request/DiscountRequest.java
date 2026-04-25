@@ -1,9 +1,9 @@
-package com.swna.server.order.dto;
+package com.swna.server.order.dto.request;
 
 import java.math.BigDecimal;
 
-import com.swna.server.discount.Discount;
-import com.swna.server.discount.DiscountType;
+import com.swna.server.order.domain.Discount;
+import com.swna.server.order.domain.DiscountType;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;

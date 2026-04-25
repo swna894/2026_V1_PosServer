@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.swna.server.order.domain.Order;
-import com.swna.server.order.dto.PaymentRequest;
+import com.swna.server.order.dto.request.PaymentRequest;
 import com.swna.server.order.event.OrderPaidEvent;
+import com.swna.server.order.factory.PaymentFactory;
+import com.swna.server.order.mapper.PaymentMapper;
 import com.swna.server.order.repository.OrderRepository;
-import com.swna.server.payment.domain.entity.PaymentEntity;
-import com.swna.server.payment.domain.model.PaymentMethod;
-import com.swna.server.payment.factory.PaymentFactory;
-import com.swna.server.payment.mapper.PaymentMapper;
+import com.swna.server.payment.entity.PaymentEntity;
+import com.swna.server.payment.model.PaymentMethod;
 import com.swna.server.payment.repository.PaymentRepository;
 
 import lombok.RequiredArgsConstructor;

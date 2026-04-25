@@ -1,4 +1,4 @@
-package com.swna.server.payment.domain.model;
+package com.swna.server.payment.model;
 
 import lombok.Getter;
 

@@ -1,11 +1,11 @@
-package com.swna.server.payment.factory;
+package com.swna.server.order.factory;
 
 import org.springframework.stereotype.Component;
 
-import com.swna.server.order.dto.PaymentRequest;
-import com.swna.server.payment.domain.model.CardPayment;
-import com.swna.server.payment.domain.model.CashPayment;
-import com.swna.server.payment.domain.model.PaymentMethod;
+import com.swna.server.order.dto.request.PaymentRequest;
+import com.swna.server.payment.model.CardPayment;
+import com.swna.server.payment.model.CashPayment;
+import com.swna.server.payment.model.PaymentMethod;
 
 
 @Component

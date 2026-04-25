@@ -1,7 +1,9 @@
 package com.swna.server.order.usecase;
 
+
 import java.util.List;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +13,10 @@ import com.swna.server.order.domain.OrderItem;
 import com.swna.server.order.dto.request.DiscountRequest;
 import com.swna.server.order.dto.request.OrderItemRequest;
 import com.swna.server.order.dto.request.OrderRequest;
+import com.swna.server.order.dto.response.OrderResponse;
+import com.swna.server.order.event.OrderPaidEvent;
+import com.swna.server.order.factory.PaymentFactory;
+import com.swna.server.order.mapper.PaymentMapper;
 import com.swna.server.order.repository.OrderRepository;
 import com.swna.server.product.entity.Product;
 import com.swna.server.product.repository.ProductRepository;
@@ -19,40 +25,54 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class CreateOrderUseCase {
+public class ProcessOrderUseCase {
 
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
+    private final PaymentFactory paymentFactory;
+    private final PaymentMapper paymentMapper;
+    private final ApplicationEventPublisher eventPublisher;
 
     // =========================
-    // Order 생성
+    // 주문 + 결제 통합 처리
     // =========================
     @Transactional
-    public Long execute(OrderRequest request) {
+    public OrderResponse execute(OrderRequest request) {
 
-        // 1. OrderItem 생성 (Product 조회 기반)
+        Order order = process(request);
+
+        orderRepository.save(order);
+
+        eventPublisher.publishEvent(new OrderPaidEvent(order.getId()));
+
+        return OrderResponse.of(order);
+    }
+
+    private Order process(OrderRequest request) {
+
         List<OrderItem> items = request.items().stream()
                 .map(this::toOrderItem)
                 .toList();
 
-        // 2. Discount 생성
         List<Discount> discounts = request.discounts().stream()
                 .map(DiscountRequest::toDomain)
                 .toList();
 
-        // 3. Order 생성 (Domain 책임)
         Order order = Order.create(items, discounts);
 
-        // 4. 저장
-        orderRepository.save(order);
+        request.payments().stream()
+                .map(paymentFactory::create)
+                .map(paymentMapper::toEntity)
+                .forEach(order::addPayment);
 
-        return order.getId();
-    }
+        order.validatePayment();
+        order.markPaid();
 
+        return order;
+}
     // =========================
-    // Mapping
+    // mapping
     // =========================
-
     private OrderItem toOrderItem(OrderItemRequest request) {
 
         Product product = productRepository.findById(request.productId())

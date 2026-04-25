@@ -1,8 +1,8 @@
-package com.swna.server.order.dto;
+package com.swna.server.order.dto.request;
 
 import java.math.BigDecimal;
 
-import com.swna.server.payment.domain.model.PaymentType;
+import com.swna.server.payment.model.PaymentType;
 
 public record PaymentRequest(
         PaymentType type,              // CASH / CARD

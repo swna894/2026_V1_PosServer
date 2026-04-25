@@ -1,8 +1,6 @@
-package com.swna.server.discount;
+package com.swna.server.order.domain;
 
 import java.math.BigDecimal;
-
-import com.swna.server.order.domain.Order;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

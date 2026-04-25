@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.swna.server.common.entity.BaseEntity;
-import com.swna.server.discount.Discount;
-import com.swna.server.payment.domain.entity.PaymentEntity;
+import com.swna.server.payment.entity.PaymentEntity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

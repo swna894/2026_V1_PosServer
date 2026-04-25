@@ -1,4 +1,4 @@
-package com.swna.server.order.dto;
+package com.swna.server.order.dto.request;
 
 import java.util.List;
 

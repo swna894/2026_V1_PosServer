@@ -1,4 +1,4 @@
-package com.swna.server.discount;
+package com.swna.server.order.domain;
 
 public enum DiscountType {
     AMOUNT,

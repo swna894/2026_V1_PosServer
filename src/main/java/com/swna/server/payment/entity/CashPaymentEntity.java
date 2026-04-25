@@ -1,4 +1,4 @@
-package com.swna.server.payment.domain.entity;
+package com.swna.server.payment.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.swna.server.order.dto.CreateOrderRequest;
-import com.swna.server.order.dto.PaymentRequest;
+import com.swna.server.order.dto.request.OrderRequest;
+import com.swna.server.order.dto.request.PaymentRequest;
 import com.swna.server.order.usecase.CreateOrderUseCase;
 import com.swna.server.order.usecase.PayOrderUseCase;
 
@@ -25,7 +25,8 @@ public class OrderController {
     // 주문 생성
     // =========================
     @PostMapping
-    public Long createOrder(@RequestBody CreateOrderRequest request) {
+    public Long createOrder(@RequestBody OrderRequest request) {
+
         return createOrderUseCase.execute(request);
     }
 

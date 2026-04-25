@@ -1,13 +1,13 @@
-package com.swna.server.payment.mapper;
+package com.swna.server.order.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.swna.server.payment.domain.entity.CardPaymentEntity;
-import com.swna.server.payment.domain.entity.CashPaymentEntity;
-import com.swna.server.payment.domain.entity.PaymentEntity;
-import com.swna.server.payment.domain.model.CardPayment;
-import com.swna.server.payment.domain.model.CashPayment;
-import com.swna.server.payment.domain.model.PaymentMethod;
+import com.swna.server.payment.entity.CardPaymentEntity;
+import com.swna.server.payment.entity.CashPaymentEntity;
+import com.swna.server.payment.entity.PaymentEntity;
+import com.swna.server.payment.model.CardPayment;
+import com.swna.server.payment.model.CashPayment;
+import com.swna.server.payment.model.PaymentMethod;
 
 @Component
 public class PaymentMapper {
