@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.swna.server.common.exception.BusinessException;
 import com.swna.server.common.exception.ErrorCode;
-import com.swna.server.user.entity.model.Role;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.infrastructure.repository.UserRepository;
 
@@ -29,7 +28,7 @@ public class SignupUseCase {
         String encoded = passwordEncoder.encode(password);
 
         userRepository.save(
-                new User(email, encoded, Role.USER)
+            User.createWithNoRole(encoded, password)
         );
     }
 }

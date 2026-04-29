@@ -13,6 +13,6 @@ public class UserDomainService {
             throw new IllegalArgumentException("Invalid email");
         }
 
-        return new User(name, email, encodedPassword);
+        return User.createDefault(name, email, encodedPassword);
     }
 }

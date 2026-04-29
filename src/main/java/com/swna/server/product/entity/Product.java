@@ -6,12 +6,9 @@ import com.swna.server.common.entity.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,11 +24,14 @@ public class Product extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 50)
+    @Column(nullable = false, length = 50)
     private String code;
 
+    @Column(length = 100)
+    private String barcode;
+
     @Column(nullable = false, length = 200)
-    private String name;
+    private String description;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
@@ -39,15 +39,10 @@ public class Product extends BaseEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal cost;
 
-    @Column(length = 100)
-    private String barcode;
-
     private String abbr;
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private String category;
 
     @Column(nullable = false)
     private boolean deleted = false; // Soft Delete
@@ -57,16 +52,16 @@ public class Product extends BaseEntity {
     // =========================
     public static Product create(
             String code,
-            String name,
+            String description,
             BigDecimal price,
             String barcode,
-            Category category
+            String category
     ) {
-        validate(code, name, price);
+        validate(code, description, price);
 
         Product product = new Product();
         product.code = code;
-        product.name = name;
+        product.description = description;
         product.price = price;
         product.barcode = barcode;
         product.category = category;
@@ -84,14 +79,14 @@ public class Product extends BaseEntity {
         this.price = newPrice;
     }
 
-    public void changeName(String newName) {
-        if (newName == null || newName.isBlank()) {
+    public void changeName(String description) {
+        if (description == null || description.isBlank()) {
             throw new IllegalArgumentException("상품명은 필수입니다.");
         }
-        this.name = newName;
+        this.description = description;
     }
 
-    public void assignCategory(Category category) {
+    public void assignCategory(String category) {
         this.category = category;
     }
 
@@ -119,5 +114,15 @@ public class Product extends BaseEntity {
         if (price == null || price.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("가격은 0 이상이어야 합니다.");
         }
+    }
+
+    // =========================
+    // 🔥 핵심: Category 변경 메서드
+    // =========================
+    public void changeCategory(String category) {
+        if (category == null) {
+            throw new IllegalArgumentException("category must not be null");
+        }
+        this.category = category;
     }
 }

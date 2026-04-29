@@ -54,8 +54,8 @@ public class ShopConfig {
         c.cardTerminalIp = "127.0.0.1";
         c.cardTerminalPort = 9100;
 
-        c.excelExportPath = "/data/excel";
-        c.receiptSavePath = "/data/receipt";
+        c.excelExportPath = null;
+        c.receiptSavePath = null;
 
         return c;
     }

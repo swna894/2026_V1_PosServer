@@ -1,4 +1,4 @@
-package com.swna.server.payment.usecase;
+package com.swna.server.sale.usecase;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class ProcessPaymentUseCase {
+public class PayOrderUseCase {
 
     private final OrderRepository orderRepository;
     private final PaymentFactory paymentFactory;
@@ -33,22 +33,22 @@ public class ProcessPaymentUseCase {
         Sale order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("주문 없음"));
 
-        // 2. Domain 생성 (비즈니스 객체)
+        // 2. Domain Payment 생성
         PaymentMethod payment = paymentFactory.create(request);
 
         // 3. Entity 변환
         PaymentEntity entity = paymentMapper.toEntity(payment);
 
-        // 4. DB 저장
-        paymentRepository.save(entity);
-
-        // 5. Order 연결
+        // 4. Order 연결
         order.addPayment(entity);
 
-        // 6. 결제 검증 + 상태 변경
+        // 5. 저장
+        paymentRepository.save(entity);
+
+        // 6. 검증 + 상태 변경
         order.markPaid();
 
-        // 7. 이벤트 발행 (후처리)
+        // 7. 이벤트 발행
         eventPublisher.publishEvent(new OrderPaidEvent(order.getId()));
     }
 }

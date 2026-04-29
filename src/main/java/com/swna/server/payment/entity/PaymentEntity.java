@@ -2,7 +2,7 @@ package com.swna.server.payment.entity;
 
 import java.math.BigDecimal;
 
-import com.swna.server.order.domain.Order;
+import com.swna.server.sale.entity.Sale;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +30,7 @@ public abstract class PaymentEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Order order;
+    private Sale sale;
 
     @Column(nullable = false)
     private BigDecimal amount;
@@ -39,8 +39,8 @@ public abstract class PaymentEntity {
     // Common behavior
     // =========================
 
-    public void assignOrder(Order order) {
-        this.order = order;
+    public void assignOrder(Sale sale) {
+        this.sale = sale;
     }
 
     public BigDecimal getAmount() {

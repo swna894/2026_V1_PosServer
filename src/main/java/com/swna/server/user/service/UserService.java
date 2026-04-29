@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.swna.server.common.service.AbstractBaseService;
-import com.swna.server.user.entity.model.Role;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.infrastructure.repository.UserRepository;
 import com.swna.server.user.security.UserPrincipal;
@@ -29,7 +28,7 @@ public class UserService extends AbstractBaseService<User, Long>{
     public void signup(String username, String password) {
 
         String encoded = passwordEncoder.encode(password);
-        User user = new User(username, encoded, Role.USER);
+        User user = User.createDefault(username, null, encoded);
         userRepository.save(user);
     }
 

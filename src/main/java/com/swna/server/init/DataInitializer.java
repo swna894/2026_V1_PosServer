@@ -22,11 +22,11 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        if (!userRepository.existsByEmail("admin@swna.com")) {
-
-            User admin = new User("admin", "admin@gmail.com");
-            admin.setPassword(passwordEncoder.encode("1234"));
-            admin.setRole(Role.ADMIN); // 관리자 권한
+        if (!userRepository.existsByEmail("admin@gmail.com")) {
+            
+            String encodedPassword = passwordEncoder.encode("1234");
+            User admin = User.createWithRole("admin@gmail.com", encodedPassword , Role.ADMIN);
+            admin.setName("admin");
 
             userRepository.save(admin);
 
