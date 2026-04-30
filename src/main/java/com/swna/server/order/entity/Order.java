@@ -1,12 +1,15 @@
 package com.swna.server.order.entity;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.swna.server.common.entity.BaseEntity;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,7 +30,14 @@ public class Order extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal totalAmount = BigDecimal.ZERO;
+    private BigDecimal amount = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
+    private Boolean sync;
+    @Column(nullable = false, length = 32)
+    private String invoice;
+    
+    @Column(name = "supplier_abbr", nullable = false, length = 8)
+    private String supplierAbbr;
+    private LocalDateTime inspected;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
@@ -60,7 +70,7 @@ public class Order extends BaseEntity {
     private void recalculateAmounts() {
         BigDecimal itemTotal = calculateItemTotal();
 
-        this.totalAmount = itemTotal;
+        this.amount = itemTotal;
     }
 
     private BigDecimal calculateItemTotal() {

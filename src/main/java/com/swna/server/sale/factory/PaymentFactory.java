@@ -8,6 +8,7 @@ import com.swna.server.payment.model.PaymentMethod;
 import com.swna.server.sale.dto.request.PaymentRequest;
 
 
+
 @Component
 public class PaymentFactory {
 
@@ -22,6 +23,7 @@ public class PaymentFactory {
 
             case CARD -> CardPayment.of(
                     req.amount(),
+                    req.cashOutAmount(),
                     req.approvalNo()
             );
         };

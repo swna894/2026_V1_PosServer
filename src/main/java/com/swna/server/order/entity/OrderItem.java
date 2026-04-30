@@ -34,8 +34,8 @@ public class OrderItem {
     // =========================
     // Snapshot (핵심)
     // =========================
-    private String productBarcode;
-    private String productDescription;
+    private String barcode;
+    private String description;
     private BigDecimal price;
     
     private int quantity;
@@ -51,8 +51,8 @@ public class OrderItem {
         item.product = product;
 
         // snapshot (핵심)
-        item.productBarcode = product.getBarcode();
-        item.productDescription = product.getDescription();
+        item.barcode = product.getBarcode();
+        item.description = product.getDescription();
         item.price = product.getPrice();
 
         item.quantity = quantity;

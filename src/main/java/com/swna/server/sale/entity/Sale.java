@@ -92,12 +92,18 @@ public class Sale extends BaseEntity {
     // =========================
 
     public void validatePayment() {
+        // 1. 서버가 계산한 최종 주문 금액 (물건값 - 할인)
+        BigDecimal requiredAmount = this.totalAmount;
+
+        // 2. 실제로 추가된 모든 결제 수단(현금, 카드 등)의 합계 계산
         BigDecimal totalPaid = payments.stream()
                 .map(PaymentEntity::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        if (totalPaid.compareTo(totalAmount) != 0) {
-            throw new IllegalStateException("결제 금액 불일치");
+        // 3. 두 금액이 일치하지 않으면 예외 발생 (트랜잭션 롤백 유도)[cite: 13, 17]
+        if (requiredAmount.compareTo(totalPaid) != 0) {
+            throw new IllegalStateException("결제 금액이 일치하지 않습니다. (기대 금액: " 
+                + requiredAmount + ", 실제 결제액: " + totalPaid + ")");
         }
     }
 

@@ -19,15 +19,15 @@ import com.swna.server.sale.entity.SaleItem;
 import com.swna.server.sale.event.OrderPaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
-import com.swna.server.sale.repository.OrderRepository;
+import com.swna.server.sale.repository.SaleRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class ProcessOrderUseCase {
+public class ProcessSaleUseCase {
 
-    private final OrderRepository orderRepository;
+    private final SaleRepository orderRepository;
     private final ProductRepository productRepository;
     private final PaymentFactory paymentFactory;
     private final PaymentMapper paymentMapper;
@@ -39,45 +39,51 @@ public class ProcessOrderUseCase {
     @Transactional
     public SaleResponse execute(SaleRequest request) {
 
-        Sale order = process(request);
+        Sale sale = process(request);
 
-        orderRepository.save(order);
+        orderRepository.save(sale);
 
-        eventPublisher.publishEvent(new OrderPaidEvent(order.getId()));
+        eventPublisher.publishEvent(new OrderPaidEvent(sale.getId()));
 
-        return SaleResponse.of(order);
+        return SaleResponse.of(sale);
     }
 
     private Sale process(SaleRequest request) {
-
+        // A. 상품 내역 생성
         List<SaleItem> items = request.items().stream()
-                .map(this::toOrderItem)
+                .map(this::toSaleItem)
                 .toList();
 
+        // B. 할인 내역 생성 (DiscountRequest -> Discount 도메인)
         List<Discount> discounts = request.discounts().stream()
                 .map(DiscountRequest::toDomain)
                 .toList();
 
-        Sale order = Sale.create(items, discounts);
+        // C. 주문 도메인 생성 (아이템 + 할인)
+        Sale sale = Sale.create(items, discounts);
 
+        // D. 결제 내역 생성 및 연결
         request.payments().stream()
-                .map(paymentFactory::create)
-                .map(paymentMapper::toEntity)
-                .forEach(order::addPayment);
+                .map(paymentFactory::create) // DTO -> Domain (캐시아웃 등 계산 포함)
+                .map(paymentMapper::toEntity) // Domain -> Entity
+                .forEach(sale::addPayment); // 주문에 결제 정보 추가
 
-        order.validatePayment();
-        order.markPaid();
+        // E. 검증 및 상태 변경
+        sale.validatePayment(); // 계산된 총액과 실제 결제액 일치 여부 확인
+        sale.markPaid(); // 결제 완료 상태(PAID)로 변경
 
-        return order;
-}
+        return sale;
+    }
+
     // =========================
     // mapping
     // =========================
-    private SaleItem toOrderItem(SaleItemRequest request) {
+    private SaleItem toSaleItem(SaleItemRequest request) {
 
         Product product = productRepository.findById(request.productId())
                 .orElseThrow(() -> new IllegalArgumentException("상품 없음"));
 
         return SaleItem.of(product, request.quantity());
     }
+    
 }

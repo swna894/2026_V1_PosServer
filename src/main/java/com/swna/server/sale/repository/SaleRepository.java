@@ -6,7 +6,7 @@ import com.swna.server.sale.entity.Sale;
 
 import java.util.Optional;
 
-public interface OrderRepository extends JpaRepository<Sale, Long> {
+public interface SaleRepository extends JpaRepository<Sale, Long> {
 
     // =========================
     // Query Methods (필요한 것만)

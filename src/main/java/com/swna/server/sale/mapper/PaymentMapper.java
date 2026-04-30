@@ -24,6 +24,7 @@ public class PaymentMapper {
         if (payment instanceof CardPayment card) {
             return CardPaymentEntity.of(
                     card.getAmount(),
+                    card.getCashOutAmount(),
                     card.getApprovalNo()
             );
         }
@@ -45,6 +46,7 @@ public class PaymentMapper {
 
             return CardPayment.of(
                     card.getAmount(),
+                    card.getCashOutAmount(),
                     card.getApprovalNo()
             );
         }

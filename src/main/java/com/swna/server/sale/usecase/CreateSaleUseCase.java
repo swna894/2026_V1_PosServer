@@ -13,15 +13,15 @@ import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.entity.Discount;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
-import com.swna.server.sale.repository.OrderRepository;
+import com.swna.server.sale.repository.SaleRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class CreateOrderUseCase {
+public class CreateSaleUseCase {
 
-    private final OrderRepository orderRepository;
+    private final SaleRepository saleRepository;
     private final ProductRepository productRepository;
 
     // =========================
@@ -32,7 +32,7 @@ public class CreateOrderUseCase {
 
         // 1. OrderItem 생성 (Product 조회 기반)
         List<SaleItem> items = request.items().stream()
-                .map(this::toOrderItem)
+                .map(this::toSaleItem)
                 .toList();
 
         // 2. Discount 생성
@@ -41,19 +41,19 @@ public class CreateOrderUseCase {
                 .toList();
 
         // 3. Order 생성 (Domain 책임)
-        Sale order = Sale.create(items, discounts);
+        Sale sale = Sale.create(items, discounts);
 
         // 4. 저장
-        orderRepository.save(order);
+        saleRepository.save(sale);
 
-        return order.getId();
+        return sale.getId();
     }
 
     // =========================
     // Mapping
     // =========================
 
-    private SaleItem toOrderItem(SaleItemRequest request) {
+    private SaleItem toSaleItem(SaleItemRequest request) {
 
         Product product = productRepository.findById(request.productId())
                 .orElseThrow(() -> new IllegalArgumentException("상품 없음"));

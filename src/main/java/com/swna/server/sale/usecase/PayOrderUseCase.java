@@ -12,7 +12,7 @@ import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.event.OrderPaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
-import com.swna.server.sale.repository.OrderRepository;
+import com.swna.server.sale.repository.SaleRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PayOrderUseCase {
 
-    private final OrderRepository orderRepository;
+    private final SaleRepository orderRepository;
     private final PaymentFactory paymentFactory;
     private final PaymentMapper paymentMapper;
     private final PaymentRepository paymentRepository;
