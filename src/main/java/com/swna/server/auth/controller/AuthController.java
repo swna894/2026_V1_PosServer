@@ -32,7 +32,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(@RequestBody LoginRequest req) {
-        System.err.println("LoginRequest: " + req.email() + ", " + req.password());
         return ApiResponse.success(loginUseCase.execute(req));
     }
 

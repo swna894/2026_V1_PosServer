@@ -32,7 +32,7 @@ public class Order extends BaseEntity {
 
     private BigDecimal amount = BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP);
     private Boolean sync;
-    @Column(nullable = false, length = 32)
+    @Column(nullable = false, length = 64)
     private String invoice;
     
     @Column(name = "supplier_abbr", nullable = false, length = 8)

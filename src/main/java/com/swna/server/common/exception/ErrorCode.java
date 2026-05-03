@@ -30,6 +30,10 @@ public enum ErrorCode {
     USER_ALREADY_EXISTS("USER_2002", "User already exists", HttpStatus.BAD_REQUEST),
     USER_INVALID_PASSWORD("USER_2003", "Invalid password", HttpStatus.BAD_REQUEST),
 
+    // ================= USER =================
+    PRODUCT_NOT_FOUND("PRODUCT_2001", "Product not found", HttpStatus.NOT_FOUND),
+    PRODUCT_ALREADY_EXISTS("PRODUCT_2002", "Product already exists", HttpStatus.BAD_REQUEST),
+
     // ================= ORDER =================
     ORDER_NOT_FOUND("ORDER_3001", "Order not found", HttpStatus.NOT_FOUND),
     ORDER_ALREADY_CANCELLED("ORDER_3002", "Order already cancelled", HttpStatus.BAD_REQUEST),
