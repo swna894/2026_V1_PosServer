@@ -9,7 +9,7 @@ import com.swna.server.payment.model.PaymentMethod;
 import com.swna.server.payment.repository.PaymentRepository;
 import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.entity.Sale;
-import com.swna.server.sale.event.OrderPaidEvent;
+import com.swna.server.sale.event.SalePaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
 import com.swna.server.sale.repository.SaleRepository;
@@ -20,17 +20,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProcessPaymentUseCase {
 
-    private final SaleRepository orderRepository;
+    private final SaleRepository saleRepository;
     private final PaymentFactory paymentFactory;
     private final PaymentMapper paymentMapper;
     private final PaymentRepository paymentRepository;
     private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
-    public void execute(Long orderId, PaymentRequest request) {
+    public void execute(Long saleId, PaymentRequest request) {
 
         // 1. 주문 조회
-        Sale order = orderRepository.findById(orderId)
+        Sale sale = saleRepository.findById(saleId)
                 .orElseThrow(() -> new IllegalArgumentException("주문 없음"));
 
         // 2. Domain 생성 (비즈니스 객체)
@@ -42,13 +42,13 @@ public class ProcessPaymentUseCase {
         // 4. DB 저장
         paymentRepository.save(entity);
 
-        // 5. Order 연결
-        order.addPayment(entity);
+        // 5. sale 연결
+        sale.addPayment(entity);
 
         // 6. 결제 검증 + 상태 변경
-        order.markPaid();
+        sale.markPaid();
 
         // 7. 이벤트 발행 (후처리)
-        eventPublisher.publishEvent(new OrderPaidEvent(order.getId()));
+        eventPublisher.publishEvent(new SalePaidEvent(sale.getId()));
     }
 }

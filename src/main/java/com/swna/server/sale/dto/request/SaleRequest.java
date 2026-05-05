@@ -7,14 +7,14 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record SaleRequest(
 
-        @NotEmpty(message = "주문 상품은 필수입니다")
+        @NotEmpty(message = "Order items are required")
         @Valid
         List<SaleItemRequest> items,
 
         @Valid
         List<DiscountRequest> discounts,
 
-        @NotEmpty(message = "결제 정보는 필수입니다")
+        @NotEmpty(message = "Payment information is required")
         @Valid
         List<PaymentRequest> payments
 

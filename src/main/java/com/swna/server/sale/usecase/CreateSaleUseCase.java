@@ -5,14 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.swna.server.product.entity.Product;
-import com.swna.server.product.repository.ProductRepository;
 import com.swna.server.sale.dto.request.DiscountRequest;
-import com.swna.server.sale.dto.request.SaleItemRequest;
 import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.entity.Discount;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
+import com.swna.server.sale.mapper.SaleItemMapper;
 import com.swna.server.sale.repository.SaleRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CreateSaleUseCase {
 
+    private final SaleItemMapper saleItemMapper;
     private final SaleRepository saleRepository;
-    private final ProductRepository productRepository;
 
     // =========================
     // Order 생성
@@ -32,7 +30,7 @@ public class CreateSaleUseCase {
 
         // 1. OrderItem 생성 (Product 조회 기반)
         List<SaleItem> items = request.items().stream()
-                .map(this::toSaleItem)
+                .map(saleItemMapper::toEntity)
                 .toList();
 
         // 2. Discount 생성
@@ -49,15 +47,4 @@ public class CreateSaleUseCase {
         return sale.getId();
     }
 
-    // =========================
-    // Mapping
-    // =========================
-
-    private SaleItem toSaleItem(SaleItemRequest request) {
-
-        Product product = productRepository.findById(request.productId())
-                .orElseThrow(() -> new IllegalArgumentException("상품 없음"));
-
-        return SaleItem.of(product, request.quantity());
-    }
 }

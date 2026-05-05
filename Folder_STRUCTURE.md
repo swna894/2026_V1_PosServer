@@ -1,17 +1,17 @@
 com.swna.server
 │
-├── order
+├── sale
 │   ├── controller
-│   │   └── OrderController.java
+│   │   └── SaleController.java
 │   │
 │   ├── usecase
-│   │   ├── CreateOrderUseCase.java
-│   │   ├── ProcessOrderUseCase.java   ← (주문+결제 통합 POS 핵심)
+│   │   ├── CreateSaleUseCase.java
+│   │   ├── ProcessSaleUseCase.java   ← (주문+결제 통합 POS 핵심)
 │   │
 │   ├── domain
-│   │   ├── Order.java
-│   │   ├── OrderItem.java
-│   │   ├── OrderStatus.java
+│   │   ├── Sale.java
+│   │   ├── SaleItem.java
+│   │   ├── SaleStatus.java
 │   │   └── Discount.java
 │   │
 │   ├── entity
@@ -20,9 +20,9 @@ com.swna.server
 │   │   └── CardPaymentEntity.java
 │   │
 │   ├── dto
-│   │   ├── OrderRequest.java
-│   │   ├── OrderResponse.java
-│   │   ├── OrderItemRequest.java
+│   │   ├── SaleRequest.java
+│   │   ├── SaleResponse.java
+│   │   ├── SaleItemRequest.java
 │   │   ├── DiscountRequest.java
 │   │   └── PaymentRequest.java
 │   │
@@ -33,10 +33,10 @@ com.swna.server
 │   │   └── PaymentMapper.java
 │   │
 │   ├── event
-│   │   └── OrderPaidEvent.java
+│   │   └── SalePaidEvent.java
 │   │
 │   └── repository
-│       └── OrderRepository.java
+│       └── SaleRepository.java
 │
 ├── payment
 │   └── model
@@ -50,16 +50,16 @@ com.swna.server
 
 # 전체 실행 흐름       
     [Client]
-    OrderRequest
+    SaleRequest
     ↓
     [Controller]
-    OrderController
+    SaleController
     ↓
     [UseCase]
-    ProcessOrderUseCase
+    ProcessSaleUseCase
     ↓
     1. Product 조회
-    2. Order 생성
+    2. Sale 생성
     3. Discount 계산
     4. Payment 생성
     5. 검증
@@ -69,30 +69,30 @@ com.swna.server
     DB 저장
     ↓
     [Event]
-    OrderPaidEvent
+    SalePaidEvent
 
 
 
 com.swna.server
 │
-├── order
+├── sale
 │   ├── controller
-│   │   └── OrderController.java
+│   │   └── SaleController.java
 │   │
 │   ├── usecase
-│   │   ├── CreateOrderUseCase.java
-│   │   ├── PayOrderUseCase.java
+│   │   ├── CreateSaleUseCase.java
+│   │   ├── PaySaleUseCase.java
 │   │
 │   ├── domain
-│   │   ├── Order.java
-│   │   ├── OrderItem.java
-│   │   ├── OrderStatus.java
+│   │   ├── Sale.java
+│   │   ├── SaleItem.java
+│   │   ├── SaleStatus.java
 │   │
 │   ├── repository
-│   │   └── OrderRepository.java
+│   │   └── SaleRepository.java
 │   │
 │   └── event
-│       └── OrderPaidEvent.java
+│       └── SalePaidEvent.java
 │
 ├── payment
 │   ├── controller (optional)

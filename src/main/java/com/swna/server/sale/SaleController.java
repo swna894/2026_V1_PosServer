@@ -1,4 +1,4 @@
-package com.swna.server.sale.controller;
+package com.swna.server.sale;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +11,7 @@ import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.usecase.CreateSaleUseCase;
-import com.swna.server.sale.usecase.PayOrderUseCase;
+import com.swna.server.sale.usecase.PaySaleUseCase;
 import com.swna.server.sale.usecase.ProcessSaleUseCase;
 
 import jakarta.validation.Valid;
@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class SaleController {
 
     private final CreateSaleUseCase createOrderUseCase;
-    private final PayOrderUseCase payOrderUseCase;
+    private final PaySaleUseCase payOrderUseCase;
     private final ProcessSaleUseCase processSaleUseCase;
 
     /**

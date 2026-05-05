@@ -12,6 +12,8 @@ import com.swna.server.product.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    Optional<Product> findByBarcode(String barcode);
+
     List<Product> findByDeletedFalse();
     @Query(value = "SELECT * FROM products WHERE deleted = false ORDER BY RAND() LIMIT 65", nativeQuery = true)
     List<Product> findRandomProducts();

@@ -2,6 +2,8 @@ package com.swna.server.sale.usecase;
 
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,10 @@ import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.entity.Discount;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
-import com.swna.server.sale.event.OrderPaidEvent;
+import com.swna.server.sale.event.SalePaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
+import com.swna.server.sale.mapper.SaleItemMapper;
 import com.swna.server.sale.repository.SaleRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -27,8 +30,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProcessSaleUseCase {
 
+    private final SaleItemMapper saleItemMapper;
     private final SaleRepository orderRepository;
-    private final ProductRepository productRepository;
     private final PaymentFactory paymentFactory;
     private final PaymentMapper paymentMapper;
     private final ApplicationEventPublisher eventPublisher;
@@ -38,20 +41,20 @@ public class ProcessSaleUseCase {
     // =========================
     @Transactional
     public SaleResponse execute(SaleRequest request) {
-
         Sale sale = process(request);
+        @SuppressWarnings("null")
+        Sale savedSale = Optional.ofNullable(orderRepository.save(sale))
+                                .orElseThrow(() -> new IllegalStateException("Failed to save sale entity"));
 
-        orderRepository.save(sale);
+        eventPublisher.publishEvent(new SalePaidEvent(savedSale.getId()));
 
-        eventPublisher.publishEvent(new OrderPaidEvent(sale.getId()));
-
-        return SaleResponse.of(sale);
+        return SaleResponse.of(savedSale);
     }
 
     private Sale process(SaleRequest request) {
         // A. 상품 내역 생성
         List<SaleItem> items = request.items().stream()
-                .map(this::toSaleItem)
+                .map(saleItemMapper::toEntity)
                 .toList();
 
         // B. 할인 내역 생성 (DiscountRequest -> Discount 도메인)
@@ -75,15 +78,4 @@ public class ProcessSaleUseCase {
         return sale;
     }
 
-    // =========================
-    // mapping
-    // =========================
-    private SaleItem toSaleItem(SaleItemRequest request) {
-
-        Product product = productRepository.findById(request.productId())
-                .orElseThrow(() -> new IllegalArgumentException("상품 없음"));
-
-        return SaleItem.of(product, request.quantity());
-    }
-    
 }

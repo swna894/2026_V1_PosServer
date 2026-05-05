@@ -9,16 +9,17 @@ import com.swna.server.payment.model.PaymentMethod;
 import com.swna.server.payment.repository.PaymentRepository;
 import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.entity.Sale;
-import com.swna.server.sale.event.OrderPaidEvent;
+import com.swna.server.sale.event.SalePaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
 import com.swna.server.sale.repository.SaleRepository;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class PayOrderUseCase {
+public class PaySaleUseCase {
 
     private final SaleRepository orderRepository;
     private final PaymentFactory paymentFactory;
@@ -27,7 +28,7 @@ public class PayOrderUseCase {
     private final ApplicationEventPublisher eventPublisher;
 
     @Transactional
-    public void execute(Long orderId, PaymentRequest request) {
+    public void execute(@NonNull Long orderId, PaymentRequest request) {
 
         // 1. 주문 조회
         Sale order = orderRepository.findById(orderId)
@@ -49,6 +50,6 @@ public class PayOrderUseCase {
         order.markPaid();
 
         // 7. 이벤트 발행
-        eventPublisher.publishEvent(new OrderPaidEvent(order.getId()));
+        eventPublisher.publishEvent(new SalePaidEvent(order.getId()));
     }
 }
