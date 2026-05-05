@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.swna.server.payment.model.CardPayment;
 import com.swna.server.payment.model.CashPayment;
 import com.swna.server.payment.model.PaymentMethod;
-import com.swna.server.sale.dto.request.PaymentRequest;
+import com.swna.server.sale.dto.request_old.PaymentRequest;
 
 
 

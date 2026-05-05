@@ -10,7 +10,7 @@ import com.swna.server.payment.entity.PaymentEntity;
 import com.swna.server.payment.model.CardPayment;
 import com.swna.server.payment.model.PaymentType;
 import com.swna.server.payment.repository.PaymentRepository;
-import com.swna.server.sale.dto.request.PaymentRequest;
+import com.swna.server.sale.dto.request_old.PaymentRequest;
 import com.swna.server.sale.entity.Sale;
 
 import jakarta.transaction.Transactional;

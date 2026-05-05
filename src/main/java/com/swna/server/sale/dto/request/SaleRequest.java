@@ -6,16 +6,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 
 public record SaleRequest(
+    @NotEmpty(message = "At least one sale item is required.")
+    @Valid
+    List<SaleItemRequest> items,
 
-        @NotEmpty(message = "Order items are required")
-        @Valid
-        List<SaleItemRequest> items,
-
-        @Valid
-        List<DiscountRequest> discounts,
-
-        @NotEmpty(message = "Payment information is required")
-        @Valid
-        List<PaymentRequest> payments
-
+    @NotEmpty(message = "At least one payment record is required.")
+    @Valid
+    List<PaymentRequest> payments
 ) {}

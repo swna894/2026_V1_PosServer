@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.swna.server.sale.dto.request.SaleRequest;
+import com.swna.server.sale.dto.request_old.PaymentRequest;
+import com.swna.server.sale.dto.request_old.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
-import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.usecase.CreateSaleUseCase;
 import com.swna.server.sale.usecase.PaySaleUseCase;
 import com.swna.server.sale.usecase.ProcessSaleUseCase;

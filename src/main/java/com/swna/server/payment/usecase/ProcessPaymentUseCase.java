@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.swna.server.payment.entity.PaymentEntity;
 import com.swna.server.payment.model.PaymentMethod;
 import com.swna.server.payment.repository.PaymentRepository;
-import com.swna.server.sale.dto.request.PaymentRequest;
+import com.swna.server.sale.dto.request_old.PaymentRequest;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.event.SalePaidEvent;
 import com.swna.server.sale.factory.PaymentFactory;

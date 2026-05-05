@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.swna.server.product.entity.Product;
 import com.swna.server.product.repository.ProductRepository;
-import com.swna.server.sale.dto.request.SaleItemRequest;
+import com.swna.server.sale.dto.request_old.SaleItemRequest;
 import com.swna.server.sale.entity.SaleItem;
 
 import lombok.RequiredArgsConstructor;

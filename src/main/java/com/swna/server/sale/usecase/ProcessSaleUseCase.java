@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.swna.server.product.entity.Product;
 import com.swna.server.product.repository.ProductRepository;
-import com.swna.server.sale.dto.request.DiscountRequest;
-import com.swna.server.sale.dto.request.SaleItemRequest;
-import com.swna.server.sale.dto.request.SaleRequest;
+import com.swna.server.sale.dto.request_old.DiscountRequest;
+import com.swna.server.sale.dto.request_old.SaleItemRequest;
+import com.swna.server.sale.dto.request_old.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.entity.Discount;
 import com.swna.server.sale.entity.Sale;

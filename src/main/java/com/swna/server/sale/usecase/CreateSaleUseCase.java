@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.swna.server.sale.dto.request.DiscountRequest;
-import com.swna.server.sale.dto.request.SaleRequest;
+import com.swna.server.sale.dto.request_old.DiscountRequest;
+import com.swna.server.sale.dto.request_old.SaleRequest;
 import com.swna.server.sale.entity.Discount;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;

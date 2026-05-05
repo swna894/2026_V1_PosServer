@@ -1,4 +1,4 @@
-package com.swna.server.sale.dto.request;
+package com.swna.server.sale.dto.request_old;
 
 import java.util.List;
 
