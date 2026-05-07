@@ -21,14 +21,17 @@ public class SignupUseCase {
     @Transactional
     public void execute(String email, String password) {
 
-        if (userRepository.existsByEmail(email)) {
-            throw new BusinessException(ErrorCode.USER_ALREADY_EXISTS);
-        }
-
         String encoded = passwordEncoder.encode(password);
-
-        userRepository.save(
-            User.createWithNoRole(encoded, password)
-        );
+        User user = User.createWithNoRole(encoded, email);
+        
+        // 명시적 null 체크 (권장)
+        if (user == null) {
+            throw BusinessException.builder(ErrorCode.INTERNAL_SERVER_ERROR)
+                .message("Failed to create user entity")
+                .detail("email", email)
+                .build();
+        }
+        
+        userRepository.save(user);
     }
 }

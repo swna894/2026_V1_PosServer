@@ -10,8 +10,7 @@ import com.swna.server.auth.dto.request.TokenRequest;
 import com.swna.server.auth.dto.response.TokenResponse;
 import com.swna.server.auth.infrastructure.repository.RefreshTokenRepository;
 import com.swna.server.auth.jwt.JwtProvider;
-import com.swna.server.common.exception.BusinessException;
-import com.swna.server.common.exception.ErrorCode;
+import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.infrastructure.repository.UserRepository;
 
@@ -31,14 +30,14 @@ public class ReissueTokenUseCase {
     public TokenResponse execute(TokenRequest req) {
 
         RefreshToken saved = refreshRepo.findByToken(req.refreshToken())
-                .orElseThrow(() -> new BusinessException(ErrorCode.AUTH_INVALID_TOKEN));
+                .orElseThrow(() -> ExceptionUtils.invalidToken());
 
         domainService.validateNotExpired(saved);
 
         Long userId = jwtProvider.getUserId(saved.getToken());
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> ExceptionUtils.userNotFound(String.valueOf(userId)));
 
         String newAccess = jwtProvider.createAccessToken(userId, user.getRole());
         String newRefresh = jwtProvider.createRefreshToken(userId, user.getRole());

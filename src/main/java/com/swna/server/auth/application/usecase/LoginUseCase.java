@@ -11,8 +11,7 @@ import com.swna.server.auth.dto.request.LoginRequest;
 import com.swna.server.auth.dto.response.LoginResponse;
 import com.swna.server.auth.infrastructure.repository.RefreshTokenRepository;
 import com.swna.server.auth.jwt.JwtProvider;
-import com.swna.server.common.exception.BusinessException;
-import com.swna.server.common.exception.ErrorCode;
+import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.infrastructure.repository.UserRepository;
 
@@ -33,7 +32,7 @@ public class LoginUseCase {
     public LoginResponse execute(LoginRequest req) {
 
         User user = userRepository.findByEmail(req.email())
-                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> ExceptionUtils.userNotFound(req.email()));
 
         authDomainService.validatePassword(
                 req.password(),

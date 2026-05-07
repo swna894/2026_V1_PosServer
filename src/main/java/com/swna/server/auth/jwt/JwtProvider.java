@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.swna.server.common.config.JwtProperties;
 import com.swna.server.common.exception.BusinessException;
 import com.swna.server.common.exception.ErrorCode;
+import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.user.entity.model.Role;
 
 import io.jsonwebtoken.Claims;
@@ -14,6 +15,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Component
@@ -51,13 +53,13 @@ public class JwtProvider {
                     .getBody();
 
         } catch (ExpiredJwtException e) {
-            throw new BusinessException(ErrorCode.AUTH_TOKEN_EXPIRED);
+            throw ExceptionUtils.tokenExpired();
         } catch (JwtException | IllegalArgumentException e) {
-            throw new BusinessException(ErrorCode.AUTH_INVALID_TOKEN);
+            throw ExceptionUtils.invalidToken();
         }
     }
 
-    public Long getUserId(String token) {
+    public @NonNull Long getUserId(String token) {
         return Long.parseLong(parseClaims(token).getSubject());
     }
 

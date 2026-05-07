@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.swna.server.common.entity.BaseEntity;
+import com.swna.server.common.exception.ExceptionUtils;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -19,7 +20,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -63,15 +63,8 @@ public class Sale extends BaseEntity {
     // Static Factory Methods
     // =========================
     
-    public static Sale create() {
-        return Sale.builder()
-                .receiptNo(generateReceiptNo())
-                .build();
-    }
-    
-
     public static Sale create(List<SaleItem> items, List<Discount> discounts) {
-        Sale sale = Sale.create();
+        Sale sale = new Sale();
         sale.addItems(items);
         
         if (discounts != null && !discounts.isEmpty()) {
@@ -86,20 +79,6 @@ public class Sale extends BaseEntity {
         return create(items, List.of());
     }
 
-    // =========================
-    // Builder
-    // =========================
-    
-    @Builder
-    private Sale(String receiptNo, String memo) {
-        this.receiptNo = receiptNo != null ? receiptNo : generateReceiptNo();
-        this.memo = memo;
-        this.status = SaleStatus.PENDING;
-        this.saleDateTime = LocalDateTime.now();
-        this.totalAmount = BigDecimal.ZERO;
-        this.discountAmount = BigDecimal.ZERO;
-        this.finalAmount = BigDecimal.ZERO;
-    }
 
     // =========================
     // Business Methods
@@ -174,12 +153,17 @@ public class Sale extends BaseEntity {
     }
     
     public void assignReceiptNo(String receiptNo) {
+        // 이미 할당된 영수증 번호가 있는 경우 (덮어쓰기 금지)
         if (this.receiptNo != null) {
-            throw new IllegalStateException("Receipt number already assigned: " + this.receiptNo);
+            throw ExceptionUtils.receiptNumberDuplicate(this.receiptNo);
         }
+        
+        // 영수증 번호 유효성 검증
         if (receiptNo == null || receiptNo.isBlank()) {
-            throw new IllegalArgumentException("Receipt number cannot be null or blank");
+            throw ExceptionUtils.missingField("receiptNo");
         }
+        
+
         this.receiptNo = receiptNo;
     }
     
@@ -201,19 +185,23 @@ public class Sale extends BaseEntity {
     // =========================
     
     private void calculateTotalAmount() {
+        items.forEach(item -> System.err.println(item));
         this.totalAmount = items.stream()
                 .map(SaleItem::getTotalAmountBeforeDiscount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.err.println("TotalAmount = " + totalAmount);
     }
     
     private void calculateDiscountAmount() {
         this.discountAmount = items.stream()
                 .map(SaleItem::getDiscountValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.err.println("discountAmount = " + discountAmount);
     }
     
     private void calculatePayableAmount() {
         this.finalAmount = this.totalAmount.subtract(this.discountAmount);
+        System.err.println("finalAmount = " + finalAmount);
     }
     
     private void validateState() {

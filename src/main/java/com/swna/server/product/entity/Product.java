@@ -13,9 +13,11 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Getter
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "products")
 public class Product extends BaseEntity {
@@ -54,6 +56,7 @@ public class Product extends BaseEntity {
             String code,
             String description,
             BigDecimal price,
+            BigDecimal cost,
             String barcode,
             String category
     ) {
@@ -63,6 +66,7 @@ public class Product extends BaseEntity {
         product.code = code;
         product.description = description;
         product.price = price;
+        product.cost = price;
         product.barcode = barcode;
         product.category = category;
         return product;

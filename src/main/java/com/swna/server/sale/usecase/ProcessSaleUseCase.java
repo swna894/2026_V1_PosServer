@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.request.DiscountRequest;
+import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
@@ -67,6 +68,7 @@ public class ProcessSaleUseCase {
      * 주문 생성
      */
     private Sale createSale(SaleRequest request) {
+        System.err.println("SaleRequest = " + request);
         List<SaleItem> items = createSaleItems(request);
         Sale sale = Sale.create(items);
         
@@ -79,7 +81,7 @@ public class ProcessSaleUseCase {
     /**
      * 결제 처리
      */
-    private void processPayments(Sale sale, List<com.swna.server.sale.dto.request.PaymentRequest> paymentRequests) {
+    private void processPayments(Sale sale, List<PaymentRequest> paymentRequests) {
         validatePaymentsExist(paymentRequests);
         
         List<PaymentEntity> payments = paymentRequests.stream()
@@ -110,6 +112,8 @@ public class ProcessSaleUseCase {
      * 판매 아이템 생성
      */
     private List<SaleItem> createSaleItems(SaleRequest request) {
+
+        System.err.println("SaleRequest = " + request);
         return request.items().stream()
                 .map(saleItemMapper::toEntity)
                 .toList();
