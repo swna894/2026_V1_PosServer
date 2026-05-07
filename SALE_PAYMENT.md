@@ -12,10 +12,22 @@
   - Order : 판매를 위한 주문정보
   - Product : 판매 제품
 
-   public class PaymentRequest {
-      private String type;            // "CARD" 또는 "CASH"
-      private BigDecimal amount;      // 물건 가격 또는 결제 대상 금액
-      private BigDecimal receivedAmount; // (현금 시) 고객에게 받은 돈
-      private BigDecimal cashOutAmount;  // (카드 시) 캐시아웃 요청 금액
-      private String approvalNo;      // 카드 승인 번호
-   }
+   Entity Layer                    DTO Layer
+─────────────────────────────────────────────────
+CashPaymentEntity  ──┐
+                      ├──→ PaymentResponse.from() ──→ PaymentResponse
+CardPaymentEntity   ──┘
+
+Sale (with payments) ──→ SaleMapper.toResponse() ──→ SaleResponse
+                              │
+                              ├── SaleItemResponse.from()
+                              └── PaymentResponse.fromList()
+                          
+
+execute()
+    ├── buildSale()           - 주문 객체 생성
+    │   ├── createSaleItems() - 아이템 변환
+    │   └── applyDiscounts()  - 할인 적용
+    ├── addPaymentsToSale()   - 결제 추가
+    ├── finalizeSale()        - 검증 및 완료
+    └── saveAndRespond()      - 저장 및 응답

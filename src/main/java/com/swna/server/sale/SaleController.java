@@ -1,29 +1,29 @@
 package com.swna.server.sale;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.swna.server.sale.dto.request_old.PaymentRequest;
-import com.swna.server.sale.dto.request_old.SaleRequest;
+import com.swna.server.common.exception.BusinessException;
+import com.swna.server.common.exception.ErrorCode;
+import com.swna.server.common.response.ApiResponse;
+import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
-import com.swna.server.sale.usecase.CreateSaleUseCase;
-import com.swna.server.sale.usecase.PaySaleUseCase;
 import com.swna.server.sale.usecase.ProcessSaleUseCase;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
-@RequestMapping("/api/sales")
+@RequestMapping("/sales")
 @RequiredArgsConstructor
 public class SaleController {
 
-    private final CreateSaleUseCase createOrderUseCase;
-    private final PaySaleUseCase payOrderUseCase;
     private final ProcessSaleUseCase processSaleUseCase;
 
     /**
@@ -36,22 +36,34 @@ public class SaleController {
         return ResponseEntity.ok(response);
     }
 
-    // =========================
-    // 주문 생성
-    // =========================
     @PostMapping
-    public Long createOrder(@RequestBody SaleRequest request) {
-        return createOrderUseCase.execute(request);
+    public ResponseEntity<ApiResponse<SaleResponse>> createSale(@Valid @RequestBody SaleRequest request) {
+        log.debug("Received sale creation request with {} items", request.items().size());
+        
+    
+        // 2. 리스트 내역 상세 출력
+        if (request.items() != null) {
+            request.items().forEach(item -> {
+                System.out.println("바코드: " + item.barcode());
+            });
+        }
+
+        try {
+            // Request validation (additional business rules if needed)
+            request.validate();
+            
+            SaleResponse response = processSaleUseCase.execute(request);
+            System.out.println("🚩 회신 데이터 전체: " + response);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(ApiResponse.success(response, "SALE_CREATED", "Sale created successfully"));
+            
+        } catch (BusinessException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(ApiResponse.error(e.getErrorCode(), e.getMessage()));
+            
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(ApiResponse.error(ErrorCode.INTERNAL_ERROR, "An unexpected error occurred"));
+        }
     }
-
-    // =========================
-    // 결제 처리
-    // =========================
-    @PostMapping("/{saleId}/pay")
-    public void payOrder(@PathVariable Long saleId, @RequestBody PaymentRequest request) {
-
-        payOrderUseCase.execute(saleId, request);
-    }
-
-
 }

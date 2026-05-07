@@ -5,26 +5,28 @@ import java.math.BigDecimal;
 import com.swna.server.sale.entity.SaleItem;
 
 public record SaleItemResponse(
-
+        Long productId,
         String productBarcode,
         String productName,
         int quantity,
-        BigDecimal price,
-        BigDecimal subTotal
-
+        BigDecimal priceAtSale,
+        BigDecimal discountValue,
+        String discountType,
+        BigDecimal totalAmount,
+        String comment
 ) {
 
-    // =========================
-    // Factory
-    // =========================
-    public static SaleItemResponse of(SaleItem item) {
-
+    public static SaleItemResponse from(SaleItem item, String productName) {
         return new SaleItemResponse(
-                item.getProductBarcode(),
-                item.getProductDescription(),
+                item.getProductId(),
+                item.getBarcode(),
+                productName,
                 item.getQuantity(),
-                item.getPrice(),
-                item.getSubTotal()
+                item.getPriceAtSale(),
+                item.getDiscountValue(),
+                item.getDiscountType() != null ? item.getDiscountType().name() : "FIXED",
+                item.getTotalAmount(),
+                item.getComment()
         );
     }
 }

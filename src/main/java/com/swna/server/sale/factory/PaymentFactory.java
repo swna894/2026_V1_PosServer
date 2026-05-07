@@ -2,29 +2,24 @@ package com.swna.server.sale.factory;
 
 import org.springframework.stereotype.Component;
 
-import com.swna.server.payment.model.CardPayment;
-import com.swna.server.payment.model.CashPayment;
-import com.swna.server.payment.model.PaymentMethod;
-import com.swna.server.sale.dto.request_old.PaymentRequest;
-
-
+import com.swna.server.sale.domain.CardPayment;
+import com.swna.server.sale.domain.CashPayment;
+import com.swna.server.sale.domain.PaymentMethod;
+import com.swna.server.sale.dto.request.PaymentRequest;
 
 @Component
 public class PaymentFactory {
 
-    public PaymentMethod create(PaymentRequest req) {
+    public PaymentMethod create(PaymentRequest request) {
+        if (request == null) {
+            throw new IllegalArgumentException("Payment request cannot be null");
+        }
 
-        return switch (req.type()) {
-
-            case CASH -> CashPayment.of(
-                    req.amount(),
-                    req.receivedAmount()
-            );
-
-            case CARD -> CardPayment.of(
-                    req.amount(),
-                    req.cashOutAmount(),
-                    req.approvalNo()
+        return switch (request.type()) {
+            case CASH -> CashPayment.of(request.amount(), request.receivedAmount());
+            case CARD -> CardPayment.of(request.amount(), request.approvalNo());
+            default -> throw new IllegalArgumentException(
+                String.format("Unsupported payment type: %s", request.type())
             );
         };
     }

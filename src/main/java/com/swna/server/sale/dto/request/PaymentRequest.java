@@ -2,14 +2,15 @@ package com.swna.server.sale.dto.request;
 
 import java.math.BigDecimal;
 
-import jakarta.validation.constraints.NotBlank;
+import com.swna.server.sale.entity.PaymentType;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public record PaymentRequest(
 
-    @NotBlank(message = "Payment type is required. (e.g., CASH, CARD)")
-    String type,
+    @NotNull(message = "Payment type is required. (e.g., CASH, CARD)")
+    PaymentType type,
 
     @NotNull(message = "Payment amount is required.")
     @PositiveOrZero(message = "Amount must be zero or positive.")
@@ -23,4 +24,31 @@ public record PaymentRequest(
 
     String approvalNo // Card authorization number
 
-) {}
+) {
+        // =========================
+    // Business Methods
+    // =========================
+    
+    public boolean isCash() {
+        return type == PaymentType.CASH;
+    }
+    
+    public boolean isCard() {
+        return type == PaymentType.CARD;
+    }
+    
+    public boolean hasReceivedAmount() {
+        return receivedAmount != null;
+    }
+    
+    public boolean hasApprovalNo() {
+        return approvalNo != null && !approvalNo.isBlank();
+    }
+    
+    public BigDecimal getChange() {
+        if (isCash() && receivedAmount != null) {
+            return receivedAmount.subtract(amount);
+        }
+        return BigDecimal.ZERO;
+    }
+}

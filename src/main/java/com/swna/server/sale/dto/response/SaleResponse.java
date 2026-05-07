@@ -1,39 +1,44 @@
 package com.swna.server.sale.dto.response;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import com.swna.server.sale.entity.Sale;
+import com.swna.server.sale.entity.SaleStatus;
 
 public record SaleResponse(
-
-        Long orderId,
+        Long id,
         String receiptNo,
         String status,
         BigDecimal totalAmount,
         BigDecimal discountAmount,
-        List<SaleItemResponse> items,
-        List<PaymentResponse> payments
-
+        BigDecimal finalAmount
 ) {
 
-    // =========================
-    // Factory (핵심)
-    // =========================
-    public static SaleResponse of(Sale order) {
-
+    /**
+     * Sale 엔티티로부터 Response 생성 (권장 방식)
+     */
+    public static SaleResponse from(Sale sale) {
         return new SaleResponse(
-                order.getId(),
-                order.getReceiptNo(),
-                order.getStatus().name(),
-                order.getTotalAmount(),
-                order.getDiscountAmount(),
-                order.getItems().stream()
-                        .map(SaleItemResponse::of)
-                        .toList(),
-                order.getPayments().stream()
-                        .map(PaymentResponse::of)
-                        .toList()
+                sale.getId(),
+                sale.getReceiptNo(),
+                sale.getStatus() != null ? sale.getStatus().name() : SaleStatus.PENDING.name(),
+                sale.getTotalAmount(),
+                sale.getDiscountAmount(),
+                sale.getFinalAmount()
+        );
+    }
+    
+    /**
+     * 간단한 변환 (Product 정보 없이 - 개발/테스트용)
+     */
+    public static SaleResponse of(Sale sale) {
+        return new SaleResponse(
+                sale.getId(),
+                sale.getReceiptNo(),
+                sale.getStatus().name(),
+                sale.getTotalAmount(),
+                sale.getDiscountAmount(),
+                sale.getFinalAmount()
         );
     }
 }

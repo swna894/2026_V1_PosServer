@@ -1,141 +1,249 @@
 package com.swna.server.sale.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.swna.server.common.entity.BaseEntity;
-import com.swna.server.payment.entity.PaymentEntity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "sales")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "sales")
 public class Sale extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private BigDecimal totalAmount = BigDecimal.ZERO;
-    private BigDecimal discountAmount = BigDecimal.ZERO;
-
-    @Column(unique = true)
+    @Column(nullable = false, unique = true, updatable = false)
     private String receiptNo;
 
     @Enumerated(EnumType.STRING)
-    private SaleStatus status = SaleStatus.CREATED;
+    @Column(nullable = false)
+    private SaleStatus status;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal totalAmount;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal discountAmount;
+
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal finalAmount;
+
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime saleDateTime;
+
+    private String memo;
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SaleItem> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PaymentEntity> payments = new ArrayList<>();
-
-    @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Discount> discounts = new ArrayList<>();
-
+    private List<PaymentEntity> payments = new ArrayList<>();  
     // =========================
-    // Factory
+    // Static Factory Methods
     // =========================
+    
+    public static Sale create() {
+        return Sale.builder()
+                .receiptNo(generateReceiptNo())
+                .build();
+    }
+    
+
     public static Sale create(List<SaleItem> items, List<Discount> discounts) {
-        Sale order = new Sale();
+        Sale sale = Sale.create();
+        sale.addItems(items);
+        
+        if (discounts != null && !discounts.isEmpty()) {
+            sale.applyDiscounts(discounts);
+        }
+        
+        sale.recalculateAmounts();
+        return sale;
+    }
 
-        items.forEach(order::addItem);
-        discounts.forEach(order::addDiscount);
+    public static Sale create(List<SaleItem> items) {
+        return create(items, List.of());
+    }
 
-        order.recalculateAmounts();
-        order.receiptNo = generateReceiptNo();
-        order.status = SaleStatus.CREATED;
-
-        return order;
+    // =========================
+    // Builder
+    // =========================
+    
+    @Builder
+    private Sale(String receiptNo, String memo) {
+        this.receiptNo = receiptNo != null ? receiptNo : generateReceiptNo();
+        this.memo = memo;
+        this.status = SaleStatus.PENDING;
+        this.saleDateTime = LocalDateTime.now();
+        this.totalAmount = BigDecimal.ZERO;
+        this.discountAmount = BigDecimal.ZERO;
+        this.finalAmount = BigDecimal.ZERO;
     }
 
     // =========================
     // Business Methods
     // =========================
-
+    
     public void addItem(SaleItem item) {
         items.add(item);
-        item.assignOrder(this);
+        item.setSale(this);
+        recalculateAmounts();
     }
-
-    public void addDiscount(Discount discount) {
-        discounts.add(discount);
-        discount.assignOrder(this);
+    
+    public void addItems(List<SaleItem> newItems) {
+        newItems.forEach(this::addItem);
     }
-
+    
+    // ✅ PaymentEntity를 받도록 변경
     public void addPayment(PaymentEntity payment) {
         payments.add(payment);
-        payment.assignOrder(this);
+        payment.setSale(this);
     }
-
-    public void markPaid() {
-        validatePayment();
-        this.status = SaleStatus.PAID;
+    
+    // ✅ PaymentEntity 리스트를 받도록 변경
+    public void addPayments(List<? extends PaymentEntity> newPayments) {
+        newPayments.forEach(this::addPayment);
     }
-
-    public void cancel() {
-        if (status == SaleStatus.PAID) {
-            throw new IllegalStateException("이미 결제된 주문은 취소 불가");
+    
+    public void recalculateAmounts() {
+        calculateTotalAmount();
+        calculateDiscountAmount();
+        calculatePayableAmount();
+    }
+    
+    public void complete() {
+        validateState();
+        validatePayments();
+        this.status = SaleStatus.COMPLETED;
+        recalculateAmounts();
+    }
+    
+    public void cancel(String reason) {
+        if (status == SaleStatus.COMPLETED) {
+            throw new IllegalStateException("Cannot cancel a completed order.");
+        }
+        if (status == SaleStatus.CANCELLED) {
+            throw new IllegalStateException("Order is already cancelled.");
         }
         this.status = SaleStatus.CANCELLED;
+        this.memo = reason != null ? reason : this.memo;
+    }
+    
+    public void refund() {
+        if (status != SaleStatus.COMPLETED) {
+            throw new IllegalStateException("Only completed orders can be refunded.");
+        }
+        this.status = SaleStatus.REFUNDED;
+    }
+    
+    public boolean isPending() {
+        return status == SaleStatus.PENDING;
+    }
+    
+    public boolean isCompleted() {
+        return status == SaleStatus.COMPLETED;
+    }
+    
+    public boolean isCancelled() {
+        return status == SaleStatus.CANCELLED;
+    }
+    
+    public boolean isRefunded() {
+        return status == SaleStatus.REFUNDED;
+    }
+    
+    public void assignReceiptNo(String receiptNo) {
+        if (this.receiptNo != null) {
+            throw new IllegalStateException("Receipt number already assigned: " + this.receiptNo);
+        }
+        if (receiptNo == null || receiptNo.isBlank()) {
+            throw new IllegalArgumentException("Receipt number cannot be null or blank");
+        }
+        this.receiptNo = receiptNo;
+    }
+    
+    public void applyDiscounts(List<Discount> discounts) {
+        if (discounts == null || discounts.isEmpty()) {
+            return;
+        }
+        
+        BigDecimal totalDiscount = discounts.stream()
+                .map(Discount::getValue)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        
+        this.discountAmount = totalDiscount;
+        calculatePayableAmount();
     }
 
     // =========================
-    // Validation
+    // Private Methods
     // =========================
-
-    public void validatePayment() {
-        // 1. 서버가 계산한 최종 주문 금액 (물건값 - 할인)
-        BigDecimal requiredAmount = this.totalAmount;
-
-        // 2. 실제로 추가된 모든 결제 수단(현금, 카드 등)의 합계 계산
+    
+    private void calculateTotalAmount() {
+        this.totalAmount = items.stream()
+                .map(SaleItem::getTotalAmountBeforeDiscount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+    
+    private void calculateDiscountAmount() {
+        this.discountAmount = items.stream()
+                .map(SaleItem::getDiscountValue)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+    
+    private void calculatePayableAmount() {
+        this.finalAmount = this.totalAmount.subtract(this.discountAmount);
+    }
+    
+    private void validateState() {
+        if (status != SaleStatus.PENDING) {
+            throw new IllegalStateException(
+                String.format("Order is not in PENDING state. Current state: %s", status)
+            );
+        }
+    }
+    
+    // ✅ PaymentEntity 타입으로 검증
+    public void validatePayments() {
+        if (payments.isEmpty()) {
+            throw new IllegalStateException("At least one payment is required.");
+        }
+        
         BigDecimal totalPaid = payments.stream()
                 .map(PaymentEntity::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        // 3. 두 금액이 일치하지 않으면 예외 발생 (트랜잭션 롤백 유도)[cite: 13, 17]
-        if (requiredAmount.compareTo(totalPaid) != 0) {
-            throw new IllegalStateException("결제 금액이 일치하지 않습니다. (기대 금액: " 
-                + requiredAmount + ", 실제 결제액: " + totalPaid + ")");
+        
+        if (totalPaid.compareTo(this.finalAmount) != 0) {
+            throw new IllegalStateException(
+                String.format("Payment amount (%s) does not match payable amount (%s).",
+                    totalPaid, this.finalAmount)
+            );
         }
     }
-
-    // =========================
-    // Calculation
-    // =========================
-
-    private void recalculateAmounts() {
-        BigDecimal itemTotal = calculateItemTotal();
-        BigDecimal discountTotal = calculateDiscountTotal(itemTotal);
-
-        this.discountAmount = discountTotal;
-        this.totalAmount = itemTotal.subtract(discountTotal);
-    }
-
-    private BigDecimal calculateItemTotal() {
-        return items.stream()
-                .map(SaleItem::getSubTotal)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-
-    private BigDecimal calculateDiscountTotal(BigDecimal baseAmount) {
-        return discounts.stream()
-                .map(d -> d.calculate(baseAmount))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-
-    // =========================
-    // Utility
-    // =========================
-
+    
     private static String generateReceiptNo() {
-        return "R-" + System.currentTimeMillis();
+        return "RCP" + LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) 
+               + UUID.randomUUID().toString().substring(0, 4).toUpperCase();
     }
 }
