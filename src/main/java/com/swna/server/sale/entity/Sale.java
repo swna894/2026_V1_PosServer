@@ -38,7 +38,7 @@ public class Sale extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private SaleStatus status;
+    private SaleStatus status = SaleStatus.PENDING;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal totalAmount;
@@ -50,7 +50,7 @@ public class Sale extends BaseEntity {
     private BigDecimal finalAmount;
 
     @Column(nullable = false, updatable = false)
-    private LocalDateTime saleDateTime;
+    private LocalDateTime saleDateTime = LocalDateTime.now(); 
 
     private String memo;
 

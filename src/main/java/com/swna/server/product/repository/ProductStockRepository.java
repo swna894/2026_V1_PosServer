@@ -112,7 +112,7 @@ public interface ProductStockRepository extends JpaRepository<ProductStock, Long
                              @Param("minOrderQuantity") int minOrderQuantity);
     
     // ===================================================
-    // 통계 및 집계
+    // 통계 및 집계 - ✅ Category String 버전으로 수정
     // ===================================================
     
     /**
@@ -124,13 +124,25 @@ public interface ProductStockRepository extends JpaRepository<ProductStock, Long
     long getTotalStockQuantity();
     
     /**
-     * 카테고리별 총 재고 수량
+     * ✅ 카테고리별 총 재고 수량 (String 버전)
+     * Product.category가 String 타입이므로 직접 비교
      * 
-     * @param categoryId 카테고리 ID
+     * @param categoryName 카테고리명 (예: "temp", "ELECTRONICS")
      * @return 카테고리별 총 재고
      */
-    @Query("SELECT COALESCE(SUM(ps.quantity), 0) FROM ProductStock ps WHERE ps.product.category.id = :categoryId")
-    long getTotalStockByCategory(@Param("categoryId") Long categoryId);
+    @Query("SELECT COALESCE(SUM(ps.quantity), 0) FROM ProductStock ps WHERE ps.product.category = :categoryName")
+    long getTotalStockByCategory(@Param("categoryName") String categoryName);
+    
+    /**
+     * ✅ 네이티브 쿼리 버전 (성능 최적화 필요시)
+     * 
+     * @param categoryName 카테고리명
+     * @return 카테고리별 총 재고
+     */
+    @Query(value = "SELECT COALESCE(SUM(ps.quantity), 0) FROM product_stocks ps " +
+           "INNER JOIN products p ON ps.product_id = p.id " +
+           "WHERE p.category = :categoryName", nativeQuery = true)
+    long getTotalStockByCategoryNative(@Param("categoryName") String categoryName);
     
     /**
      * 재고 부족 상품 개수

@@ -15,10 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CashPaymentEntity extends PaymentEntity {
 
-    @Column(nullable = false)
-    private BigDecimal receivedAmount;
+    private BigDecimal receivedAmount = BigDecimal.ZERO;
 
-    private BigDecimal changeAmount;
+    private BigDecimal changeAmount = BigDecimal.ZERO;
 
     public CashPaymentEntity(BigDecimal amount, BigDecimal receivedAmount) {
         super(amount);

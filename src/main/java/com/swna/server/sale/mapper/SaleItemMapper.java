@@ -6,10 +6,8 @@ import org.springframework.stereotype.Component;
 
 import com.swna.server.common.exception.BusinessException;
 import com.swna.server.common.exception.ExceptionUtils;
-import com.swna.server.product.entity.Category;
 import com.swna.server.product.entity.Product;
 import com.swna.server.product.entity.ProductStock;
-import com.swna.server.product.repository.CategoryRepository;
 import com.swna.server.product.repository.ProductRepository;
 import com.swna.server.product.repository.ProductStockRepository;
 import com.swna.server.sale.dto.request.SaleItemRequest;
@@ -24,8 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SaleItemMapper {
     private final ProductRepository productRepository;
-    private CategoryRepository categoryRepository; 
-    private ProductStockRepository productStockRepository;
+    private final ProductStockRepository productStockRepository;
     
     @PersistenceContext
     private EntityManager entityManager; 
@@ -118,8 +115,6 @@ public Product handleProductNotFound(SaleItemRequest request) {
         // Step 2: Category 처리 ("temp" 카테고리 확보)
         // ===================================================
         final String TEMP_CATEGORY_NAME = "temp";
-        Category category = getOrCreateTempCategory(TEMP_CATEGORY_NAME);
-        System.err.println("📂 Category 확보 완료: " + category.getName() + " (ID: " + category.getId() + ")");
         
         // ===================================================
         // Step 3: 임시 상품 정보 생성
@@ -210,26 +205,4 @@ public Product handleProductNotFound(SaleItemRequest request) {
         return savedProduct;
     }
 
-    // ===================================================
-    // 4. Category 조회 또는 생성 헬퍼 메서드
-    // ===================================================
-    /**
-     * 카테고리 이름으로 조회하고, 없으면 새로 생성
-     * 
-     * @param categoryName 찾거나 생성할 카테고리 이름
-     * @return Category 엔티티 (영속 상태)
-     */
-    private Category getOrCreateTempCategory(String categoryName) {
-        // 1) 기존 카테고리 조회
-        return categoryRepository.findByName(categoryName)
-            .orElseGet(() -> {
-                // 2) 없으면 새로 생성
-                System.err.println("⚠️ 카테고리 '" + categoryName + "' 없음 → 새로 생성");
-                Category newCategory = new Category();
-                newCategory.setName(categoryName);
-                Category saved = categoryRepository.save(newCategory);
-                System.err.println("✅ 새 카테고리 생성 완료 - ID: " + saved.getId());
-                return saved;
-            });
-    }
 }
