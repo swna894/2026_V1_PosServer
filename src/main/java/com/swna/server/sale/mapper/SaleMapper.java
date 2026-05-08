@@ -1,12 +1,9 @@
 package com.swna.server.sale.mapper;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.swna.server.product.entity.Product;
 import com.swna.server.product.repository.ProductRepository;
-import com.swna.server.sale.dto.response.PaymentResponse;
 import com.swna.server.sale.dto.response.SaleItemResponse;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.entity.Sale;

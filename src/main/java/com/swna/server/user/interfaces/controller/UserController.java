@@ -1,5 +1,6 @@
 package com.swna.server.user.interfaces.controller;
 
+import org.springframework.lang.NonNull;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -36,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserResponse get(@PathVariable Long id) {
+    public UserResponse get(@NonNull @PathVariable Long id) {
         return getUserUseCase.execute(id);
     }
 

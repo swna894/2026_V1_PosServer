@@ -3,6 +3,7 @@ package com.swna.server.auth.jwt;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,9 +28,9 @@ public class JwtFilter extends OncePerRequestFilter {
     private final JwtProvider jwtProvider;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req,
-                                    HttpServletResponse res,
-                                    FilterChain chain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest req,
+                                    @NonNull HttpServletResponse res,
+                                    @NonNull FilterChain chain) throws ServletException, IOException {
 
         try {
             String token = resolveToken(req);

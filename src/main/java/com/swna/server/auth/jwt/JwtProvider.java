@@ -5,8 +5,6 @@ import java.util.Date;
 import org.springframework.stereotype.Component;
 
 import com.swna.server.common.config.JwtProperties;
-import com.swna.server.common.exception.BusinessException;
-import com.swna.server.common.exception.ErrorCode;
 import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.user.entity.model.Role;
 

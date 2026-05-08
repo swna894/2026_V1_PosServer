@@ -18,15 +18,16 @@ public class CreateUserUseCase {
     private final UserRepository userRepository;
     private final UserDomainService userDomainService;
 
+    @SuppressWarnings("null")
     public UserResponse execute(CreateUserRequest req) {
 
         // 1. Domain에서 객체 생성 + 검증
-        User user = userDomainService.create( req.name(), req.email(), null );
+        User user = userDomainService.create( req.name(), req.email());
 
         // 2. 저장
-        User saved = userRepository.save(user);
-
+        User savedResult = userRepository.save(user);
+        
         // 3. 응답
-        return UserResponse.from(saved);
+        return UserResponse.from(savedResult);
     }
 }

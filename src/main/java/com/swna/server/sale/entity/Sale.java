@@ -1,10 +1,8 @@
 package com.swna.server.sale.entity;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import com.swna.server.common.entity.BaseEntity;
 import com.swna.server.common.exception.ExceptionUtils;
@@ -48,9 +46,6 @@ public class Sale extends BaseEntity {
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal finalAmount;
-
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime saleDateTime = LocalDateTime.now(); 
 
     private String memo;
 
@@ -185,23 +180,19 @@ public class Sale extends BaseEntity {
     // =========================
     
     private void calculateTotalAmount() {
-        items.forEach(item -> System.err.println(item));
         this.totalAmount = items.stream()
                 .map(SaleItem::getTotalAmountBeforeDiscount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        System.err.println("TotalAmount = " + totalAmount);
     }
     
     private void calculateDiscountAmount() {
         this.discountAmount = items.stream()
                 .map(SaleItem::getDiscountValue)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        System.err.println("discountAmount = " + discountAmount);
     }
     
     private void calculatePayableAmount() {
         this.finalAmount = this.totalAmount.subtract(this.discountAmount);
-        System.err.println("finalAmount = " + finalAmount);
     }
     
     private void validateState() {
@@ -230,8 +221,5 @@ public class Sale extends BaseEntity {
         }
     }
     
-    private static String generateReceiptNo() {
-        return "RCP" + LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMddHHmmss")) 
-               + UUID.randomUUID().toString().substring(0, 4).toUpperCase();
-    }
+
 }

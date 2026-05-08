@@ -1,10 +1,17 @@
 package com.swna.server.common.exception;
 
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,15 +21,21 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import com.swna.server.common.response.ApiResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestControllerAdvice
-@RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
     private final ErrorResponseFactory errorResponseFactory;
+    private final boolean isDevelopment;
+
+    // 생성자 주입을 통해 profile 값을 받아 로직을 한 번만 수행
+    public GlobalExceptionHandler(ErrorResponseFactory errorResponseFactory, Environment env) {
+            this.errorResponseFactory = errorResponseFactory;
+            // acceptsProfiles를 사용하면 여러 프로필 중 하나라도 일치하면 true를 반환합니다.
+            this.isDevelopment = env.acceptsProfiles(Profiles.of("dev", "local"));
+        }
 
     /**
      * 비즈니스 예외 처리
@@ -46,8 +59,12 @@ public class GlobalExceptionHandler {
         }
 
         ApiResponse<Object> response = errorResponseFactory.createErrorResponse(e, request);
+        
+        HttpStatusCode status = Objects.requireNonNull(
+            errorCode.getStatus() != null ? errorCode.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR
+        );
 
-        return ResponseEntity.status(errorCode.getStatus()).body(response);
+        return ResponseEntity.status(status).body(response);
     }
 
     /**
@@ -62,7 +79,7 @@ public class GlobalExceptionHandler {
             .getFieldErrors()
             .stream()
             .collect(Collectors.toMap(
-                error -> error.getField(),
+                FieldError::getField,
                 error -> error.getDefaultMessage() != null ? error.getDefaultMessage() : "Invalid value",
                 (existing, replacement) -> existing
             ));
@@ -87,8 +104,18 @@ public class GlobalExceptionHandler {
             request.getMethod(), request.getRequestURI(),
             e.getName(), e.getRequiredType());
 
+        // 1. 예상 타입 이름을 안전하게 추출 (null인 경우 "Unknown" 등으로 처리)
+        String requiredTypeName = Optional.ofNullable(e.getRequiredType())
+                .map(Class::getSimpleName)
+                .orElse("Unknown");
+
+        log.warn("Type mismatch: {} {} | Parameter: {} | Expected: {}",
+            request.getMethod(), request.getRequestURI(),
+            e.getName(), requiredTypeName);
+
+        // 2. 메시지 구성
         String message = String.format("Parameter '%s' must be of type %s",
-            e.getName(), e.getRequiredType().getSimpleName());
+            e.getName(), requiredTypeName);
 
         return ResponseEntity
             .badRequest()
@@ -151,6 +178,9 @@ public class GlobalExceptionHandler {
     /**
      * 일반 예외 처리 (최종)
      */
+    /**
+     * 일반 예외 처리 (최종)
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Object>> handleException(
             Exception e,
@@ -159,8 +189,8 @@ public class GlobalExceptionHandler {
         log.error("Unexpected error: {} {} | Error: {}",
             request.getMethod(), request.getRequestURI(), e.getMessage(), e);
 
-        // 개발 환경에서는 상세 정보 포함
-        ApiResponse<Object> response = isDevelopmentProfile() ?
+        // 메서드 호출 대신 필드(isDevelopment)를 직접 사용
+        ApiResponse<Object> response = isDevelopment ?
             errorResponseFactory.createErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, 
                 Map.of("exception", e.getClass().getSimpleName(), "message", e.getMessage())) :
             errorResponseFactory.createErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR);
@@ -168,11 +198,5 @@ public class GlobalExceptionHandler {
         return ResponseEntity.internalServerError().body(response);
     }
 
-    /**
-     * 프로필 확인 (application.yml에서 active profile 확인)
-     */
-    private boolean isDevelopmentProfile() {
-        // 실제 구현 시 @Value("${spring.profiles.active}") 사용
-        return false;
-    }
+
 }

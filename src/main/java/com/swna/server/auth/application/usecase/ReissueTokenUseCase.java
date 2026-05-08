@@ -1,6 +1,7 @@
 package com.swna.server.auth.application.usecase;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
@@ -30,12 +31,13 @@ public class ReissueTokenUseCase {
     public TokenResponse execute(TokenRequest req) {
 
         RefreshToken saved = refreshRepo.findByToken(req.refreshToken())
-                .orElseThrow(() -> ExceptionUtils.invalidToken());
+                .orElseThrow(ExceptionUtils::invalidToken);
 
         domainService.validateNotExpired(saved);
 
-        Long userId = jwtProvider.getUserId(saved.getToken());
-
+        Long rawUserId = jwtProvider.getUserId(saved.getToken());
+        Long userId = Objects.requireNonNull(rawUserId, "userId must not be null");
+        
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> ExceptionUtils.userNotFound(String.valueOf(userId)));
 

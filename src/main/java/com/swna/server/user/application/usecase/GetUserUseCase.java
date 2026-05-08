@@ -1,5 +1,6 @@
 package com.swna.server.user.application.usecase;
 
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.swna.server.user.dto.UserResponse;
@@ -14,7 +15,7 @@ public class GetUserUseCase {
 
     private final UserRepository userRepository;
 
-    public UserResponse execute(Long id) {
+    public UserResponse execute(@NonNull Long id) {
 
         User user = userRepository.findById(id)
                 .orElseThrow();

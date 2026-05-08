@@ -8,6 +8,7 @@ import com.swna.server.shop.repository.ShopRepository;
 import com.swna.server.shop_config.entity.ShopConfig;
 import com.swna.server.shop_config.repository.ShopConfigRepository;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -18,10 +19,10 @@ public class CreateShopConfigUseCase {
     private final ShopConfigRepository shopConfigRepository;
 
     @Transactional
-    public Long execute(Long shopId) {
+    @SuppressWarnings("null")
+    public Long execute(@NonNull Long shopId) {
 
-        Shop shop = shopRepository.findById(shopId)
-                .orElseThrow();
+        Shop shop = shopRepository.findById(shopId).orElseThrow();
 
         ShopConfig config = ShopConfig.createDefault(shop);
 

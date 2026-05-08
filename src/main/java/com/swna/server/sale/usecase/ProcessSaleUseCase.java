@@ -23,6 +23,7 @@ import com.swna.server.sale.mapper.SaleItemMapper;
 import com.swna.server.sale.mapper.SaleMapper;
 import com.swna.server.sale.repository.SaleRepository;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,7 +39,6 @@ public class ProcessSaleUseCase {
     private final PaymentMapper paymentMapper;
     private final ApplicationEventPublisher eventPublisher;
 
-    //private static final String RECEIPT_PREFIX = "RCP";
     private static final String DATE_TIME_PATTERN = "yyyyMMddHHmmss";
     private static final int RANDOM_SUFFIX_LENGTH = 4;
 
@@ -137,7 +137,7 @@ public class ProcessSaleUseCase {
     /**
      * 저장 및 이벤트 발행
      */
-    private Sale saveAndPublishEvent(Sale sale) {
+    private Sale saveAndPublishEvent(@NonNull Sale sale) {
         Sale savedSale = saleRepository.save(sale);
         eventPublisher.publishEvent(new SaleCompletedEvent(savedSale.getId()));
         return savedSale;

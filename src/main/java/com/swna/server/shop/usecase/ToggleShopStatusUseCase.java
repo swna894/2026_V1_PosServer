@@ -2,6 +2,8 @@ package com.swna.server.shop.usecase;
 
 import com.swna.server.shop.entity.Shop;
 import com.swna.server.shop.repository.ShopRepository;
+
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +15,7 @@ public class ToggleShopStatusUseCase {
     private final ShopRepository shopRepository;
 
     @Transactional
-    public void execute(Long shopId, boolean active) {
+    public void execute(@NonNull Long shopId, boolean active) {
 
         Shop shop = shopRepository.findById(shopId)
                 .orElseThrow();

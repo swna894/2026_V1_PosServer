@@ -25,6 +25,7 @@ public class UserService extends AbstractBaseService<User, Long>{
         return userRepository;
     }
 
+    @SuppressWarnings("null")
     public void signup(String username, String password) {
 
         String encoded = passwordEncoder.encode(password);
@@ -37,6 +38,6 @@ public class UserService extends AbstractBaseService<User, Long>{
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
       UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
 
-      Long userId = principal.getUserId();
+      principal.getUserId();
    }
 }
