@@ -68,7 +68,6 @@ public class ProcessSaleUseCase {
      * 주문 생성
      */
     private Sale createSale(SaleRequest request) {
-        System.err.println("SaleRequest = " + request);
         List<SaleItem> items = createSaleItems(request);
         Sale sale = Sale.create(items);
         
@@ -141,6 +140,7 @@ public class ProcessSaleUseCase {
      * 저장 및 이벤트 발행
      */
     private Sale saveAndPublishEvent(Sale sale) {
+        System.err.println("Sale = " + sale);
         Sale savedSale = saleRepository.save(sale);
         eventPublisher.publishEvent(new SaleCompletedEvent(savedSale.getId()));
         return savedSale;

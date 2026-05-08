@@ -16,9 +16,9 @@ import lombok.Getter;
 public abstract class BaseEntity {
 
     @CreationTimestamp @Column(name = "created", updatable = false) 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime created;
     @UpdateTimestamp @Column(name = "updated") 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime updated;
 }

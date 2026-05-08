@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CardPaymentEntity extends PaymentEntity {
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
+    @NotNull(groups = CardPaymentEntity.class) // 카드 결제일 때만 필수
     private String approvalNo;
 
     private String cardNumber;
