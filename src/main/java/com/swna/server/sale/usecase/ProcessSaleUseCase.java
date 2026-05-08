@@ -38,7 +38,7 @@ public class ProcessSaleUseCase {
     private final PaymentMapper paymentMapper;
     private final ApplicationEventPublisher eventPublisher;
 
-    private static final String RECEIPT_PREFIX = "RCP";
+    //private static final String RECEIPT_PREFIX = "RCP";
     private static final String DATE_TIME_PATTERN = "yyyyMMddHHmmss";
     private static final int RANDOM_SUFFIX_LENGTH = 4;
 
@@ -111,8 +111,6 @@ public class ProcessSaleUseCase {
      * 판매 아이템 생성
      */
     private List<SaleItem> createSaleItems(SaleRequest request) {
-
-        System.err.println("SaleRequest = " + request);
         return request.items().stream()
                 .map(saleItemMapper::toEntity)
                 .toList();
@@ -140,7 +138,6 @@ public class ProcessSaleUseCase {
      * 저장 및 이벤트 발행
      */
     private Sale saveAndPublishEvent(Sale sale) {
-        System.err.println("Sale = " + sale);
         Sale savedSale = saleRepository.save(sale);
         eventPublisher.publishEvent(new SaleCompletedEvent(savedSale.getId()));
         return savedSale;
@@ -157,7 +154,7 @@ public class ProcessSaleUseCase {
                 .substring(0, RANDOM_SUFFIX_LENGTH)
                 .toUpperCase();
         
-        return RECEIPT_PREFIX + timestamp + random;
+        return timestamp + "_" +random;
     }
 
     // =========================
