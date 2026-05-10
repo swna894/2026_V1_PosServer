@@ -2,7 +2,8 @@ package com.swna.server.sale.entity;
 
 public enum PaymentType {
     CASH("CASH"),
-    CARD("CARD");
+    CARD("CARD"),
+    CASHOUT("CASHOUT");
 
     private final String value;
 

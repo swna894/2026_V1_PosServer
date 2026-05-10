@@ -42,13 +42,13 @@ public class ProcessSaleUseCase {
     private static final String DATE_TIME_PATTERN = "yyyyMMddHHmmss";
     private static final int RANDOM_SUFFIX_LENGTH = 4;
 
-    /**
-     * 전체 주문 + 결제 통합 처리
-     */
     @Transactional
     public SaleResponse execute(SaleRequest request) {
         validateRequest(request);
         logRequestInfo(request);
+        
+        // ✅ cardNumber 로깅 추가
+        logCardNumbers(request);
 
         Sale sale = createSale(request);
         processPayments(sale, request.payments());
@@ -64,9 +64,6 @@ public class ProcessSaleUseCase {
     // Core Business Methods
     // =========================
 
-    /**
-     * 주문 생성
-     */
     private Sale createSale(SaleRequest request) {
         List<SaleItem> items = createSaleItems(request);
         Sale sale = Sale.create(items);
@@ -78,23 +75,20 @@ public class ProcessSaleUseCase {
     }
 
     /**
-     * 결제 처리
+     * ✅ 결제 처리 (cardNumber 포함)
      */
     private void processPayments(Sale sale, List<PaymentRequest> paymentRequests) {
         validatePaymentsExist(paymentRequests);
         
         List<PaymentEntity> payments = paymentRequests.stream()
-                .map(paymentFactory::create)
-                .map(paymentMapper::toEntity)
+                .map(paymentMapper::toEntity)  // PaymentMapper 사용
+                .peek(payment -> logPaymentInfo(payment, paymentRequests))
                 .toList();
 
         sale.addPayments(payments);
-        log.debug("Processed {} payments for sale ID: {}", payments.size(), sale.getId());
+        log.debug("Processed {} payments for sale", payments.size());
     }
 
-    /**
-     * 주문 완료 처리
-     */
     private void completeSale(Sale sale) {
         sale.validatePayments();
         sale.complete();
@@ -107,18 +101,12 @@ public class ProcessSaleUseCase {
     // Helper Methods
     // =========================
 
-    /**
-     * 판매 아이템 생성
-     */
     private List<SaleItem> createSaleItems(SaleRequest request) {
         return request.items().stream()
                 .map(saleItemMapper::toEntity)
                 .toList();
     }
 
-    /**
-     * 할인 적용 (있는 경우에만)
-     */
     private void applyDiscountsIfPresent(Sale sale, List<DiscountRequest> discountRequests) {
         if (discountRequests == null || discountRequests.isEmpty()) {
             return;
@@ -134,18 +122,12 @@ public class ProcessSaleUseCase {
         log.debug("Applied {} discounts to sale", discounts.size());
     }
 
-    /**
-     * 저장 및 이벤트 발행
-     */
     private Sale saveAndPublishEvent(@NonNull Sale sale) {
         Sale savedSale = saleRepository.save(sale);
         eventPublisher.publishEvent(new SaleCompletedEvent(savedSale.getId()));
         return savedSale;
     }
 
-    /**
-     * 영수증 번호 생성
-     */
     private String generateReceiptNumber() {
         String timestamp = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
@@ -154,40 +136,52 @@ public class ProcessSaleUseCase {
                 .substring(0, RANDOM_SUFFIX_LENGTH)
                 .toUpperCase();
         
-        return timestamp + "_" +random;
+        return timestamp + "_" + random;
     }
 
     // =========================
-    // Validation Methods
+    // Validation & Logging Methods
     // =========================
 
-    /**
-     * 요청 검증
-     */
     private void validateRequest(SaleRequest request) {
         if (request == null) {
             throw new IllegalArgumentException("Sale request cannot be null");
         }
-        
         validatePaymentsExist(request.payments());
     }
 
-    /**
-     * 결제 내역 존재 검증
-     */
-    private void validatePaymentsExist(List<com.swna.server.sale.dto.request.PaymentRequest> payments) {
+    private void validatePaymentsExist(List<PaymentRequest> payments) {
         if (payments == null || payments.isEmpty()) {
             throw new IllegalArgumentException("At least one payment is required");
         }
     }
 
-    // =========================
-    // Logging Methods
-    // =========================
-
     /**
-     * 요청 정보 로깅
+     * ✅ cardNumber 로깅 (마스킹 처리)
      */
+    private void logCardNumbers(SaleRequest request) {
+        request.payments().stream()
+            .filter(p -> p.cardNumber() != null && !p.cardNumber().isBlank())
+            .forEach(p -> {
+                String masked = maskCardNumber(p.cardNumber());
+                log.info("Payment with card number: {}", masked);
+            });
+    }
+    
+    private void logPaymentInfo(PaymentEntity payment, List<PaymentRequest> requests) {
+        if (payment instanceof com.swna.server.sale.entity.CardPaymentEntity cardPayment) {
+            log.info("Card payment saved - amount: {}, cardNumber: {}", 
+                cardPayment.getAmount(),
+                cardPayment.getCardNumber()  // 이미 마스킹된 상태
+            );
+        }
+    }
+    
+    private String maskCardNumber(String cardNumber) {
+        if (cardNumber == null || cardNumber.length() < 4) return "****";
+        return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
+    }
+
     private void logRequestInfo(SaleRequest request) {
         log.info("Processing sale request - Items: {}, Payments: {}, Discounts: {}",
             request.items().size(),
@@ -196,11 +190,8 @@ public class ProcessSaleUseCase {
         );
     }
 
-    /**
-     * 주문 완료 로깅
-     */
     private void logSaleCompletion(Sale sale) {
-        log.info("Sale completed successfully - ID: {}, ReceiptNo: {}, PayableAmount: {}, Status: {}",
+        log.info("Sale completed successfully - ID: {}, ReceiptNo: {}, FinalAmount: {}, Status: {}",
             sale.getId(),
             sale.getReceiptNo(),
             sale.getFinalAmount(),

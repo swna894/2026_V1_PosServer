@@ -187,8 +187,9 @@ public class Sale extends BaseEntity {
     
     private void calculateDiscountAmount() {
         this.discountAmount = items.stream()
-                .map(SaleItem::getDiscountValue)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                    .map(SaleItem::getDiscountValue)
+                    .filter(discount -> discount != null)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
     
     private void calculatePayableAmount() {
@@ -208,7 +209,6 @@ public class Sale extends BaseEntity {
         if (payments.isEmpty()) {
             throw new IllegalStateException("At least one payment is required.");
         }
-        
         BigDecimal totalPaid = payments.stream()
                 .map(PaymentEntity::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

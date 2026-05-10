@@ -19,4 +19,10 @@ public class GetShopUseCase {
         return shopRepository.findById(shopId)
                 .orElseThrow(() -> new IllegalArgumentException("Shop not found"));
     }
+
+    @Transactional(readOnly = true)
+    public Shop findFirstShop() {
+        return shopRepository.findAll().stream().findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Shop not found"));
+    }
 }

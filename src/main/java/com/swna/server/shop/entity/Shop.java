@@ -1,15 +1,22 @@
 package com.swna.server.shop.entity;
 
 
-import jakarta.persistence.*;
-import lombok.AccessLevel;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "shops")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@Entity
+@NoArgsConstructor  // Add this - JPA requires it
+@AllArgsConstructor // Add this - Builder requires it
+@Table(name = "shops")
 public class Shop {
 
     @Id
@@ -19,11 +26,12 @@ public class Shop {
     private String name;
 
     private String address;
-
+    private String company;
+    private String email;
+    private String cellphone;   
+    private String fax;
     private String phone;
-
     private String businessNo;
-
     private boolean active = true;
 
     // =========================
