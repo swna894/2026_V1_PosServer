@@ -37,7 +37,7 @@ public class SaleController {
         if (request.items() == null || request.items().isEmpty()) {
             throw ExceptionUtils.missingField("items");
         }
-        
+        System.err.println("request = " + request);
         // 2. 각 아이템 검증
         request.items().forEach(item -> {
             if (item.barcode() == null || item.barcode().isBlank()) {

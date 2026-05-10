@@ -179,7 +179,9 @@ public class ProcessSaleUseCase {
     
     private String maskCardNumber(String cardNumber) {
         if (cardNumber == null || cardNumber.length() < 4) return "****";
-        return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
+        //return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
+        return cardNumber;
+    
     }
 
     private void logRequestInfo(SaleRequest request) {

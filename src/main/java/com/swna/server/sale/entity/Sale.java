@@ -3,6 +3,7 @@ package com.swna.server.sale.entity;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import com.swna.server.common.entity.BaseEntity;
 import com.swna.server.common.exception.ExceptionUtils;
@@ -188,7 +189,7 @@ public class Sale extends BaseEntity {
     private void calculateDiscountAmount() {
         this.discountAmount = items.stream()
                     .map(SaleItem::getDiscountValue)
-                    .filter(discount -> discount != null)
+                    .filter(Objects::nonNull)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
     

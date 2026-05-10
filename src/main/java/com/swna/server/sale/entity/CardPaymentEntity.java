@@ -53,6 +53,7 @@ public class CardPaymentEntity extends PaymentEntity {
         if (cardNumber == null || cardNumber.length() < 4) {
             return "****";
         }
-        return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
+        //return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
+         return cardNumber;
     }
 }

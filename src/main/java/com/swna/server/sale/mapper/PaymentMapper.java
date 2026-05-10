@@ -72,6 +72,7 @@ public class PaymentMapper {
         if (cardNumber == null || cardNumber.isBlank()) {
             return "****";
         }
+        //return "****-****-****-" + cardNumber.substring(cardNumber.length() - 4);
         return cardNumber;
     }
     
