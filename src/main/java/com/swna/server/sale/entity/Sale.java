@@ -21,7 +21,9 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Entity
 @Table(name = "sales")
 @Getter
@@ -181,6 +183,9 @@ public class Sale extends BaseEntity {
     // =========================
     
     private void calculateTotalAmount() {
+
+        items.forEach(item -> log.error("{}", item));
+        
         this.totalAmount = items.stream()
                 .map(SaleItem::getTotalAmountBeforeDiscount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
@@ -188,7 +193,7 @@ public class Sale extends BaseEntity {
     
     private void calculateDiscountAmount() {
         this.discountAmount = items.stream()
-                    .map(SaleItem::getDiscountValue)
+                    .map(SaleItem::getDiscountAmount)
                     .filter(Objects::nonNull)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
@@ -216,7 +221,7 @@ public class Sale extends BaseEntity {
         
         if (totalPaid.compareTo(this.finalAmount) != 0) {
             throw new IllegalStateException(
-                String.format("Payment amount (%s) does not match payable amount (%s).",
+                String.format("total amount (%s) does not match final amount (%s).",
                     totalPaid, this.finalAmount)
             );
         }

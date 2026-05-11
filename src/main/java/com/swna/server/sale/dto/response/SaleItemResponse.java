@@ -22,8 +22,8 @@ public record SaleItemResponse(
                 item.getBarcode(),
                 productName,
                 item.getQuantity(),
-                item.getPriceAtSale(),
-                item.getDiscountValue(),
+                item.getSellingPrice(),
+                item.getDiscountPrice(),
                 item.getDiscountType() != null ? item.getDiscountType().name() : "FIXED",
                 item.getTotalAmount(),
                 item.getComment()

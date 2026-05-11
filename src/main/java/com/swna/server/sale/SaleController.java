@@ -34,8 +34,8 @@ public class SaleController {
         log.debug("Received sale creation request");
         
         log.error("======== payment ========");
-        request.payments().forEach(payment -> log.error("{}", payment));
-        log.error("{}", request.discounts());
+        //request.items().forEach(payment -> log.error("{}", payment));
+        //log.error("{}", request.discounts());
 
 
         // 1. 요청 검증 (ExceptionUtils 활용)

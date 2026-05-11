@@ -48,10 +48,10 @@ public class SaleItem extends BaseEntity{
     private int quantity;
 
     @Column(nullable = false)
-    private BigDecimal priceAtSale; // 판매 시점 단가[cite: 4]
+    private BigDecimal sellingPrice; // 판매 시점 단가
 
     @Column(nullable = false)
-    private BigDecimal discountValue;
+    private BigDecimal discountPrice;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -69,20 +69,20 @@ public class SaleItem extends BaseEntity{
     
     public static SaleItem of(Product product, SaleItemRequest request) {
         // 할인액 계산 로직 예시 (필요에 따라 서비스 레이어로 이동 가능)
-
-        BigDecimal price = product.getPrice();
+        System.out.println("request.discountType() = " + request);
         BigDecimal qty = BigDecimal.valueOf(request.quantity());
-        BigDecimal totalBeforeDiscount = price.multiply(qty);
-        
+        BigDecimal originalPrice = product.getPrice();
+     
         // 간단한 할인 계산 예시
         BigDecimal discount = request.discountValue();
-        BigDecimal finalAmount = totalBeforeDiscount.subtract(discount); 
+        BigDecimal sellingPrice = originalPrice.subtract(discount);
+        BigDecimal finalAmount = sellingPrice.multiply(qty); 
 
         return SaleItem.builder()
                 .productId(product.getId())
                 .barcode(product.getBarcode())
                 .quantity(request.quantity())
-                .priceAtSale(price)
+                .sellingPrice(sellingPrice)
                 .discountValue(discount) // 이 부분 괄호 오타 수정됨
                 .discountType(request.discountType())
                 .comment(request.comment())
@@ -91,13 +91,13 @@ public class SaleItem extends BaseEntity{
     }
 
     @Builder
-    private SaleItem(Long productId, String barcode, int quantity, BigDecimal priceAtSale,
+    private SaleItem(Long productId, String barcode, int quantity, BigDecimal sellingPrice,
                     BigDecimal discountValue, DiscountType discountType, BigDecimal totalAmount, String comment) {
         this.productId = productId;
         this.barcode = barcode;
         this.quantity = quantity;
-        this.priceAtSale = priceAtSale;
-        this.discountValue = discountValue;
+        this.sellingPrice = sellingPrice;
+        this.discountPrice = discountValue;
         this.discountType = discountType;
         this.totalAmount = totalAmount;
         this.comment = comment;
@@ -108,6 +108,9 @@ public class SaleItem extends BaseEntity{
     }
 
     public BigDecimal getTotalAmountBeforeDiscount() {
-        return this.priceAtSale.multiply(BigDecimal.valueOf(this.quantity));
+        return (this.sellingPrice.add(this.discountPrice)).multiply(BigDecimal.valueOf(this.quantity));
+    }
+    public BigDecimal getDiscountAmount() {
+        return this.discountPrice.multiply(BigDecimal.valueOf(this.quantity));
     }
 }
