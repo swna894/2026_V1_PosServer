@@ -3870,3 +3870,136 @@ This generated password is for development use only. Your security configuration
 05-11 21:43:17.176 [http-nio-8083-exec-4] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@2376efb0, productId=93, barcode=QUICK_8.50, quantity=2, sellingPrice=5.00, discountPrice=3.5, discountType=NONE, totalAmount=10.00, comment=Changed: $8.50 → $5.00)
 05-11 21:43:17.176 [http-nio-8083-exec-4] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@2376efb0, productId=92, barcode=QUICK_8.00, quantity=2, sellingPrice=8.00, discountPrice=0.0, discountType=NONE, totalAmount=16.00, comment=)
 05-11 21:43:17.177 [http-nio-8083-exec-4] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@2376efb0, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=5.00, discountPrice=4.0, discountType=NONE, totalAmount=15.00, comment=Changed: $9.00 → $5.00)
+05-11 21:48:59.158 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 21:48:59.282 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 21:48:59.283 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 21:49:00.288 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 21:49:00.460 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 162 ms. Found 9 JPA repository interfaces.
+05-11 21:49:01.595 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 21:49:01.631 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 21:49:01.639 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 21:49:01.639 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 21:49:01.762 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 21:49:01.763 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2477 ms
+05-11 21:49:02.254 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 21:49:02.323 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 21:49:02.389 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 21:49:02.859 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 21:49:02.896 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 21:49:03.082 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@296af674
+05-11 21:49:03.085 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 21:49:03.123 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 21:49:03.128 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 21:49:03.148 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 21:49:04.539 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 21:49:04.961 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 21:49:05.543 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 21:49:07.002 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 21:49:07.535 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 891a925e-d5ab-47fb-bc13-e2ac3f6b0c39
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 21:49:07.588 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 21:49:08.328 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 21:49:08.347 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 21:49:08.421 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 21:49:25.612 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 21:49:25.613 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 21:49:25.614 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 21:49:53.202 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 21:49:53.231 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.242 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.243 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.244 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.245 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.246 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=95, barcode=QUICK_7.00, quantity=3, sellingPrice=3.50, discountPrice=3.5, discountType=NONE, totalAmount=10.50, comment=Changed: $7.00 → $3.50)
+05-11 21:49:53.248 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.250 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.251 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=95, barcode=QUICK_7.00, quantity=3, sellingPrice=3.50, discountPrice=3.5, discountType=NONE, totalAmount=10.50, comment=Changed: $7.00 → $3.50)
+05-11 21:49:53.253 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.254 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.255 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=95, barcode=QUICK_7.00, quantity=3, sellingPrice=3.50, discountPrice=3.5, discountType=NONE, totalAmount=10.50, comment=Changed: $7.00 → $3.50)
+05-11 21:49:53.258 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.261 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.262 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=95, barcode=QUICK_7.00, quantity=3, sellingPrice=3.50, discountPrice=3.5, discountType=NONE, totalAmount=10.50, comment=Changed: $7.00 → $3.50)
+05-11 21:49:53.262 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=79, barcode=QUICK_9.00, quantity=3, sellingPrice=6.00, discountPrice=3.0, discountType=NONE, totalAmount=18.00, comment=Changed: $9.00 → $6.00)
+05-11 21:49:53.263 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=92, barcode=QUICK_8.00, quantity=4, sellingPrice=6.00, discountPrice=2.0, discountType=NONE, totalAmount=24.00, comment=Changed: $8.00 → $6.00)
+05-11 21:49:53.263 [http-nio-8083-exec-2] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@45ae6c5, productId=95, barcode=QUICK_7.00, quantity=3, sellingPrice=3.50, discountPrice=3.5, discountType=NONE, totalAmount=10.50, comment=Changed: $7.00 → $3.50)
+05-11 21:50:21.449 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 21:50:21.473 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.474 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.475 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=79, barcode=QUICK_9.00, quantity=1, sellingPrice=9.00, discountPrice=0.0, discountType=NONE, totalAmount=9.00, comment=)
+05-11 21:50:21.476 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.476 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=79, barcode=QUICK_9.00, quantity=1, sellingPrice=9.00, discountPrice=0.0, discountType=NONE, totalAmount=9.00, comment=)
+05-11 21:50:21.477 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=92, barcode=QUICK_8.00, quantity=1, sellingPrice=8.00, discountPrice=0.0, discountType=NONE, totalAmount=8.00, comment=)
+05-11 21:50:21.477 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.478 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=79, barcode=QUICK_9.00, quantity=1, sellingPrice=9.00, discountPrice=0.0, discountType=NONE, totalAmount=9.00, comment=)
+05-11 21:50:21.479 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=92, barcode=QUICK_8.00, quantity=1, sellingPrice=8.00, discountPrice=0.0, discountType=NONE, totalAmount=8.00, comment=)
+05-11 21:50:21.481 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.482 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=79, barcode=QUICK_9.00, quantity=1, sellingPrice=9.00, discountPrice=0.0, discountType=NONE, totalAmount=9.00, comment=)
+05-11 21:50:21.482 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=92, barcode=QUICK_8.00, quantity=1, sellingPrice=8.00, discountPrice=0.0, discountType=NONE, totalAmount=8.00, comment=)
+05-11 21:50:21.485 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=77, barcode=QUICK_10.00, quantity=1, sellingPrice=10.00, discountPrice=0.0, discountType=NONE, totalAmount=10.00, comment=)
+05-11 21:50:21.486 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=79, barcode=QUICK_9.00, quantity=1, sellingPrice=9.00, discountPrice=0.0, discountType=NONE, totalAmount=9.00, comment=)
+05-11 21:50:21.487 [http-nio-8083-exec-3] ERROR Sale.lambda$4:187 - SaleItem(id=null, sale=com.swna.server.sale.entity.Sale@3946843, productId=92, barcode=QUICK_8.00, quantity=1, sellingPrice=8.00, discountPrice=0.0, discountType=NONE, totalAmount=8.00, comment=)
+05-11 22:20:02.229 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 22:20:02.247 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 22:20:02.254 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 22:20:02.268 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 22:20:02.270 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 22:20:02.283 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 22:20:02.308 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 22:20:02.313 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 22:20:04.353 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 22:20:04.487 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 22:20:04.488 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 22:20:05.686 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 22:20:05.845 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 149 ms. Found 9 JPA repository interfaces.
+05-11 22:20:06.971 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 22:20:07.002 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 22:20:07.011 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 22:20:07.013 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 22:20:07.155 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 22:20:07.156 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2667 ms
+05-11 22:20:07.555 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 22:20:07.633 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 22:20:07.689 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 22:20:08.168 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 22:20:08.210 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 22:20:08.409 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a52ca2
+05-11 22:20:08.411 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 22:20:08.449 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 22:20:08.455 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 22:20:08.477 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 22:20:09.767 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 22:20:10.198 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 22:20:10.676 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 22:20:12.154 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 22:20:12.649 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: c4d66523-a111-4c6a-b2a2-5d53766e47f8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 22:20:12.680 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 22:20:13.335 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 22:20:13.351 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 22:20:13.382 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 22:20:29.558 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 22:20:29.559 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 22:20:29.560 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms

@@ -182,10 +182,7 @@ public class Sale extends BaseEntity {
     // Private Methods
     // =========================
     
-    private void calculateTotalAmount() {
-
-        items.forEach(item -> log.error("{}", item));
-        
+    private void calculateTotalAmount() { 
         this.totalAmount = items.stream()
                 .map(SaleItem::getTotalAmountBeforeDiscount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);

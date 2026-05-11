@@ -69,7 +69,6 @@ public class SaleItem extends BaseEntity{
     
     public static SaleItem of(Product product, SaleItemRequest request) {
         // 할인액 계산 로직 예시 (필요에 따라 서비스 레이어로 이동 가능)
-        System.out.println("request.discountType() = " + request);
         BigDecimal qty = BigDecimal.valueOf(request.quantity());
         BigDecimal originalPrice = product.getPrice();
      
