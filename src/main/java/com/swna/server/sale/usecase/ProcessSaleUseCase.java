@@ -194,7 +194,7 @@ public class ProcessSaleUseCase {
         log.info("Sale completed successfully - ID: {}, ReceiptNo: {}, FinalAmount: {}, Status: {}",
             sale.getId(),
             sale.getReceiptNo(),
-            sale.getFinalAmount(),
+            sale.getSaleAmount(),
             sale.getStatus()
         );
     }

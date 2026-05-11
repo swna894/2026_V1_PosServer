@@ -22,7 +22,7 @@ public record SaleItemResponse(
                 item.getBarcode(),
                 productName,
                 item.getQuantity(),
-                item.getSellingPrice(),
+                item.getSalePrice(),
                 item.getDiscountPrice(),
                 item.getDiscountType() != null ? item.getDiscountType().name() : "FIXED",
                 item.getTotalAmount(),

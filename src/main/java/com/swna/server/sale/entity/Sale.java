@@ -1,6 +1,7 @@
 package com.swna.server.sale.entity;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -42,13 +43,16 @@ public class Sale extends BaseEntity {
     private SaleStatus status = SaleStatus.PENDING;
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal totalAmount;
+    private BigDecimal originalAmount;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal discountAmount;
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal finalAmount;
+    private BigDecimal saleAmount;
+
+    @Column(precision = 19, scale = 2)
+    private BigDecimal globalDiscountAmount;  // 전체 할인 금액 (표시용, 계산 미사용)
 
     private String memo;
 
@@ -56,7 +60,8 @@ public class Sale extends BaseEntity {
     private List<SaleItem> items = new ArrayList<>();
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PaymentEntity> payments = new ArrayList<>();  
+    private List<PaymentEntity> payments = new ArrayList<>();
+
     // =========================
     // Static Factory Methods
     // =========================
@@ -65,10 +70,16 @@ public class Sale extends BaseEntity {
         Sale sale = new Sale();
         sale.addItems(items);
         
+        // 전체 할인은 표시 목적으로만 저장 (계산에는 사용하지 않음)
         if (discounts != null && !discounts.isEmpty()) {
-            sale.applyDiscounts(discounts);
+            sale.globalDiscountAmount = discounts.stream()
+                    .map(Discount::getValue)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add)
+                    .setScale(2, RoundingMode.HALF_UP);
+            log.debug("Global discount amount (for display only): {}", sale.globalDiscountAmount);
         }
         
+        // items의 값으로만 금액 계산 (클라이언트가 이미 할인 분배함)
         sale.recalculateAmounts();
         return sale;
     }
@@ -76,7 +87,6 @@ public class Sale extends BaseEntity {
     public static Sale create(List<SaleItem> items) {
         return create(items, List.of());
     }
-
 
     // =========================
     // Business Methods
@@ -92,28 +102,56 @@ public class Sale extends BaseEntity {
         newItems.forEach(this::addItem);
     }
     
-    // ✅ PaymentEntity를 받도록 변경
     public void addPayment(PaymentEntity payment) {
         payments.add(payment);
         payment.setSale(this);
     }
     
-    // ✅ PaymentEntity 리스트를 받도록 변경
     public void addPayments(List<? extends PaymentEntity> newPayments) {
         newPayments.forEach(this::addPayment);
     }
     
+    /**
+     * 금액 재계산 (item들의 값을 단순 합산)
+     * 클라이언트가 이미 모든 할인을 item에 분배했으므로 단순 합계만 계산
+     */
     public void recalculateAmounts() {
-        calculateTotalAmount();
-        calculateDiscountAmount();
-        calculatePayableAmount();
+        // originalAmount = 모든 item의 (salePrice + discountPrice) × quantity
+        this.originalAmount = items.stream()
+                .map(SaleItem::getOriginalAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
+        
+        // discountAmount = 모든 item의 discountPrice × quantity
+        this.discountAmount = items.stream()
+                .map(SaleItem::getDiscountAmount)
+                .filter(Objects::nonNull)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
+        
+        // saleAmount = 모든 item의 salePrice × quantity (클라이언트 최종 금액)
+        this.saleAmount = items.stream()
+                .map(SaleItem::getTotalAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
+    }
+    
+    /**
+     * 전체 할인 적용
+     * 클라이언트가 이미 items에 할인을 분배했으므로 아무것도 하지 않음
+     * (유지보수를 위해 빈 메서드로 남겨둠)
+     */
+    public void applyDiscounts(List<Discount> discounts) {
+        if (discounts != null && !discounts.isEmpty()) {
+            log.debug("Global discounts ignored - already distributed to items: {}", discounts);
+        }
+        // 아무것도 하지 않음 (이미 items에 할인 분배됨)
     }
     
     public void complete() {
         validateState();
         validatePayments();
         this.status = SaleStatus.COMPLETED;
-        recalculateAmounts();
     }
     
     public void cancel(String reason) {
@@ -151,53 +189,20 @@ public class Sale extends BaseEntity {
     }
     
     public void assignReceiptNo(String receiptNo) {
-        // 이미 할당된 영수증 번호가 있는 경우 (덮어쓰기 금지)
         if (this.receiptNo != null) {
             throw ExceptionUtils.receiptNumberDuplicate(this.receiptNo);
         }
         
-        // 영수증 번호 유효성 검증
         if (receiptNo == null || receiptNo.isBlank()) {
             throw ExceptionUtils.missingField("receiptNo");
         }
-        
 
         this.receiptNo = receiptNo;
-    }
-    
-    public void applyDiscounts(List<Discount> discounts) {
-        if (discounts == null || discounts.isEmpty()) {
-            return;
-        }
-        
-        BigDecimal totalDiscount = discounts.stream()
-                .map(Discount::getValue)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        
-        this.discountAmount = totalDiscount;
-        calculatePayableAmount();
     }
 
     // =========================
     // Private Methods
     // =========================
-    
-    private void calculateTotalAmount() { 
-        this.totalAmount = items.stream()
-                .map(SaleItem::getTotalAmountBeforeDiscount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-    
-    private void calculateDiscountAmount() {
-        this.discountAmount = items.stream()
-                    .map(SaleItem::getDiscountAmount)
-                    .filter(Objects::nonNull)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
-    
-    private void calculatePayableAmount() {
-        this.finalAmount = this.totalAmount.subtract(this.discountAmount);
-    }
     
     private void validateState() {
         if (status != SaleStatus.PENDING) {
@@ -207,22 +212,24 @@ public class Sale extends BaseEntity {
         }
     }
     
-    // ✅ PaymentEntity 타입으로 검증
     public void validatePayments() {
         if (payments.isEmpty()) {
             throw new IllegalStateException("At least one payment is required.");
         }
+        
         BigDecimal totalPaid = payments.stream()
                 .map(PaymentEntity::getAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
         
-        if (totalPaid.compareTo(this.finalAmount) != 0) {
+        // 클라이언트의 saleAmount와 결제 금액 비교
+        if (totalPaid.compareTo(this.saleAmount) != 0) {
             throw new IllegalStateException(
-                String.format("total amount (%s) does not match final amount (%s).",
-                    totalPaid, this.finalAmount)
+                String.format("Payment mismatch: total paid=%s, sale amount=%s, difference=%s",
+                    totalPaid.toPlainString(), 
+                    this.saleAmount.toPlainString(),
+                    totalPaid.subtract(this.saleAmount).toPlainString())
             );
         }
     }
-    
-
 }

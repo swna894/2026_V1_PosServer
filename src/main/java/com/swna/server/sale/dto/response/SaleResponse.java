@@ -22,9 +22,9 @@ public record SaleResponse(
                 sale.getId(),
                 sale.getReceiptNo(),
                 sale.getStatus() != null ? sale.getStatus().name() : SaleStatus.PENDING.name(),
-                sale.getTotalAmount(),
+                sale.getOriginalAmount(),
                 sale.getDiscountAmount(),
-                sale.getFinalAmount()
+                sale.getSaleAmount()
         );
     }
     
@@ -36,9 +36,9 @@ public record SaleResponse(
                 sale.getId(),
                 sale.getReceiptNo(),
                 sale.getStatus().name(),
-                sale.getTotalAmount(),
+                sale.getOriginalAmount(),
                 sale.getDiscountAmount(),
-                sale.getFinalAmount()
+                sale.getSaleAmount()
         );
     }
 }
