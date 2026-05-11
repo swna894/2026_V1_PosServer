@@ -35,3 +35,11 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Log files
+logs/
+*.log
+
+# Spring Boot
+/logs/
+/target/
