@@ -16,14 +16,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CardPaymentEntity extends PaymentEntity {
 
-    @Column(unique = true)
     @NotNull(groups = CardPaymentEntity.class) // 카드 결제일 때만 필수
+    @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String approvalNo;
-
+    
+    @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String cardNumber;
 
+    @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String cardIssuer;
-
+    
     public CardPaymentEntity(BigDecimal amount, String approvalNo) {
         super(amount);
         this.approvalNo = approvalNo;

@@ -9,15 +9,14 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.request.DiscountRequest;
 import com.swna.server.sale.dto.request.PaymentRequest;
+import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
+import com.swna.server.sale.entity.PaymentEntity;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
-import com.swna.server.sale.entity.PaymentEntity;
 import com.swna.server.sale.event.SaleCompletedEvent;
-import com.swna.server.sale.factory.PaymentFactory;
 import com.swna.server.sale.mapper.PaymentMapper;
 import com.swna.server.sale.mapper.SaleItemMapper;
 import com.swna.server.sale.mapper.SaleMapper;
@@ -35,7 +34,6 @@ public class ProcessSaleUseCase {
     private final SaleItemMapper saleItemMapper;
     private final SaleMapper saleMapper;
     private final SaleRepository saleRepository;
-    private final PaymentFactory paymentFactory;
     private final PaymentMapper paymentMapper;
     private final ApplicationEventPublisher eventPublisher;
 

@@ -5,11 +5,10 @@ import java.math.BigDecimal;
 import org.springframework.stereotype.Component;
 
 import com.swna.server.sale.dto.request.PaymentRequest;
+import com.swna.server.sale.entity.CardPaymentEntity;
 import com.swna.server.sale.entity.CashPaymentEntity;
 import com.swna.server.sale.entity.CashoutPaymentEntity;
-import com.swna.server.sale.entity.CardPaymentEntity;
 import com.swna.server.sale.entity.PaymentEntity;
-import com.swna.server.sale.entity.PaymentType;
 
 import lombok.extern.slf4j.Slf4j;
 

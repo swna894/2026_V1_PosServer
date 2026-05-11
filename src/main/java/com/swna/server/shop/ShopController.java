@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swna.server.common.response.ApiResponse;
-import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.shop.dto.CreateShopRequest;
 import com.swna.server.shop.entity.Shop;
 import com.swna.server.shop.usecase.CreateShopUseCase;

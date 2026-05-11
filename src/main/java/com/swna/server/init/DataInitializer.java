@@ -31,8 +31,6 @@ public class DataInitializer implements CommandLineRunner {
             admin.setName("admin");
 
             userRepository.save(admin);
-
-            System.out.println("기본 관리자 계정 생성 완료");
         }
 
 

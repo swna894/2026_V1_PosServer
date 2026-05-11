@@ -57,7 +57,8 @@ public class JwtProvider {
         }
     }
 
-    public @NonNull Long getUserId(String token) {
+    public long getUserId(String token) {
+        // parseLong은 long을 반환하므로 타입 변환 경고가 사라집니다.
         return Long.parseLong(parseClaims(token).getSubject());
     }
 

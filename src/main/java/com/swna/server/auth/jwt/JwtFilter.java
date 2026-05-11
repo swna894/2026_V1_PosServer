@@ -67,6 +67,13 @@ public class JwtFilter extends OncePerRequestFilter {
 
     }
 
+    @Override
+    protected boolean shouldNotFilter(@NonNull HttpServletRequest request) throws ServletException {
+        String path = request.getServletPath();
+        // 로그인, 재발급, 회원가입 등은 토큰 검사를 건너뜁니다.
+        return path.startsWith("/auth/");
+    }
+
     private String resolveToken(HttpServletRequest request) {
         String bearer = request.getHeader("Authorization");
 

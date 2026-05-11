@@ -1,0 +1,1556 @@
+05-11 16:47 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 16:47 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 16:47 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 16:47 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 16:47 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 166 ms. Found 9 JPA repository interfaces.
+05-11 16:47 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 16:47 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 16:47 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 16:47 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 16:47 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 16:47 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2584 ms
+05-11 16:47 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 16:47 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 16:47 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 16:47 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 16:47 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 16:47 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22bff447
+05-11 16:47 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 16:47 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 16:47 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 16:47 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 16:47 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 16:47 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:47 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 16:47 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 16:47 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: e9fdd966-bc1e-43b5-87f5-4fd5d00a630d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 16:47 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 16:47 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 16:47 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 16:47 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 16:48 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 16:48 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 16:48 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 16:48 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 16:48 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=37.0, receivedAmount=37.0, cashoutAmount=40, approvalNo=CASHOUT_1778485707670, cardNumber=VIRTUAL SUCCESS]
+05-11 16:48 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - [DiscountRequest[type=AMOUNT, value=6.5, reason=Cart total discount]]
+05-11 16:50:01.708 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 16:50:01.871 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 16:50:01.872 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 16:50:03.121 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 16:50:03.286 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 156 ms. Found 9 JPA repository interfaces.
+05-11 16:50:04.651 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 16:50:04.678 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 16:50:04.682 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 16:50:04.682 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 16:50:04.770 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 16:50:04.771 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2898 ms
+05-11 16:50:05.229 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 16:50:05.307 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 16:50:05.351 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 16:50:05.839 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 16:50:05.878 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 16:50:06.057 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22bff447
+05-11 16:50:06.059 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 16:50:06.098 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 16:50:06.102 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 16:50:06.121 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 16:50:07.529 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 16:50:08.002 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:50:08.491 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 16:50:09.845 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 16:50:10.333 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 196f97b4-a0a4-4665-93c7-7dc6b701dbeb
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 16:50:10.365 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 16:50:11.035 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 16:50:11.049 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 16:50:11.087 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 16:50:22.878 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 16:50:22.879 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 16:50:22.881 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 2 ms
+05-11 16:50:34.292 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 16:50:34.295 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=31.0, receivedAmount=31.0, cashoutAmount=40, approvalNo=CASHOUT_1778485833995, cardNumber=VIRTUAL SUCCESS]
+05-11 16:50:34.302 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 16:51:28.489 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 16:51:28.490 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=37.0, receivedAmount=37.0, cashoutAmount=10, approvalNo=CASHOUT_1778485888391, cardNumber=VIRTUAL SUCCESS]
+05-11 16:51:28.490 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - [DiscountRequest[type=AMOUNT, value=6.5, reason=Cart total discount]]
+05-11 16:54:14.781 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 16:54:14.788 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 16:54:14.790 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 16:54:14.802 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 16:54:14.804 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 16:54:14.809 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:54:14.814 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 16:54:14.825 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 16:54:16.970 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 16:54:17.122 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 16:54:17.123 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 16:54:18.412 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 16:54:18.627 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 203 ms. Found 9 JPA repository interfaces.
+05-11 16:54:19.871 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 16:54:19.912 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 16:54:19.921 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 16:54:19.922 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 16:54:20.060 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 16:54:20.061 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2936 ms
+05-11 16:54:20.551 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 16:54:20.628 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 16:54:20.677 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 16:54:21.137 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 16:54:21.176 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 16:54:21.362 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c8c439e
+05-11 16:54:21.364 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 16:54:21.401 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 16:54:21.408 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 16:54:21.428 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 16:54:22.781 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 16:54:23.243 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:54:23.772 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 16:54:25.662 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 16:54:26.412 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 07d68531-ea6f-4968-bf1a-47f8d85a8f06
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 16:54:26.462 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 16:54:27.618 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 16:54:27.648 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 16:54:27.695 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 16:54:34.837 [http-nio-8083-exec-2] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 16:54:34.838 [http-nio-8083-exec-2] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 16:54:34.838 [http-nio-8083-exec-2] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 0 ms
+05-11 16:54:50.241 [http-nio-8083-exec-1] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 16:54:50.242 [http-nio-8083-exec-1] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=55.5, receivedAmount=55.5, cashoutAmount=0.00, approvalNo=CASHOUT_1778486090013, cardNumber=VIRTUAL SUCCESS]
+05-11 16:54:50.245 [http-nio-8083-exec-1] ERROR SaleController.createSale:38 - []
+05-11 16:56:20.118 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 16:56:20.123 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 16:56:20.124 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 16:56:20.134 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 16:56:20.136 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 16:56:20.140 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:56:20.146 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 16:56:20.157 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 16:56:20.598 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 16:56:20.684 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 86 ms. Found 9 JPA repository interfaces.
+05-11 16:56:20.796 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 16:56:20.797 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 16:56:20.798 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 16:56:20.798 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 16:56:20.842 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 16:56:20.842 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 540 ms
+05-11 16:56:20.927 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 16:56:20.930 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 16:56:20.939 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 16:56:20.939 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 16:56:20.944 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2acf58b0
+05-11 16:56:20.945 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 16:56:20.948 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 16:56:20.949 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 16:56:20.950 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 16:56:21.228 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 16:56:21.576 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:56:21.894 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 16:56:22.052 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 098c7506-86ba-4cb1-86d9-c2db6164d6c4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 16:56:22.052 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 16:56:23.844 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 16:56:24.020 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 16:56:24.020 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 16:56:25.428 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 16:56:25.625 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 188 ms. Found 9 JPA repository interfaces.
+05-11 16:56:27.139 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 16:56:27.173 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 16:56:27.179 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 16:56:27.180 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 16:56:27.292 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 16:56:27.293 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 3271 ms
+05-11 16:56:27.896 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 16:56:27.991 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 16:56:28.055 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 16:56:28.539 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 16:56:28.584 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 16:56:28.782 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5ea46d21
+05-11 16:56:28.784 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 16:56:28.829 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 16:56:28.834 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 16:56:28.860 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 16:56:30.361 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 16:56:30.832 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 16:56:31.326 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 16:56:33.268 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 16:56:33.729 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 55d3aea2-4964-4f6f-87bc-3a6de87a8d01
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 16:56:33.748 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 16:56:34.493 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 16:56:34.517 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 16:56:34.555 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 16:56:36.447 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 16:56:36.447 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 16:56:36.448 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 16:59:34.528 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 16:59:34.529 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=15.0, receivedAmount=15.0, cashoutAmount=10, approvalNo=CASHOUT_1778486374278, cardNumber=VIRTUAL SUCCESS]
+05-11 16:59:34.534 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - [DiscountRequest[type=AMOUNT, value=12.0, reason=Cart total discount]]
+05-11 17:01:12.785 [http-nio-8083-exec-8] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:01:12.786 [http-nio-8083-exec-8] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=27.0, receivedAmount=27.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778486472761, cardNumber=VIRTUAL SUCCESS]
+05-11 17:01:12.787 [http-nio-8083-exec-8] ERROR SaleController.createSale:38 - []
+05-11 17:12:29.583 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 17:12:29.589 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:12:29.591 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:12:29.603 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:12:29.604 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:12:29.610 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:12:29.616 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 17:12:29.626 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 17:12:30.125 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:12:30.232 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 106 ms. Found 9 JPA repository interfaces.
+05-11 17:12:30.386 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:12:30.387 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:12:30.388 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:12:30.388 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:12:30.466 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:12:30.466 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 701 ms
+05-11 17:12:30.543 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:12:30.546 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:12:30.558 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:12:30.560 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 17:12:30.564 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b7f4e8d
+05-11 17:12:30.566 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 17:12:30.569 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:12:30.571 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:12:30.571 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:12:31.019 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:12:31.464 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:12:31.711 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:12:31.822 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: f4c6afe1-e779-4c95-a32f-f8fa5c9b9cb1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:12:31.823 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:12:31.911 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:12:31.918 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:12:31.922 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:12:31.962 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:12:35.421 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 17:12:35.422 [Thread-7] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:12:35.423 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:12:35.431 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:12:35.431 [Thread-7] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:12:35.435 [Thread-7] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:12:35.436 [Thread-7] INFO  HikariDataSource.close:349 - HikariPool-2 - Shutdown initiated...
+05-11 17:12:35.439 [Thread-7] INFO  HikariDataSource.close:351 - HikariPool-2 - Shutdown completed.
+05-11 17:12:35.772 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:12:35.863 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 89 ms. Found 9 JPA repository interfaces.
+05-11 17:12:35.962 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:12:35.964 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:12:35.964 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:12:35.966 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:12:36.027 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:12:36.027 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 486 ms
+05-11 17:12:36.099 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:12:36.101 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:12:36.108 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:12:36.111 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-3 - Starting...
+05-11 17:12:36.114 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7674310
+05-11 17:12:36.116 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-3 - Start completed.
+05-11 17:12:36.119 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:12:36.120 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:12:36.120 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:12:36.433 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:12:36.754 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:12:37.020 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:12:37.123 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 12fb264f-4fcf-4dfb-b1eb-ed71387dbb41
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:12:37.124 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:12:37.238 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:12:37.243 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:12:37.251 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:12:37.294 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:16:02.853 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+05-11 17:16:02.855 [Thread-11] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:16:02.855 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:16:02.862 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:16:02.863 [Thread-11] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:16:02.865 [Thread-11] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:16:02.867 [Thread-11] INFO  HikariDataSource.close:349 - HikariPool-3 - Shutdown initiated...
+05-11 17:16:02.870 [Thread-11] INFO  HikariDataSource.close:351 - HikariPool-3 - Shutdown completed.
+05-11 17:16:03.187 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:16:03.278 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 88 ms. Found 9 JPA repository interfaces.
+05-11 17:16:03.368 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:16:03.369 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:16:03.369 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:16:03.369 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:16:03.409 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:16:03.410 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 437 ms
+05-11 17:16:03.475 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:16:03.478 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:16:03.487 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:16:03.488 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-4 - Starting...
+05-11 17:16:03.493 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70f41018
+05-11 17:16:03.494 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-4 - Start completed.
+05-11 17:16:03.497 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:16:03.498 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:16:03.498 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:16:03.733 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:16:04.047 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:16:04.263 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:16:04.357 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: e23a1077-ab7c-4913-b57d-a2c61ddcce96
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:16:04.358 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:16:04.434 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:16:04.439 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:16:04.443 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:16:04.473 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:18:26.677 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 17:18:26.679 [Thread-15] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:18:26.680 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:18:26.689 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:18:26.689 [Thread-15] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:18:26.693 [Thread-15] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:18:26.694 [Thread-15] INFO  HikariDataSource.close:349 - HikariPool-4 - Shutdown initiated...
+05-11 17:18:26.698 [Thread-15] INFO  HikariDataSource.close:351 - HikariPool-4 - Shutdown completed.
+05-11 17:18:27.014 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:18:27.092 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 75 ms. Found 9 JPA repository interfaces.
+05-11 17:18:27.170 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:18:27.172 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:18:27.173 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:18:27.174 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:18:27.215 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:18:27.215 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 394 ms
+05-11 17:18:27.293 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:18:27.294 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:18:27.303 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:18:27.304 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-5 - Starting...
+05-11 17:18:27.308 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@252ae988
+05-11 17:18:27.309 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-5 - Start completed.
+05-11 17:18:27.311 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:18:27.312 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:18:27.312 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:18:27.519 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:18:27.948 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:18:28.146 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:18:28.226 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 4b3badb5-6748-4700-8f08-817db5d09385
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:18:28.227 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:18:28.287 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:18:28.292 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:18:28.298 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:18:28.327 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:18:39.857 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 17:18:40.004 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 17:18:40.005 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 17:18:41.092 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:18:41.248 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 145 ms. Found 9 JPA repository interfaces.
+05-11 17:18:42.518 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:18:42.556 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:18:42.564 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:18:42.565 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:18:42.677 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:18:42.677 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2671 ms
+05-11 17:18:43.140 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:18:43.211 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 17:18:43.267 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:18:43.754 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:18:43.818 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 17:18:43.999 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22692862
+05-11 17:18:44.001 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 17:18:44.038 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:18:44.043 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:18:44.064 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:18:45.312 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:18:45.767 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:18:46.270 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 17:18:47.880 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:18:48.352 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: d5d9c7db-cde3-4b07-a1e3-5f1f9bb8e72b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:18:48.370 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:18:48.767 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:18:48.783 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:18:48.809 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:19:14.836 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 17:19:14.836 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 17:19:14.837 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 17:19:24.928 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:19:24.930 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=10, approvalNo=CASHOUT_1778487564680, cardNumber=VIRTUAL SUCCESS]
+05-11 17:19:24.937 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 17:20:47.209 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:20:47.211 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=27.0, receivedAmount=27.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778487647188, cardNumber=VIRTUAL SUCCESS]
+05-11 17:20:47.212 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 17:28:09.509 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 17:28:09.661 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 17:28:09.662 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 17:28:10.949 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:28:11.119 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 158 ms. Found 9 JPA repository interfaces.
+05-11 17:28:12.327 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:28:12.366 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:28:12.375 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:28:12.375 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:28:12.487 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:28:12.487 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2824 ms
+05-11 17:28:12.897 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:28:12.960 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 17:28:13.012 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:28:13.513 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:28:13.554 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 17:28:13.722 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@410f06a1
+05-11 17:28:13.724 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 17:28:13.760 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:28:13.765 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:28:13.785 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:28:15.071 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:28:15.453 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:28:15.972 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 17:28:17.387 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:28:17.903 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: c7cfa8f1-98e2-4e3b-93d6-f94e95a43446
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:28:17.937 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:28:18.493 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:28:18.525 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:28:18.550 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:28:34.845 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 17:28:34.846 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 17:28:34.848 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 2 ms
+05-11 17:29:11.256 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:29:11.257 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=49.5, receivedAmount=49.5, cashoutAmount=20, approvalNo=CASHOUT_1778488151040, cardNumber=VIRTUAL SUCCESS]
+05-11 17:29:11.262 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 17:29:43.373 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:29:43.376 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=40.0, receivedAmount=40.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778488183353, cardNumber=VIRTUAL SUCCESS]
+05-11 17:29:43.378 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 17:30:21.143 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:30:21.144 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778488221131, cardNumber=VIRTUAL SUCCESS]
+05-11 17:30:21.145 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 17:43:13.086 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 17:43:13.097 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:43:13.099 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:43:13.110 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:43:13.111 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:43:13.117 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:43:13.126 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 17:43:13.139 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 17:43:13.709 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:43:13.793 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 82 ms. Found 9 JPA repository interfaces.
+05-11 17:43:13.909 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:43:13.910 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:43:13.911 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:43:13.911 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:43:13.956 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:43:13.956 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 661 ms
+05-11 17:43:14.037 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:43:14.041 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:43:14.055 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:43:14.057 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 17:43:14.065 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c746b8b
+05-11 17:43:14.066 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 17:43:14.073 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:43:14.075 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:43:14.076 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:43:14.456 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:43:14.827 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:43:15.062 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:43:15.151 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 5ba4b881-ef1e-42db-b58a-815985bd3da2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:43:15.153 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:43:15.227 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:43:15.231 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:43:15.236 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:43:15.275 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:48:01.298 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 17:48:01.300 [Thread-7] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 17:48:01.301 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 17:48:01.310 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 17:48:01.311 [Thread-7] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 17:48:01.315 [Thread-7] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:48:01.316 [Thread-7] INFO  HikariDataSource.close:349 - HikariPool-2 - Shutdown initiated...
+05-11 17:48:01.319 [Thread-7] INFO  HikariDataSource.close:351 - HikariPool-2 - Shutdown completed.
+05-11 17:48:01.756 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:48:01.850 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 92 ms. Found 9 JPA repository interfaces.
+05-11 17:48:01.966 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:48:01.967 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:48:01.968 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:48:01.968 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:48:02.015 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:48:02.015 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 561 ms
+05-11 17:48:02.083 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:48:02.087 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:48:02.096 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:48:02.099 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-3 - Starting...
+05-11 17:48:02.105 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38627a94
+05-11 17:48:02.106 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-3 - Start completed.
+05-11 17:48:02.109 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:48:02.110 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:48:02.112 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:48:02.662 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:48:03.027 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:48:03.327 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:48:03.440 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: f70ab7e8-2d34-4713-817e-7186dd0033f7
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:48:03.442 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:48:03.536 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:48:03.542 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:48:03.547 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:48:03.593 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 17:56:46.084 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 17:56:46.218 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 17:56:46.219 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 17:56:47.259 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:56:47.418 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 149 ms. Found 9 JPA repository interfaces.
+05-11 17:56:48.529 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:56:48.567 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:56:48.575 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:56:48.576 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:56:48.710 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:56:48.711 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2492 ms
+05-11 17:56:49.156 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:56:49.229 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 17:56:49.273 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:56:49.767 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:56:49.798 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 17:56:49.960 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@39e916e9
+05-11 17:56:49.962 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 17:56:49.998 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:56:50.004 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:56:50.030 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:56:51.303 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:56:51.667 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:56:52.124 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 17:56:53.507 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:56:53.951 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 9799dabf-dad7-4a3d-9fce-99ee596c160c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:56:53.986 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:56:54.829 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:56:54.848 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:56:54.880 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:57:14.938 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 17:57:14.938 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 17:57:14.939 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 0 ms
+05-11 17:57:24.748 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:57:24.749 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=45.0, receivedAmount=45.0, cashoutAmount=10, approvalNo=CASHOUT_1778489844512, cardNumber=VIRTUAL SUCCESS]
+05-11 17:57:24.760 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 17:58:31.051 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 17:58:31.182 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 17:58:31.183 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 17:58:32.261 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 17:58:32.437 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 165 ms. Found 9 JPA repository interfaces.
+05-11 17:58:33.780 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 17:58:33.819 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 17:58:33.826 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 17:58:33.827 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 17:58:33.938 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 17:58:33.939 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2754 ms
+05-11 17:58:34.374 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 17:58:34.440 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 17:58:34.490 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 17:58:34.945 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 17:58:34.985 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 17:58:35.174 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1764b8e9
+05-11 17:58:35.176 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 17:58:35.210 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 17:58:35.216 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 17:58:35.236 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 17:58:36.400 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 17:58:36.750 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 17:58:37.213 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 17:58:38.569 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 17:58:39.017 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 6966233b-11a1-4c70-a3c2-e439bc1d92b9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 17:58:39.049 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 17:58:39.650 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 17:58:39.669 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 17:58:39.694 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 17:58:53.026 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 17:58:53.027 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 17:58:53.029 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 17:58:59.656 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:58:59.657 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778489939377, cardNumber=VIRTUAL SUCCESS]
+05-11 17:58:59.664 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 17:59:14.174 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:59:14.174 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=71.5, receivedAmount=71.5, cashoutAmount=0.00, approvalNo=CASHOUT_1778489954156, cardNumber=VIRTUAL SUCCESS]
+05-11 17:59:14.175 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 17:59:22.108 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 17:59:22.110 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778489962092, cardNumber=VIRTUAL SUCCESS]
+05-11 17:59:22.112 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:00:18.385 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:00:18.387 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490018371, cardNumber=VIRTUAL SUCCESS]
+05-11 18:00:18.388 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 18:00:49.442 [http-nio-8083-exec-7] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:00:49.443 [http-nio-8083-exec-7] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490049429, cardNumber=VIRTUAL SUCCESS]
+05-11 18:00:49.445 [http-nio-8083-exec-7] ERROR SaleController.createSale:38 - []
+05-11 18:01:18.756 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:01:18.756 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490078740, cardNumber=VIRTUAL SUCCESS]
+05-11 18:01:18.757 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - []
+05-11 18:03:09.683 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:03:09.823 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:03:09.823 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:03:10.958 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:03:11.117 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 150 ms. Found 9 JPA repository interfaces.
+05-11 18:03:12.344 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:03:12.379 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:03:12.387 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:03:12.388 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:03:12.510 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:03:12.511 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2685 ms
+05-11 18:03:12.922 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:03:13.004 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:03:13.058 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:03:13.492 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:03:13.529 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:03:13.714 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37a6744a
+05-11 18:03:13.717 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:03:13.750 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:03:13.754 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:03:13.775 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:03:15.120 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:03:15.548 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:03:16.000 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:03:17.355 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:03:17.847 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 183aa257-e9f9-4c15-bd35-21bce382fa08
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:03:17.880 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:03:18.356 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:03:18.371 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:03:18.397 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:03:48.059 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:03:48.213 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:03:48.215 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:03:49.303 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:03:49.476 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 164 ms. Found 9 JPA repository interfaces.
+05-11 18:03:50.655 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:03:50.696 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:03:50.702 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:03:50.704 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:03:50.837 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:03:50.839 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2623 ms
+05-11 18:03:51.265 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:03:51.330 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:03:51.384 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:03:51.947 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:03:51.988 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:03:52.218 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22bff447
+05-11 18:03:52.221 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:03:52.264 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:03:52.269 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:03:52.293 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:03:53.659 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:03:54.120 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:04:24.182 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:04:24.330 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:04:24.330 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:04:25.570 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:04:25.774 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 186 ms. Found 9 JPA repository interfaces.
+05-11 18:04:27.216 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:04:27.248 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:04:27.256 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:04:27.257 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:04:27.348 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:04:27.349 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 3017 ms
+05-11 18:04:27.841 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:04:27.929 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:04:27.990 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:04:28.480 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:04:28.547 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:04:28.808 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@45dfe74c
+05-11 18:04:28.811 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:04:28.856 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:04:28.860 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:04:28.881 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:04:30.237 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:04:30.626 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:04:31.116 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:04:32.607 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:04:33.132 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 144f1817-580c-467b-8134-7ac96781dd9b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:04:33.163 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:04:33.860 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:04:33.879 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:04:33.909 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:04:46.263 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:04:46.264 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:04:46.265 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 18:04:52.680 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:04:52.681 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=34.0, receivedAmount=34.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490292424, cardNumber=VIRTUAL SUCCESS]
+05-11 18:04:52.688 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:05:41.845 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:05:41.846 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490341826, cardNumber=VIRTUAL SUCCESS]
+05-11 18:05:41.846 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 18:05:57.227 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:05:57.228 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490357211, cardNumber=VIRTUAL SUCCESS]
+05-11 18:05:57.229 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - []
+05-11 18:06:38.035 [http-nio-8083-exec-8] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:06:38.036 [http-nio-8083-exec-8] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490398018, cardNumber=VIRTUAL SUCCESS]
+05-11 18:06:38.037 [http-nio-8083-exec-8] ERROR SaleController.createSale:38 - []
+05-11 18:08:03.769 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:08:03.921 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:08:03.922 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:08:05.029 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:08:05.198 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 152 ms. Found 9 JPA repository interfaces.
+05-11 18:08:12.346 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:08:12.470 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:08:12.471 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:08:13.695 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:08:13.890 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 178 ms. Found 9 JPA repository interfaces.
+05-11 18:08:15.265 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:08:15.283 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:08:15.286 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:08:15.287 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:08:15.395 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:08:15.396 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2924 ms
+05-11 18:08:15.802 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:08:15.887 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:08:15.956 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:08:16.463 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:08:16.512 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:08:16.691 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@494d0feb
+05-11 18:08:16.693 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:08:16.728 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:08:16.734 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:08:16.758 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:08:18.252 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:08:18.733 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:08:19.250 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:08:20.747 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:08:21.132 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 59527c0f-c67e-41a6-8844-8dd88dfe269b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:08:21.170 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:08:21.923 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:08:21.939 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:08:21.979 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:08:53.246 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:08:53.247 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:08:53.250 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 2 ms
+05-11 18:08:59.257 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:08:59.257 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=34.0, receivedAmount=34.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490538958, cardNumber=VIRTUAL SUCCESS]
+05-11 18:08:59.265 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 18:09:05.650 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:09:05.651 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=45.0, receivedAmount=45.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490545635, cardNumber=VIRTUAL SUCCESS]
+05-11 18:09:05.654 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:09:33.977 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:09:33.978 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=34.0, receivedAmount=34.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490573962, cardNumber=VIRTUAL SUCCESS]
+05-11 18:09:33.980 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 18:09:49.769 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:09:49.769 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778490589754, cardNumber=VIRTUAL SUCCESS]
+05-11 18:09:49.770 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 18:21:08.065 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 18:21:08.070 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 18:21:08.072 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 18:21:08.081 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 18:21:08.082 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 18:21:08.091 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:21:08.097 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 18:21:08.112 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 18:21:08.732 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:21:08.832 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 97 ms. Found 9 JPA repository interfaces.
+05-11 18:21:08.962 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:21:08.963 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:21:08.965 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:21:08.965 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:21:09.013 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:21:09.015 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 719 ms
+05-11 18:21:09.113 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:21:09.116 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:21:09.129 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:21:09.132 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 18:21:09.148 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4c6ed783
+05-11 18:21:09.149 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 18:21:09.158 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:21:09.160 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:21:09.161 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:21:09.783 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:21:10.119 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:21:10.382 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:21:10.499 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: d8d3a06e-aeb3-42c3-a4c4-11f924288cd6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:21:10.500 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:21:10.592 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:21:10.600 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:21:10.605 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:21:10.644 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 18:21:31.665 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:21:31.801 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:21:31.801 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:21:33.077 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:21:33.268 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 175 ms. Found 9 JPA repository interfaces.
+05-11 18:21:34.636 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:21:34.656 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:21:34.662 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:21:34.662 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:21:34.757 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:21:34.757 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2954 ms
+05-11 18:21:35.237 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:21:35.319 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:21:35.372 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:21:35.880 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:21:35.925 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:21:36.117 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@398dbb2
+05-11 18:21:36.120 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:21:36.163 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:21:36.170 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:21:36.198 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:21:37.644 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:21:38.057 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:21:38.556 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:21:39.906 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:21:40.341 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 02111859-5ccd-4e61-9a46-936fb38ea8e5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:21:40.361 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:21:40.949 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:21:40.966 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:21:40.993 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:22:11.751 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:22:11.751 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:22:11.752 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 18:22:18.297 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:22:18.298 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491338068, cardNumber=VIRTUAL SUCCESS]
+05-11 18:22:18.305 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 18:24:37.117 [http-nio-8083-exec-7] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:24:37.118 [http-nio-8083-exec-7] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=24.0, receivedAmount=24.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491477004, cardNumber=VIRTUAL SUCCESS]
+05-11 18:24:37.119 [http-nio-8083-exec-7] ERROR SaleController.createSale:38 - []
+05-11 18:25:01.319 [http-nio-8083-exec-8] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:25:01.321 [http-nio-8083-exec-8] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=27.0, receivedAmount=27.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491501304, cardNumber=VIRTUAL SUCCESS]
+05-11 18:25:01.321 [http-nio-8083-exec-8] ERROR SaleController.createSale:38 - []
+05-11 18:25:13.460 [http-nio-8083-exec-9] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:25:13.461 [http-nio-8083-exec-9] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491513447, cardNumber=VIRTUAL SUCCESS]
+05-11 18:25:13.461 [http-nio-8083-exec-9] ERROR SaleController.createSale:38 - []
+05-11 18:25:24.910 [http-nio-8083-exec-10] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:25:24.912 [http-nio-8083-exec-10] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491524896, cardNumber=VIRTUAL SUCCESS]
+05-11 18:25:24.912 [http-nio-8083-exec-10] ERROR SaleController.createSale:38 - []
+05-11 18:29:32.716 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:29:32.719 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491768626, cardNumber=VIRTUAL SUCCESS]
+05-11 18:29:32.719 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 18:29:57.078 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:29:57.079 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491793071, cardNumber=VIRTUAL SUCCESS]
+05-11 18:29:57.079 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 18:30:13.955 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:30:13.956 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491813941, cardNumber=VIRTUAL SUCCESS]
+05-11 18:30:13.956 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - []
+05-11 18:32:12.022 [http-nio-8083-exec-10] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:32:12.022 [http-nio-8083-exec-10] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=24.0, receivedAmount=24.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491931913, cardNumber=VIRTUAL SUCCESS]
+05-11 18:32:12.022 [http-nio-8083-exec-10] ERROR SaleController.createSale:38 - []
+05-11 18:32:21.627 [http-nio-8083-exec-1] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:32:21.629 [http-nio-8083-exec-1] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=58.0, receivedAmount=58.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778491941607, cardNumber=VIRTUAL SUCCESS]
+05-11 18:32:21.630 [http-nio-8083-exec-1] ERROR SaleController.createSale:38 - []
+05-11 18:34:05.123 [http-nio-8083-exec-7] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:34:05.127 [http-nio-8083-exec-7] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492044994, cardNumber=VIRTUAL SUCCESS]
+05-11 18:34:05.129 [http-nio-8083-exec-7] ERROR SaleController.createSale:38 - []
+05-11 18:34:13.297 [http-nio-8083-exec-8] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:34:13.298 [http-nio-8083-exec-8] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492053279, cardNumber=VIRTUAL SUCCESS]
+05-11 18:34:13.299 [http-nio-8083-exec-8] ERROR SaleController.createSale:38 - []
+05-11 18:34:23.761 [http-nio-8083-exec-9] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:34:23.762 [http-nio-8083-exec-9] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492063749, cardNumber=VIRTUAL SUCCESS]
+05-11 18:34:23.763 [http-nio-8083-exec-9] ERROR SaleController.createSale:38 - []
+05-11 18:34:36.444 [http-nio-8083-exec-10] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:34:36.445 [http-nio-8083-exec-10] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=21.0, receivedAmount=21.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492076430, cardNumber=VIRTUAL SUCCESS]
+05-11 18:34:36.446 [http-nio-8083-exec-10] ERROR SaleController.createSale:38 - []
+05-11 18:39:51.302 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:39:51.303 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492391183, cardNumber=VIRTUAL SUCCESS]
+05-11 18:39:51.303 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 18:40:08.929 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:40:08.930 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=27.0, receivedAmount=27.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492408916, cardNumber=VIRTUAL SUCCESS]
+05-11 18:40:08.930 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 18:40:16.814 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:40:16.815 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492416803, cardNumber=VIRTUAL SUCCESS]
+05-11 18:40:16.816 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - []
+05-11 18:42:38.814 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:42:39.053 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:42:39.054 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:42:40.578 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:42:40.790 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 190 ms. Found 9 JPA repository interfaces.
+05-11 18:42:42.208 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:42:42.242 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:42:42.248 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:42:42.249 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:42:42.361 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:42:42.362 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 3307 ms
+05-11 18:42:42.859 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:42:42.932 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:42:42.981 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:42:43.507 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:42:43.572 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:42:43.846 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e187621
+05-11 18:42:43.850 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:42:43.901 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:42:43.906 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:42:43.931 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:42:45.448 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:42:45.876 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:42:46.530 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:42:48.273 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:42:49.010 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 80c5ee05-8d90-4f36-8ba6-92c45bd5220e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:42:49.043 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:42:49.861 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:42:49.883 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:42:49.921 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:42:52.236 [http-nio-8083-exec-2] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:42:52.236 [http-nio-8083-exec-2] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:42:52.237 [http-nio-8083-exec-2] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 18:42:59.692 [http-nio-8083-exec-1] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:42:59.694 [http-nio-8083-exec-1] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492579423, cardNumber=VIRTUAL SUCCESS]
+05-11 18:42:59.705 [http-nio-8083-exec-1] ERROR SaleController.createSale:38 - []
+05-11 18:43:15.486 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:43:15.487 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492595468, cardNumber=VIRTUAL SUCCESS]
+05-11 18:43:15.488 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:43:37.691 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:43:37.692 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492617676, cardNumber=VIRTUAL SUCCESS]
+05-11 18:43:37.692 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 18:44:07.043 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 18:44:07.047 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 18:44:07.047 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 18:44:07.058 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 18:44:07.060 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 18:44:07.067 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:44:07.074 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 18:44:07.082 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 18:44:07.687 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:44:07.813 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 124 ms. Found 9 JPA repository interfaces.
+05-11 18:44:07.960 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:44:07.961 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:44:07.962 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:44:07.963 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:44:08.017 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:44:08.018 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 794 ms
+05-11 18:44:08.145 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:44:08.148 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:44:08.162 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:44:08.164 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 18:44:08.171 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44773344
+05-11 18:44:08.171 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 18:44:08.176 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:44:08.177 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:44:08.180 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:44:08.860 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:44:09.213 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:44:09.505 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:44:09.613 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 73fee799-87c3-4ce5-89ee-c5ed2f128fa8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:44:09.614 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:44:09.711 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:44:09.717 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:44:09.724 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:44:09.762 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 18:44:23.643 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:44:23.786 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:44:23.787 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:44:25.005 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:44:25.181 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 168 ms. Found 9 JPA repository interfaces.
+05-11 18:44:26.492 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:44:26.523 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:44:26.527 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:44:26.528 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:44:26.646 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:44:26.646 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2857 ms
+05-11 18:44:27.063 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:44:27.146 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:44:27.208 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:44:27.740 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:44:27.793 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:44:27.983 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b88a3bf
+05-11 18:44:27.986 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:44:28.028 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:44:28.033 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:44:28.059 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:44:29.479 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:44:29.849 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:44:30.344 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:44:31.810 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:44:32.227 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 40b7b263-0396-4b8c-b5fd-90700730f149
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:44:32.252 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:44:32.913 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:44:32.934 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:44:32.968 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:44:46.929 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:44:46.930 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:44:46.930 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 0 ms
+05-11 18:44:53.083 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:44:53.084 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492692839, cardNumber=VIRTUAL SUCCESS]
+05-11 18:44:53.090 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 18:45:05.733 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:45:05.734 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492705716, cardNumber=VIRTUAL SUCCESS]
+05-11 18:45:05.735 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:45:31.063 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:45:31.064 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778492731044, cardNumber=VIRTUAL SUCCESS]
+05-11 18:45:31.065 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 18:50:28.276 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 18:50:28.402 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 18:50:28.403 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 18:50:29.554 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 18:50:29.744 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 173 ms. Found 9 JPA repository interfaces.
+05-11 18:50:30.995 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 18:50:31.026 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 18:50:31.031 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 18:50:31.032 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 18:50:31.129 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 18:50:31.130 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2724 ms
+05-11 18:50:31.523 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 18:50:31.599 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 18:50:31.646 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 18:50:32.128 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 18:50:32.177 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 18:50:32.371 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@398dbb2
+05-11 18:50:32.374 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 18:50:32.414 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 18:50:32.419 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 18:50:32.441 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 18:50:33.892 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 18:50:34.278 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 18:50:34.763 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 18:50:36.139 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 18:50:36.555 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: f43776a3-bdd4-415d-bd49-dddcc51f134b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 18:50:36.577 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 18:50:37.146 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 18:50:37.164 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 18:50:37.202 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 18:51:15.598 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 18:51:15.599 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 18:51:15.600 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 18:51:22.960 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:51:22.961 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=34.0, receivedAmount=34.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778493082719, cardNumber=VIRTUAL SUCCESS]
+05-11 18:51:22.967 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 18:51:30.819 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:51:30.820 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778493090803, cardNumber=VIRTUAL SUCCESS]
+05-11 18:51:30.820 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 18:52:01.017 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 18:52:01.019 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778493121002, cardNumber=VIRTUAL SUCCESS]
+05-11 18:52:01.020 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 19:07:36.838 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 19:07:36.976 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 19:07:36.976 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 19:07:37.950 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 19:07:38.113 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 153 ms. Found 9 JPA repository interfaces.
+05-11 19:07:39.225 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 19:07:39.266 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 19:07:39.278 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 19:07:39.279 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 19:07:39.411 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 19:07:39.413 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2435 ms
+05-11 19:07:39.803 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 19:07:39.865 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 19:07:39.919 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 19:07:40.371 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 19:07:40.410 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 19:07:40.582 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@263c00f3
+05-11 19:07:40.584 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 19:07:40.622 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 19:07:40.626 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 19:07:40.646 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 19:07:41.902 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 19:07:42.313 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:07:42.797 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 19:07:44.534 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 19:07:44.994 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: a819fbfc-3565-44ef-a067-9bd36a169f27
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 19:07:45.019 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 19:07:45.444 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 19:07:45.459 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 19:07:45.483 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 19:07:59.847 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 19:07:59.848 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 19:07:59.849 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 1 ms
+05-11 19:08:07.953 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:08:07.954 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=45.0, receivedAmount=45.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494087699, cardNumber=VIRTUAL SUCCESS]
+05-11 19:08:07.960 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 19:08:34.806 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:08:34.808 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494114790, cardNumber=VIRTUAL SUCCESS]
+05-11 19:08:34.809 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 19:08:45.242 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:08:45.243 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=43.0, receivedAmount=43.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494125223, cardNumber=VIRTUAL SUCCESS]
+05-11 19:08:45.243 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 19:12:58.160 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:12:58.161 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494378058, cardNumber=VIRTUAL SUCCESS]
+05-11 19:12:58.162 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 19:13:19.132 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:13:19.132 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494399118, cardNumber=VIRTUAL SUCCESS]
+05-11 19:13:19.133 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 19:13:30.269 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:13:30.270 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494410254, cardNumber=VIRTUAL SUCCESS]
+05-11 19:13:30.271 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 19:13:48.527 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:13:48.528 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494428509, cardNumber=VIRTUAL SUCCESS]
+05-11 19:13:48.528 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 19:15:41.571 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 19:15:41.698 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 19:15:41.699 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 19:15:42.756 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 19:15:42.914 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 148 ms. Found 9 JPA repository interfaces.
+05-11 19:15:44.182 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 19:15:44.228 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 19:15:44.235 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 19:15:44.236 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 19:15:44.349 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 19:15:44.351 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2649 ms
+05-11 19:15:44.849 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 19:15:44.946 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 19:15:45.005 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 19:15:45.546 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 19:15:45.581 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 19:15:45.750 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e7f6e64
+05-11 19:15:45.751 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 19:15:45.786 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 19:15:45.793 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 19:15:45.814 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 19:15:47.193 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 19:15:47.583 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:15:48.131 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 19:15:49.764 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 19:15:50.335 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 1242226d-8785-4f93-9f62-37c1d30fe81f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 19:15:50.367 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 19:15:51.080 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 19:15:51.101 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 19:15:51.137 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 19:15:57.682 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 19:15:57.682 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 19:15:57.684 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 0 ms
+05-11 19:16:04.678 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:16:04.679 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778494564418, cardNumber=VIRTUAL SUCCESS]
+05-11 19:16:04.686 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 19:24:06.533 [background-preinit] INFO  Version.<clinit>:21 - HV000001: Hibernate Validator 8.0.3.Final
+05-11 19:24:06.673 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+05-11 19:24:06.674 [restartedMain] INFO  DevToolsPropertyDefaultsPostProcessor.log:68 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+05-11 19:24:07.778 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 19:24:07.942 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 153 ms. Found 9 JPA repository interfaces.
+05-11 19:24:09.193 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 19:24:09.239 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 19:24:09.248 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 19:24:09.249 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 19:24:09.378 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 19:24:09.379 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 2704 ms
+05-11 19:24:09.843 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 19:24:09.909 [restartedMain] INFO  Version.logVersion:44 - HHH000412: Hibernate ORM core version 6.6.49.Final
+05-11 19:24:09.964 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 19:24:10.462 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 19:24:10.520 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-1 - Starting...
+05-11 19:24:10.695 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@e7f6e64
+05-11 19:24:10.696 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-1 - Start completed.
+05-11 19:24:10.735 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 19:24:10.739 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 19:24:10.761 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 19:24:11.953 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 19:24:12.359 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:24:12.876 [restartedMain] INFO  QueryEnhancerFactory.<clinit>:49 - Hibernate is in classpath; If applicable, HQL parser will be used.
+05-11 19:24:14.148 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 19:24:14.603 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 329970aa-a6f3-49a9-a447-8c8a42c57be0
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 19:24:14.637 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 19:24:15.325 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 19:24:15.344 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 19:24:15.371 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 19:24:33.883 [http-nio-8083-exec-1] INFO  [/].log:168 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+05-11 19:24:33.884 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:532 - Initializing Servlet 'dispatcherServlet'
+05-11 19:24:33.884 [http-nio-8083-exec-1] INFO  DispatcherServlet.initServletBean:554 - Completed initialization in 0 ms
+05-11 19:24:39.525 [http-nio-8083-exec-2] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:24:39.527 [http-nio-8083-exec-2] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=24.0, receivedAmount=24.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495079239, cardNumber=VIRTUAL SUCCESS]
+05-11 19:24:39.534 [http-nio-8083-exec-2] ERROR SaleController.createSale:38 - []
+05-11 19:25:06.032 [http-nio-8083-exec-3] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:25:06.034 [http-nio-8083-exec-3] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=55.5, receivedAmount=55.5, cashoutAmount=0.00, approvalNo=CASHOUT_1778495106020, cardNumber=VIRTUAL SUCCESS]
+05-11 19:25:06.034 [http-nio-8083-exec-3] ERROR SaleController.createSale:38 - []
+05-11 19:30:21.817 [http-nio-8083-exec-1] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:30:21.818 [http-nio-8083-exec-1] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=45.0, receivedAmount=45.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495421709, cardNumber=VIRTUAL SUCCESS]
+05-11 19:30:21.819 [http-nio-8083-exec-1] ERROR SaleController.createSale:38 - []
+05-11 19:31:20.115 [http-nio-8083-exec-5] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:31:20.116 [http-nio-8083-exec-5] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=17.0, receivedAmount=17.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495480026, cardNumber=VIRTUAL SUCCESS]
+05-11 19:31:20.117 [http-nio-8083-exec-5] ERROR SaleController.createSale:38 - []
+05-11 19:31:35.109 [http-nio-8083-exec-6] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:31:35.110 [http-nio-8083-exec-6] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=24.0, receivedAmount=24.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495495098, cardNumber=VIRTUAL SUCCESS]
+05-11 19:31:35.111 [http-nio-8083-exec-6] ERROR SaleController.createSale:38 - []
+05-11 19:31:46.792 [http-nio-8083-exec-7] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:31:46.793 [http-nio-8083-exec-7] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=34.0, receivedAmount=34.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495506777, cardNumber=VIRTUAL SUCCESS]
+05-11 19:31:46.794 [http-nio-8083-exec-7] ERROR SaleController.createSale:38 - []
+05-11 19:32:18.706 [http-nio-8083-exec-8] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:32:18.707 [http-nio-8083-exec-8] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=38.0, receivedAmount=38.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495538690, cardNumber=VIRTUAL SUCCESS]
+05-11 19:32:18.708 [http-nio-8083-exec-8] ERROR SaleController.createSale:38 - []
+05-11 19:33:58.222 [http-nio-8083-exec-4] ERROR SaleController.createSale:36 - ======== payment ========
+05-11 19:33:58.223 [http-nio-8083-exec-4] ERROR SaleController.lambda$0:37 - PaymentRequest[type=CASHOUT, amount=30.0, receivedAmount=30.0, cashoutAmount=0.00, approvalNo=CASHOUT_1778495638105, cardNumber=VIRTUAL SUCCESS]
+05-11 19:33:58.225 [http-nio-8083-exec-4] ERROR SaleController.createSale:38 - []
+05-11 19:41:30.545 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 19:41:30.551 [Thread-5] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 19:41:30.552 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 19:41:30.562 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 19:41:30.563 [Thread-5] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 19:41:30.570 [Thread-5] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:41:30.576 [Thread-5] INFO  HikariDataSource.close:349 - HikariPool-1 - Shutdown initiated...
+05-11 19:41:30.588 [Thread-5] INFO  HikariDataSource.close:351 - HikariPool-1 - Shutdown completed.
+05-11 19:41:31.019 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 19:41:31.125 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 103 ms. Found 9 JPA repository interfaces.
+05-11 19:41:31.241 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 19:41:31.243 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 19:41:31.243 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 19:41:31.244 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 19:41:31.291 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 19:41:31.292 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 576 ms
+05-11 19:41:31.384 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 19:41:31.387 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 19:41:31.402 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 19:41:31.404 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-2 - Starting...
+05-11 19:41:31.413 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@477da480
+05-11 19:41:31.414 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-2 - Start completed.
+05-11 19:41:31.420 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 19:41:31.422 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 19:41:31.423 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 19:41:31.810 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 19:41:32.199 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:41:32.486 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 19:41:32.583 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 805b526d-2f24-4273-a8a2-77e78fc7ff91
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 19:41:32.585 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 19:41:32.669 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 19:41:32.675 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 19:41:32.680 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 19:41:32.720 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged
+05-11 19:42:19.805 [File Watcher] INFO  LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener.onApplicationEvent:211 - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+05-11 19:42:19.808 [Thread-7] INFO  GracefulShutdown.shutDownGracefully:54 - Commencing graceful shutdown. Waiting for active requests to complete
+05-11 19:42:19.809 [tomcat-shutdown] INFO  Http11NioProtocol.log:168 - Pausing ProtocolHandler ["http-nio-8083"]
+05-11 19:42:19.820 [tomcat-shutdown] INFO  GracefulShutdown.doShutdown:76 - Graceful shutdown complete
+05-11 19:42:19.820 [Thread-7] INFO  Http11NioProtocol.log:168 - Stopping ProtocolHandler ["http-nio-8083"]
+05-11 19:42:19.822 [Thread-7] INFO  LocalContainerEntityManagerFactoryBean.destroy:660 - Closing JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:42:19.823 [Thread-7] INFO  HikariDataSource.close:349 - HikariPool-2 - Shutdown initiated...
+05-11 19:42:19.825 [Thread-7] INFO  HikariDataSource.close:351 - HikariPool-2 - Shutdown completed.
+05-11 19:42:20.167 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:145 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+05-11 19:42:20.270 [restartedMain] INFO  RepositoryConfigurationDelegate.registerRepositoriesIn:213 - Finished Spring Data repository scanning in 101 ms. Found 9 JPA repository interfaces.
+05-11 19:42:20.373 [restartedMain] INFO  TomcatWebServer.initialize:111 - Tomcat initialized with port 8083 (http)
+05-11 19:42:20.375 [restartedMain] INFO  Http11NioProtocol.log:168 - Initializing ProtocolHandler ["http-nio-8083"]
+05-11 19:42:20.376 [restartedMain] INFO  StandardService.log:168 - Starting service [Tomcat]
+05-11 19:42:20.377 [restartedMain] INFO  StandardEngine.log:168 - Starting Servlet engine: [Apache Tomcat/10.1.54]
+05-11 19:42:20.427 [restartedMain] INFO  [/].log:168 - Initializing Spring embedded WebApplicationContext
+05-11 19:42:20.428 [restartedMain] INFO  ServletWebServerApplicationContext.prepareWebApplicationContext:301 - Root WebApplicationContext: initialization completed in 503 ms
+05-11 19:42:20.505 [restartedMain] INFO  LogHelper.logPersistenceUnitInformation:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+05-11 19:42:20.524 [restartedMain] INFO  RegionFactoryInitiator.initiateService:50 - HHH000026: Second-level cache disabled
+05-11 19:42:20.531 [restartedMain] INFO  SpringPersistenceUnitInfo.addTransformer:87 - No LoadTimeWeaver setup: ignoring JPA class transformer
+05-11 19:42:20.532 [restartedMain] INFO  HikariDataSource.getConnection:109 - HikariPool-3 - Starting...
+05-11 19:42:20.538 [restartedMain] INFO  HikariPool.checkFailFast:580 - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7fa1323e
+05-11 19:42:20.539 [restartedMain] INFO  HikariDataSource.getConnection:122 - HikariPool-3 - Start completed.
+05-11 19:42:20.542 [restartedMain] WARN  Dialect.checkVersion:355 - HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+05-11 19:42:20.543 [restartedMain] WARN  deprecation.constructDialect:153 - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+05-11 19:42:20.543 [restartedMain] INFO  pooling.logConnectionInfo:163 - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 5.5.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+05-11 19:42:20.793 [restartedMain] INFO  JtaPlatformInitiator.initiateService:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+05-11 19:42:21.107 [restartedMain] INFO  LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory:447 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+05-11 19:42:21.355 [restartedMain] WARN  JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:258 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+05-11 19:42:21.456 [restartedMain] WARN  UserDetailsServiceAutoConfiguration.getOrDeducePassword:90 - 
+
+Using generated security password: 53399ba9-eae9-4c90-897b-f311bc611800
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+05-11 19:42:21.457 [restartedMain] INFO  InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer.configure:110 - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+05-11 19:42:21.540 [restartedMain] INFO  OptionalLiveReloadServer.startServer:59 - LiveReload server is running on port 35729
+05-11 19:42:21.549 [restartedMain] INFO  Http11NioProtocol.log:168 - Starting ProtocolHandler ["http-nio-8083"]
+05-11 19:42:21.553 [restartedMain] INFO  TomcatWebServer.start:243 - Tomcat started on port 8083 (http) with context path '/'
+05-11 19:42:21.586 [restartedMain] INFO  ConditionEvaluationDeltaLoggingListener.onApplicationEvent:63 - Condition evaluation unchanged

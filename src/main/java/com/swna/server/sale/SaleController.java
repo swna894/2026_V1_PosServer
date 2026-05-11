@@ -33,11 +33,15 @@ public class SaleController {
     public ResponseEntity<ApiResponse<SaleResponse>> createSale(@Valid @RequestBody SaleRequest request) {
         log.debug("Received sale creation request");
         
+        log.error("======== payment ========");
+        request.payments().forEach(payment -> log.error("{}", payment));
+        log.error("{}", request.discounts());
+
+
         // 1. 요청 검증 (ExceptionUtils 활용)
         if (request.items() == null || request.items().isEmpty()) {
             throw ExceptionUtils.missingField("items");
         }
-        System.err.println("request = " + request);
         // 2. 각 아이템 검증
         request.items().forEach(item -> {
             if (item.barcode() == null || item.barcode().isBlank()) {

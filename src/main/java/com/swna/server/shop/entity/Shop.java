@@ -32,6 +32,7 @@ public class Shop {
     private String fax;
     private String phone;
     private String businessNo;
+    @Builder.Default
     private boolean active = true;
 
     // =========================

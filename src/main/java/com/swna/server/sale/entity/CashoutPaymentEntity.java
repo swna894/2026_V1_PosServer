@@ -1,5 +1,6 @@
 package com.swna.server.sale.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;
@@ -15,11 +16,17 @@ import java.math.BigDecimal;
 public class CashoutPaymentEntity extends PaymentEntity {
 
     private BigDecimal receivedAmount;
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal cashoutAmount;
     
     // ✅ 카드 정보 필드 추가 (CardPaymentEntity와 동일하게)
+   @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String cardNumber;
+    
+    @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String approvalNo;
+    
+    @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String cardIssuer;
 
     // ✅ 모든 필드를 받는 생성자

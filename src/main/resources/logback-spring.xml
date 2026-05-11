@@ -1,0 +1,34 @@
+<configuration>
+   <property name="LOG_PATH" value="./logs" />
+
+   <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${LOG_PATH}/server.log</file>
+
+      <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+         <fileNamePattern>${LOG_PATH}/archived/app.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+
+         <maxHistory>7</maxHistory>
+
+         <totalSizeCap>2GB</totalSizeCap>
+      </rollingPolicy>
+
+      <encoder>
+         <pattern>%d{MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0}.%M:%L - %msg%n</pattern>
+      </encoder>
+   </appender>
+
+   <!-- logback-spring.xml 의 <configuration> 태그 안에 추가 -->
+   <logger name="javafx.css" level="OFF" />
+   <logger name="com.sun.javafx.css" level="OFF" />
+
+   <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+      <encoder>
+         <pattern>%d{MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{0}.%M:%L - %msg%n</pattern>
+      </encoder>
+   </appender>
+
+   <root level="INFO">
+      <appender-ref ref="ROLLING" />
+      <appender-ref ref="CONSOLE" />
+   </root>
+</configuration>
