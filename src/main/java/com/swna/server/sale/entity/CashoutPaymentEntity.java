@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CashoutPaymentEntity extends PaymentEntity {
 
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal receivedAmount;
     @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal cashoutAmount;

@@ -2,6 +2,7 @@ package com.swna.server.sale.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.AccessLevel;
@@ -14,8 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CashPaymentEntity extends PaymentEntity {
 
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal receivedAmount = BigDecimal.ZERO;
-
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal changeAmount = BigDecimal.ZERO;
 
     public CashPaymentEntity(BigDecimal amount, BigDecimal receivedAmount) {

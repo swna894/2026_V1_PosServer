@@ -43,3 +43,5 @@ logs/
 # Spring Boot
 /logs/
 /target/
+/logs/server.log
+logs/server.log
