@@ -1,9 +1,12 @@
 package com.swna.server.sale.usecase;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -13,6 +16,9 @@ import com.swna.server.sale.dto.request.DiscountRequest;
 import com.swna.server.sale.dto.request.PaymentRequest;
 import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
+import com.swna.server.sale.entity.CardPaymentEntity;
+import com.swna.server.sale.entity.CashPaymentEntity;
+import com.swna.server.sale.entity.CashoutPaymentEntity;
 import com.swna.server.sale.entity.PaymentEntity;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
@@ -21,6 +27,7 @@ import com.swna.server.sale.mapper.PaymentMapper;
 import com.swna.server.sale.mapper.SaleItemMapper;
 import com.swna.server.sale.mapper.SaleMapper;
 import com.swna.server.sale.repository.SaleRepository;
+import com.swna.server.sale_status.dto.SaleDto;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -197,5 +204,108 @@ public class ProcessSaleUseCase {
             sale.getSaleAmount(),
             sale.getStatus()
         );
+    }
+
+    // =========================
+    // Sale Status (필요한 것만)
+    // =========================
+    /**
+     * 기간별 판매 목록 조회 (결제 시간 기준)
+     * 복합 결제를 감안하여 합산 정보 반환
+     */
+    public List<SaleDto> getSalesByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
+        List<Sale> sales = saleRepository.findByPaymentDateTimeBetweenWithPayments(startDate, endDate);
+        return sales.stream()
+                .map(this::convertToDto)
+                .toList();
+    }
+
+    /**
+     * Sale 엔티티를 SaleDto로 변환 (복합 결제 합산)
+     * 여러 결제가 있을 경우 모든 결제 정보를 합산하여 하나의 DTO로 반환
+     */
+    private SaleDto convertToDto(Sale sale) {
+        SaleDto dto = new SaleDto();
+        
+        // Sale 기본 정보
+        dto.setId(String.valueOf(sale.getId()));
+        dto.setReceiptNo(sale.getReceiptNo());
+
+        dto.setOriginalAmount(sale.getOriginalAmount());
+        dto.setDiscountAmount(sale.getDiscountAmount());
+        dto.setSaleAmount(sale.getSaleAmount());
+        //dto.setCashier(sale.getCashier());
+        
+        // 결제 정보가 없으면 빈값 반환
+        if (sale.getPayments() == null || sale.getPayments().isEmpty()) {
+            return dto;
+        }
+        
+        // 복합 결제 정보 합산
+        BigDecimal totalReceived = BigDecimal.ZERO;
+        BigDecimal totalCashout = BigDecimal.ZERO;
+        BigDecimal totalCash = BigDecimal.ZERO;
+        BigDecimal totalCredit = BigDecimal.ZERO;
+        BigDecimal totalChange = BigDecimal.ZERO;
+        List<String> paymentTypes = new ArrayList<>();
+        List<String> cardNumbers = new ArrayList<>();
+        List<String> approvalNos = new ArrayList<>();
+        LocalDateTime lastPaymentTime = null;
+        
+        for (PaymentEntity payment : sale.getPayments()) {
+            // 받은 금액 합산
+            if (payment instanceof CashPaymentEntity cash) {
+                totalReceived = totalReceived.add(cash.getReceivedAmount());
+                totalChange = totalChange.add(cash.getChangeAmount());
+                if (cash.getCashAmount() != null) {
+                    totalCash = totalCash.add(cash.getCashAmount());
+                }
+                paymentTypes.add("CASH");
+                
+            } else if (payment instanceof CardPaymentEntity card) {
+                paymentTypes.add("CARD");
+                totalReceived = totalReceived.add(payment.getAmount());
+                if (card.getCreditAmount() != null) {
+                    totalCredit = totalCredit.add(card.getCreditAmount());
+                }
+                if (card.getCardNumber() != null && !card.getCardNumber().isEmpty()) {
+                    cardNumbers.add(card.getCardNumber());
+                }
+                if (card.getApprovalNo() != null && !card.getApprovalNo().isEmpty()) {
+                    approvalNos.add(card.getApprovalNo());
+                }
+                
+            } else if (payment instanceof CashoutPaymentEntity cashout) {
+                paymentTypes.add("CASHOUT");
+                totalReceived = totalReceived.add(cashout.getCreditAmount());
+                totalCashout = totalCashout.add(cashout.getCashoutAmount());
+                totalCredit = cashout.getCreditAmount();  
+                if (cashout.getCardNumber() != null && !cashout.getCardNumber().isEmpty()) {
+                    cardNumbers.add(cashout.getCardNumber());
+                }
+                if (cashout.getApprovalNo() != null && !cashout.getApprovalNo().isEmpty()) {
+                    approvalNos.add(cashout.getApprovalNo());
+                }
+            }
+            
+            // 가장 늦은 결제 시간
+            if (lastPaymentTime == null || payment.getPaymentDateTime().isAfter(lastPaymentTime)) {
+                lastPaymentTime = payment.getPaymentDateTime();
+            }
+        }
+        
+        dto.setReceivedAmount(totalReceived);
+        dto.setCashoutAmount(totalCashout);
+        dto.setCreditAmount(totalCredit);
+        dto.setChangeAmount(totalChange);
+        dto.setPaymentType(paymentTypes.toString());
+        dto.setCashAmount(totalCash);
+        dto.setCardNumber("" + cardNumbers);
+        //dto.setApprovalNo(String.join(",", approvalNos));
+        if (lastPaymentTime != null) {
+            dto.setPaymentDateTime(lastPaymentTime.format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        }
+        System.out.println("lastPaymentTime: " + dto);
+        return dto;
     }
 }

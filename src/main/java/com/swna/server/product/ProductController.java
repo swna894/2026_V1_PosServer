@@ -47,6 +47,28 @@ public class ProductController {
     }
 
     /**
+     * 특정 업체명에 해당하는 라벨 목록 조회
+     * GET /products/labels/search/supplier?name=업체명
+     */
+    @GetMapping("/labels/search/supplier")
+    public ApiResponse<List<ProductLabelDto>> getLabelsBySupplierName(
+            @RequestParam(name = "name", required = false) String name
+    ) {
+        log.info("[API] Search labels by supplier name: {}", name);
+        
+        List<ProductLabelDto> labels;
+        if (name == null || name.isEmpty() || "전체".equals(name)) {
+            // 이름이 없거나 "전체"인 경우 기본 전체 라벨 조회 (기존 로직 활용)
+            labels = productService.getProductLabelsWithCompany(65);
+        } else {
+            // 특정 업체명으로 조회 (기존 getProductLabelsByCompany 로직 활용)
+            labels = productService.getProductLabelsByCompany(name);
+        }
+        
+        return ApiResponse.success(labels);
+    }
+    
+    /**
      * 특정 회사의 상품만 조회
      * GET /products/labels/company?company=ABC Trading
      */

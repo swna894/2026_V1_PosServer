@@ -1,17 +1,25 @@
 package com.swna.server.sale;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.common.response.ApiResponse;
 import com.swna.server.sale.dto.request.SaleRequest;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.usecase.ProcessSaleUseCase;
+import com.swna.server.sale_status.dto.SaleDto;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -53,5 +61,34 @@ public class SaleController {
             
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success("SALE_CREATED", response));
+    }
+
+    @GetMapping("/date-range")
+    public ApiResponse<List<SaleDto>> getSalesByDateRange(
+             @RequestParam("startDate")  LocalDateTime startDate,
+             @RequestParam("endDate") LocalDateTime endDate) {
+        List<SaleDto> sales = processSaleUseCase.getSalesByDateRange(startDate, endDate);
+
+        log.info("result count: {}", sales == null ? "null" : sales.size());
+        if (sales != null && !sales.isEmpty()) {
+            log.info("first sale id: {}", sales.get(0).getId());
+            log.info("first sale receiptNo: {}", sales.get(0).getReceiptNo());
+            log.info("first sale saleAmount: {}", sales.get(0).getSaleAmount());
+            
+            // 상세 로그 (JSON 형식)
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                String json = mapper.writeValueAsString(sales);
+                log.info("sales JSON: {}", json);
+            } catch (Exception e) {
+                log.error("Failed to convert to JSON", e);
+            }
+        } else {
+            log.warn("No sales found for date range: {} ~ {}", startDate, endDate);
+        }
+        
+        log.info("===== getSalesByDateRange finished =====");
+
+        return ApiResponse.success(sales);
     }
 }

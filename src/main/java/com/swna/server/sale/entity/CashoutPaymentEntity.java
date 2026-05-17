@@ -16,7 +16,8 @@ import java.math.BigDecimal;
 public class CashoutPaymentEntity extends PaymentEntity {
 
     @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
-    private BigDecimal receivedAmount;
+    private BigDecimal creditAmount;
+    
     @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
     private BigDecimal cashoutAmount;
     
@@ -40,7 +41,7 @@ public class CashoutPaymentEntity extends PaymentEntity {
         String cardIssuer
     ) {
         super(amount);
-        this.receivedAmount = receivedAmount;
+        this.creditAmount = receivedAmount;
         this.cashoutAmount = cashoutAmount;
         this.approvalNo = approvalNo;
         this.cardNumber = cardNumber;

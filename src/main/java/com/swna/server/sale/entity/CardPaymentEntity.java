@@ -20,6 +20,12 @@ public class CardPaymentEntity extends PaymentEntity {
     @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String approvalNo;
     
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
+    private BigDecimal creditAmount;
+
+    @Column(columnDefinition = "DECIMAL(19,2) DEFAULT 0.00")
+    private BigDecimal cashAmount;
+
     @Column(columnDefinition = "VARCHAR(31) DEFAULT ''")
     private String cardNumber;
 
@@ -38,6 +44,26 @@ public class CardPaymentEntity extends PaymentEntity {
         this.cardIssuer = cardIssuer;
     }
 
+    // ✅ creditAmount와 cashAmount를 추가로 받아 채워주는 생성자
+    public CardPaymentEntity(BigDecimal amount, BigDecimal creditAmount, BigDecimal cashAmount, String approvalNo, String cardNumber) {
+        super(amount);
+        this.creditAmount = creditAmount;
+        this.cashAmount = cashAmount;
+        this.approvalNo = approvalNo;
+        this.cardNumber = maskCardNumber(cardNumber);
+    }
+    
+    // ✅ creditAmount와 cashAmount를 추가로 받아 채워주는 생성자 추가
+    public CardPaymentEntity(BigDecimal amount, BigDecimal creditAmount, BigDecimal cashAmount, String approvalNo, String cardNumber, String cardIssuer) {
+        super(amount);
+        this.creditAmount = creditAmount;
+        this.cashAmount = cashAmount;
+        this.approvalNo = approvalNo;
+        this.cardNumber = maskCardNumber(cardNumber);
+        this.cardIssuer = cardIssuer;
+    }
+
+
     public static CardPaymentEntity of(BigDecimal amount, String approvalNo) {
         return new CardPaymentEntity(amount, approvalNo);
     }
@@ -46,6 +72,10 @@ public class CardPaymentEntity extends PaymentEntity {
         return new CardPaymentEntity(amount, approvalNo, cardNumber, cardIssuer);
     }
 
+    // ✅ 컴파일 에러 해결을 위해 새로 추가한 5개짜리 정적 팩토리 메서드
+    public static CardPaymentEntity of(BigDecimal amount, BigDecimal creditAmount, BigDecimal cashAmount, String approvalNo, String cardNumber) {
+        return new CardPaymentEntity(amount, creditAmount, cashAmount, approvalNo, cardNumber);
+    }
     @Override
     public String getPaymentMethodName() {
         return PaymentType.CARD.getValue();

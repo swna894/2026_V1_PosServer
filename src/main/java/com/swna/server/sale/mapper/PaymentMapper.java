@@ -35,12 +35,28 @@ public class PaymentMapper {
                 request.receivedAmount() != null ? request.receivedAmount() : request.amount()
             );
             
-            case CARD -> CardPaymentEntity.of(
-                request.amount(),
-                request.approvalNo() != null ? request.approvalNo() : generateApprovalNo(),
-                maskCardNumber(request.cardNumber()),
-                null
-            );
+            // ✅ CARD 결제 처리 시 creditAmount, cashAmount를 함께 넘기도록 수정
+            case CARD -> {
+                BigDecimal creditAmount = request.receivedAmount() != null 
+                    ? request.receivedAmount() 
+                    : request.amount(); // 받은 금액이 없다면 전체 amount를 creditAmount로 산정
+
+                BigDecimal cashAmount = request.cashoutAmount() != null // (필요 시 현금화 금액 매핑)
+                    ? request.cashoutAmount() 
+                    : BigDecimal.ZERO;
+
+                String approvalNo = request.approvalNo() != null 
+                    ? request.approvalNo() 
+                    : generateApprovalNo();
+
+                yield CardPaymentEntity.of(
+                        request.amount(),
+                        creditAmount,
+                        cashAmount,
+                        approvalNo,
+                        maskCardNumber(request.cardNumber())
+                    );  
+            }
             
             case CASHOUT -> {
                 BigDecimal receivedAmount = request.receivedAmount() != null 
