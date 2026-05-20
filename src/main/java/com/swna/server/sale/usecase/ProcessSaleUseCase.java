@@ -255,12 +255,12 @@ public class ProcessSaleUseCase {
         for (PaymentEntity payment : sale.getPayments()) {
             // 받은 금액 합산
             if (payment instanceof CashPaymentEntity cash) {
+                paymentTypes.add("CASH");
                 totalReceived = totalReceived.add(cash.getReceivedAmount());
                 totalChange = totalChange.add(cash.getChangeAmount());
                 if (cash.getCashAmount() != null) {
                     totalCash = totalCash.add(cash.getCashAmount());
                 }
-                paymentTypes.add("CASH");
                 
             } else if (payment instanceof CardPaymentEntity card) {
                 paymentTypes.add("CARD");
@@ -301,11 +301,9 @@ public class ProcessSaleUseCase {
         dto.setPaymentType(paymentTypes.toString());
         dto.setCashAmount(totalCash);
         dto.setCardNumber("" + cardNumbers);
-        //dto.setApprovalNo(String.join(",", approvalNos));
         if (lastPaymentTime != null) {
             dto.setPaymentDateTime(lastPaymentTime.format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
         }
-        System.out.println("lastPaymentTime: " + dto);
         return dto;
     }
 }

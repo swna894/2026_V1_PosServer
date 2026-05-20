@@ -46,11 +46,14 @@ public class SaleItem extends BaseEntity {
 
     @Column(nullable = false)
     private int quantity;
+    
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal cost; // 아이템 할인액 (클라이언트 값)
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal salePrice; // 판매 시점 단가 (클라이언트 값)
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal discountPrice; // 아이템 할인액 (클라이언트 값)
 
     @Enumerated(EnumType.STRING)
@@ -74,6 +77,7 @@ public class SaleItem extends BaseEntity {
                 .productId(product.getId())
                 .barcode(product.getBarcode())
                 .quantity(request.quantity())
+                .cost(product.getCost())
                 .salePrice(request.sellingPrice())      // ✅ 클라이언트 값 그대로
                 .discountValue(request.discountValue()) // ✅ 클라이언트 값 그대로
                 .discountType(request.discountType())
@@ -83,11 +87,12 @@ public class SaleItem extends BaseEntity {
     }
 
     @Builder
-    private SaleItem(Long productId, String barcode, int quantity, BigDecimal salePrice,
+    private SaleItem(Long productId, String barcode, int quantity, BigDecimal cost, BigDecimal salePrice,
                     BigDecimal discountValue, DiscountType discountType, BigDecimal totalAmount, String comment) {
         this.productId = productId;
         this.barcode = barcode;
         this.quantity = quantity;
+        this.cost = cost;
         this.salePrice = salePrice;
         this.discountPrice = discountValue;
         this.discountType = discountType;
@@ -117,5 +122,8 @@ public class SaleItem extends BaseEntity {
      */
     public BigDecimal getDiscountAmount() {
         return this.discountPrice.multiply(BigDecimal.valueOf(this.quantity));
+    }
+    public BigDecimal getCostAmount() {
+        return this.cost.multiply(BigDecimal.valueOf(this.quantity));
     }
 }

@@ -1,6 +1,7 @@
 package com.swna.server.sale.mapper;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Component;
 
@@ -93,7 +94,8 @@ public Product handleProductNotFound(SaleItemRequest request) {
         // ===================================================
         String barcode = request.barcode();
         BigDecimal originalPrice = request.originalPrice();   // 정가
-        BigDecimal sellingPrice = request.sellingPrice();     // 판매가 (할인 적용가)
+        BigDecimal sellingPrice = request.sellingPrice(); 
+            // 판매가 (할인 적용가)
         //BigDecimal discountValue = request.discountValue();   // 할인 금액
         
         // originalPrice 필수 검증
@@ -121,10 +123,9 @@ public Product handleProductNotFound(SaleItemRequest request) {
         String tempCode = "QUICK_" + System.currentTimeMillis();  // 고유 코드 생성
         String description = String.format("Temporary Product - %.2f", originalPrice);
         
+        BigDecimal rate = new BigDecimal("0.7");
         // 원가(cost) 설정: 판매가가 있으면 판매가, 없으면 정가로 설정
-        BigDecimal cost = (sellingPrice != null && sellingPrice.compareTo(BigDecimal.ZERO) > 0) 
-                        ? sellingPrice 
-                        : originalPrice;
+        BigDecimal cost = originalPrice.multiply(rate).setScale(2, RoundingMode.UP);
 
         
         // ===================================================

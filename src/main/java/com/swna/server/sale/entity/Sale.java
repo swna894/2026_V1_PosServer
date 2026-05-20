@@ -51,8 +51,8 @@ public class Sale extends BaseEntity {
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal saleAmount;
 
-    @Column(precision = 19, scale = 2)
-    private BigDecimal globalDiscountAmount;  // 전체 할인 금액 (표시용, 계산 미사용)
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal costAmount;
 
     private String memo;
 
@@ -71,13 +71,13 @@ public class Sale extends BaseEntity {
         sale.addItems(items);
         
         // 전체 할인은 표시 목적으로만 저장 (계산에는 사용하지 않음)
-        if (discounts != null && !discounts.isEmpty()) {
-            sale.globalDiscountAmount = discounts.stream()
-                    .map(Discount::getValue)
-                    .reduce(BigDecimal.ZERO, BigDecimal::add)
-                    .setScale(2, RoundingMode.HALF_UP);
-            log.debug("Global discount amount (for display only): {}", sale.globalDiscountAmount);
-        }
+        // if (discounts != null && !discounts.isEmpty()) {
+        //     sale.globalDiscountAmount = discounts.stream()
+        //             .map(Discount::getValue)
+        //             .reduce(BigDecimal.ZERO, BigDecimal::add)
+        //             .setScale(2, RoundingMode.HALF_UP);
+        //     log.debug("Global discount amount (for display only): {}", sale.globalDiscountAmount);
+        // }
         
         // items의 값으로만 금액 계산 (클라이언트가 이미 할인 분배함)
         sale.recalculateAmounts();
@@ -132,6 +132,11 @@ public class Sale extends BaseEntity {
         // saleAmount = 모든 item의 salePrice × quantity (클라이언트 최종 금액)
         this.saleAmount = items.stream()
                 .map(SaleItem::getTotalAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
+
+        this.costAmount = items.stream()
+                .map(SaleItem::getCostAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .setScale(2, RoundingMode.HALF_UP);
     }

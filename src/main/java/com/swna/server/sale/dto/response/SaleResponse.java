@@ -11,7 +11,8 @@ public record SaleResponse(
         String status,
         BigDecimal totalAmount,
         BigDecimal discountAmount,
-        BigDecimal finalAmount
+        BigDecimal finalAmount,
+        BigDecimal costAmout
 ) {
 
     /**
@@ -24,21 +25,9 @@ public record SaleResponse(
                 sale.getStatus() != null ? sale.getStatus().name() : SaleStatus.PENDING.name(),
                 sale.getOriginalAmount(),
                 sale.getDiscountAmount(),
-                sale.getSaleAmount()
+                sale.getSaleAmount(),
+                sale.getCostAmount()
         );
     }
     
-    /**
-     * 간단한 변환 (Product 정보 없이 - 개발/테스트용)
-     */
-    public static SaleResponse of(Sale sale) {
-        return new SaleResponse(
-                sale.getId(),
-                sale.getReceiptNo(),
-                sale.getStatus().name(),
-                sale.getOriginalAmount(),
-                sale.getDiscountAmount(),
-                sale.getSaleAmount()
-        );
-    }
 }
