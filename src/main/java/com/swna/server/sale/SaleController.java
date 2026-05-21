@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.common.response.ApiResponse;
 import com.swna.server.sale.dto.request.SaleRequest;
+import com.swna.server.sale.dto.response.SaleItemResponse;
 import com.swna.server.sale.dto.response.SaleResponse;
 import com.swna.server.sale.usecase.ProcessSaleUseCase;
+import com.swna.server.sale.usecase.SaleItemService;
 import com.swna.server.sale_status.dto.SaleDto;
 
 import jakarta.validation.Valid;
@@ -32,6 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SaleController {
 
     private final ProcessSaleUseCase processSaleUseCase;
+    private final SaleItemService saleItemService;
 
     /**
      * 주문 + 할인 + 결제 통합 처리 API
@@ -90,5 +94,17 @@ public class SaleController {
         log.info("===== getSalesByDateRange finished =====");
 
         return ApiResponse.success(sales);
+    }
+
+    /**
+     * 특정 판매 건(saleId)의 아이템 목록을 조회합니다.
+     */
+    @GetMapping("/{saleId}/items")
+    public ResponseEntity<ApiResponse<List<SaleItemResponse>>> getSaleItems(@PathVariable("saleId") Long saleId) {
+        
+        List<SaleItemResponse> responseData = saleItemService.getSaleItemsBySaleId(saleId);
+        
+        // ApiResponse.success 형식으로 패킹하여 반환
+        return ResponseEntity.ok(ApiResponse.success("Sale items retrieved successfully.", responseData));
     }
 }

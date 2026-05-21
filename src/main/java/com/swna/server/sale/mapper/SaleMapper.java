@@ -26,20 +26,20 @@ public class SaleMapper {
     /**
      * SaleItem → SaleItemResponse 변환
      */
-    public SaleItemResponse toSaleItemResponse(SaleItem item) {
-        Long productId = item.getProductId();
-        if (productId == null) {
-            throw new IllegalArgumentException(
-                String.format("Product ID is null - Barcode: %s", item.getBarcode())
-            );
-        }
+    //public SaleItemResponse toSaleItemResponse(SaleItem item) {
+    //     Long productId = item.getProductId();
+    //     if (productId == null) {
+    //         throw new IllegalArgumentException(
+    //             String.format("Product ID is null - Barcode: %s", item.getBarcode())
+    //         );
+    //     }
         
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalArgumentException(
-                    String.format("Product not found - ID: %d, Barcode: %s", 
-                        productId, item.getBarcode())
-                ));
+    //     Product product = productRepository.findById(productId)
+    //             .orElseThrow(() -> new IllegalArgumentException(
+    //                 String.format("Product not found - ID: %d, Barcode: %s", 
+    //                     productId, item.getBarcode())
+    //             ));
         
-        return SaleItemResponse.from(item, product.getDescription());
-    }
+    //     return SaleItemResponse.from(item, product.getDescription());
+    // }
 }
