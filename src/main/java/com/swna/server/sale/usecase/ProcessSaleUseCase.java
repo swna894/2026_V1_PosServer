@@ -233,6 +233,7 @@ public class ProcessSaleUseCase {
 
         dto.setOriginalAmount(sale.getOriginalAmount());
         dto.setDiscountAmount(sale.getDiscountAmount());
+        dto.setCostAmount(sale.getCostAmount());
         dto.setSaleAmount(sale.getSaleAmount());
         //dto.setCashier(sale.getCashier());
         
@@ -298,7 +299,7 @@ public class ProcessSaleUseCase {
         dto.setCashoutAmount(totalCashout);
         dto.setCreditAmount(totalCredit);
         dto.setChangeAmount(totalChange);
-        dto.setPaymentType(paymentTypes.toString());
+        dto.setPaymentType(paymentTypes.toString().replaceAll("[\\[\\]]", ""));
         dto.setCashAmount(totalCash);
         dto.setCardNumber("" + cardNumbers);
         if (lastPaymentTime != null) {

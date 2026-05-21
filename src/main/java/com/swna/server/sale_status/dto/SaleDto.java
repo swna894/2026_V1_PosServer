@@ -1,9 +1,6 @@
 package com.swna.server.sale_status.dto;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
 
@@ -12,6 +9,7 @@ public class SaleDto {
     private String id;
     private BigDecimal originalAmount;
     private BigDecimal discountAmount;
+    private BigDecimal costAmount;
     private BigDecimal saleAmount;
     
     private BigDecimal creditAmount;
