@@ -34,14 +34,14 @@ public class CashoutPaymentEntity extends PaymentEntity {
     // ✅ 모든 필드를 받는 생성자
     private CashoutPaymentEntity(
         BigDecimal amount,
-        BigDecimal receivedAmount,
+        BigDecimal creditAmount,
         BigDecimal cashoutAmount,
         String approvalNo,
         String cardNumber,
         String cardIssuer
     ) {
         super(amount);
-        this.creditAmount = receivedAmount;
+        this.creditAmount = creditAmount;
         this.cashoutAmount = cashoutAmount;
         this.approvalNo = approvalNo;
         this.cardNumber = cardNumber;
@@ -51,12 +51,12 @@ public class CashoutPaymentEntity extends PaymentEntity {
     // ✅ 카드 정보 포함한 of 메서드
     public static CashoutPaymentEntity of(
         BigDecimal amount,
-        BigDecimal receivedAmount,
+        BigDecimal creditAmount,
         BigDecimal cashoutAmount,
         String approvalNo,
         String cardNumber
     ) {
-        return new CashoutPaymentEntity(amount, receivedAmount, cashoutAmount, approvalNo, cardNumber, null);
+        return new CashoutPaymentEntity(amount, creditAmount, cashoutAmount, approvalNo, cardNumber, null);
     }
 
     @Override

@@ -8,8 +8,9 @@ import com.swna.server.sale.entity.SaleItem;
  * JavaFX 클라이언트의 SaleItemDto 스펙에 맞추어 리팩토링 완료
  */
 public record SaleItemResponse(
-        String id,            // 클라이언트 스펙(String)에 맞춤
+        long id,            // 클라이언트 스펙(String)에 맞춤
         String barcode,
+        String description,  // ✅ 추가: 상품 설명
         BigDecimal discountPrice,
         BigDecimal cost,
         BigDecimal salePrice,
@@ -27,18 +28,20 @@ public record SaleItemResponse(
         if (cost == null) cost = BigDecimal.ZERO;
         if (salePrice == null) salePrice = BigDecimal.ZERO;
         if (comment == null) comment = "";
+        if (description == null) description = "";  // ✅ description null 체크
     }
 
     /**
      * 엔티티 및 추가 정보를 바탕으로 정적 팩토리 메서드 구현
      * 기존 SaleItem 엔티티의 메서드명을 기반으로 매핑했습니다.
      */
-    public static SaleItemResponse from(SaleItem item, BigDecimal cost, String supplier) {
+    public static SaleItemResponse from(SaleItem item, BigDecimal cost, String supplier, String description) {
         return new SaleItemResponse(
-                item.getProductId() != null ? String.valueOf(item.getProductId()) : null, // Long -> String 변환
+                item.getId(),
                 item.getBarcode(),
+                description,  // ✅ product description 전달
                 item.getDiscountPrice(),
-                cost, // 엔티티에 cost/supplier가 없다면 외부 파라미터나 기본값으로 처리하도록 구성
+                cost,
                 item.getSalePrice(),
                 item.getQuantity(),
                 supplier,
@@ -54,8 +57,9 @@ public record SaleItemResponse(
      * 빌더 패턴 구현 (내부 클래스)
      */
     public static class Builder {
-        private String id;
+        private long id;
         private String barcode;
+        private String description;  // ✅ 추가
         private BigDecimal discountPrice = BigDecimal.ZERO;
         private BigDecimal cost = BigDecimal.ZERO;
         private BigDecimal salePrice = BigDecimal.ZERO;
@@ -63,8 +67,9 @@ public record SaleItemResponse(
         private String supplier;
         private String comment;
 
-        public Builder id(String id) { this.id = id; return this; }
+        public Builder id(long id) { this.id = id; return this; }
         public Builder barcode(String barcode) { this.barcode = barcode; return this; }
+        public Builder description(String description) { this.description = description; return this; }  // ✅ 추가
         public Builder discountPrice(BigDecimal discountPrice) { this.discountPrice = discountPrice; return this; }
         public Builder cost(BigDecimal cost) { this.cost = cost; return this; }
         public Builder salePrice(BigDecimal salePrice) { this.salePrice = salePrice; return this; }
@@ -76,6 +81,7 @@ public record SaleItemResponse(
             return new SaleItemResponse(
                     this.id,
                     this.barcode,
+                    this.description,  // ✅ 추가
                     this.discountPrice,
                     this.cost,
                     this.salePrice,

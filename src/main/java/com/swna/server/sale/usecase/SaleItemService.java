@@ -39,8 +39,8 @@ public class SaleItemService {
                     // ※ 만약 상품명(productName) 필드가 레코드에 다시 추가된다면 여기서 product.getName()을 쓰시면 됩니다.
 
                     // 3. 새로 제시해주신 from 메서드 규격에 맞추어 명시적으로 return 합니다.
-                    return SaleItemResponse.from(item, cost, supplier);
+                    return SaleItemResponse.from(item, cost, supplier, product != null ? product.getDescription() : "");
                 })
-                .collect(Collectors.toList());
+                .toList();
     }
 }

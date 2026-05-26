@@ -34,6 +34,7 @@ public class CashPaymentEntity extends PaymentEntity {
         super(amount);
         this.receivedAmount = receivedAmount;
         this.cashAmount = cashAmount; // ✅ 정밀하게 cashAmount를 할당
+        this.changeAmount = receivedAmount.subtract(amount);
     }
 
     // ✅ 기존 2개짜리 호환용 생성자 및 팩토리

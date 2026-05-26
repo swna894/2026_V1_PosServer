@@ -48,20 +48,20 @@ public class SaleItem extends BaseEntity {
     private int quantity;
     
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal cost; // 아이템 할인액 (클라이언트 값)
+    private BigDecimal cost = BigDecimal.ZERO; // 아이템 할인액 (클라이언트 값)
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal salePrice; // 판매 시점 단가 (클라이언트 값)
+    private BigDecimal salePrice = BigDecimal.ZERO; // 판매 시점 단가 (클라이언트 값)
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal discountPrice; // 아이템 할인액 (클라이언트 값)
+    private BigDecimal discountPrice = BigDecimal.ZERO; // 아이템 할인액 (클라이언트 값)
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private DiscountType discountType;
 
     @Column(nullable = false)
-    private BigDecimal totalAmount; // 최종 금액 = salePrice × quantity
+    private BigDecimal totalAmount  = BigDecimal.ZERO; // 최종 금액 = salePrice × quantity
 
     private String comment;
 
