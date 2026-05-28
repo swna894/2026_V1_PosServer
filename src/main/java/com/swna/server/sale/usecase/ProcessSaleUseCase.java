@@ -20,8 +20,10 @@ import com.swna.server.sale.entity.CardPaymentEntity;
 import com.swna.server.sale.entity.CashPaymentEntity;
 import com.swna.server.sale.entity.CashoutPaymentEntity;
 import com.swna.server.sale.entity.PaymentEntity;
+import com.swna.server.sale.entity.PaymentType;
 import com.swna.server.sale.entity.Sale;
 import com.swna.server.sale.entity.SaleItem;
+import com.swna.server.sale.entity.SaleStatus;
 import com.swna.server.sale.event.SaleCompletedEvent;
 import com.swna.server.sale.mapper.PaymentMapper;
 import com.swna.server.sale.mapper.SaleItemMapper;
@@ -70,12 +72,23 @@ public class ProcessSaleUseCase {
     // =========================
 
     private Sale createSale(SaleRequest request) {
+
         List<SaleItem> items = createSaleItems(request);
         Sale sale = Sale.create(items);
         
-        applyDiscountsIfPresent(sale, request.discounts());
-        sale.assignReceiptNo(generateReceiptNumber());
+        // ✅ PaymentType.DELETE 체크
+        PaymentType paymentType = request.payments().get(0).type();
         
+        if (paymentType == PaymentType.DELETE) {
+            // DELETE 결제인 경우 바로 DELETED 상태로 설정
+            sale.setStatusDirectly(SaleStatus.DELETED);
+            sale.assignReceiptNo(generateDeleteReceiptNumber());
+        } else {
+            // 일반 결제인 경우 정상 처리
+            applyDiscountsIfPresent(sale, request.discounts());
+            sale.assignReceiptNo(generateReceiptNumber());
+        }
+         
         return sale;
     }
 
@@ -143,6 +156,14 @@ public class ProcessSaleUseCase {
         
         return timestamp + "_" + random;
     }
+
+    
+        // ✅ DELETE 전용 receipt 번호 생성
+        private String generateDeleteReceiptNumber() {
+            String timestamp = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern(DATE_TIME_PATTERN));
+            return timestamp + "_" + "DEL";
+        }
 
     // =========================
     // Validation & Logging Methods
@@ -235,6 +256,7 @@ public class ProcessSaleUseCase {
         dto.setDiscountAmount(sale.getDiscountAmount());
         dto.setCostAmount(sale.getCostAmount());
         dto.setSaleAmount(sale.getSaleAmount());
+        dto.setStatus(sale.getStatus().name());
         //dto.setCashier(sale.getCashier());
         
         // 결제 정보가 없으면 빈값 반환

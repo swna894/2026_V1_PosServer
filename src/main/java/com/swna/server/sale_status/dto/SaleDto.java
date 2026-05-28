@@ -23,4 +23,5 @@ public class SaleDto {
     private String cardNumber;
     private String cashier;
     private String paymentDateTime;
+    private String status;
 }

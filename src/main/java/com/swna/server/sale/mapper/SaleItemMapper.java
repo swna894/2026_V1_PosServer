@@ -121,7 +121,7 @@ public Product handleProductNotFound(SaleItemRequest request) {
         // Step 3: 임시 상품 정보 생성
         // ===================================================
         String tempCode = "QUICK_" + System.currentTimeMillis();  // 고유 코드 생성
-        String description = String.format("Temporary Product - %.2f", originalPrice);
+        String description = String.format("Temp Product - %.2f", originalPrice);
         
         BigDecimal rate = new BigDecimal("0.7");
         // 원가(cost) 설정: 판매가가 있으면 판매가, 없으면 정가로 설정

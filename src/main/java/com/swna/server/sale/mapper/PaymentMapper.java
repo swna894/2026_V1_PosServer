@@ -34,6 +34,11 @@ public class PaymentMapper {
                 request.amount(),
                 request.receivedAmount() != null ? request.receivedAmount() : request.amount()
             );
+
+            case DELETE -> CashPaymentEntity.of(
+                request.amount(),
+                request.receivedAmount() != null ? request.receivedAmount() : request.amount()
+            );
             
             // ✅ CARD 결제 처리 시 creditAmount, cashAmount를 함께 넘기도록 수정
             case CARD -> {

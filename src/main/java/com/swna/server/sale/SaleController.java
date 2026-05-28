@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,9 @@ public class SaleController {
     private final ProcessSaleUseCase processSaleUseCase;
     private final SaleItemService saleItemService;
 
+
+
+
     /**
      * 주문 + 할인 + 결제 통합 처리 API
      * 클라이언트는 상품, 할인, 결제 정보를 SaleRequest 하나에 담아 전송합니다.
@@ -67,6 +71,9 @@ public class SaleController {
                 .body(ApiResponse.success("SALE_CREATED", response));
     }
 
+
+
+
     @GetMapping("/date-range")
     public ApiResponse<List<SaleDto>> getSalesByDateRange(
              @RequestParam("startDate")  LocalDateTime startDate,
@@ -96,6 +103,9 @@ public class SaleController {
         return ApiResponse.success(sales);
     }
 
+
+
+
     /**
      * 특정 판매 건(saleId)의 아이템 목록을 조회합니다.
      */
@@ -107,4 +117,5 @@ public class SaleController {
         // ApiResponse.success 형식으로 패킹하여 반환
         return ResponseEntity.ok(ApiResponse.success("Sale items retrieved successfully.", responseData));
     }
+
 }

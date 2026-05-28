@@ -22,6 +22,7 @@ public class PaymentFactory {
         
         PaymentEntity entity = switch (request.type()) {
             case CASH -> createCashPayment(request);
+            case DELETE -> createCashPayment(request);
             case CARD -> createCardPayment(request);
             case CASHOUT -> createCashoutPayment(request);  // ✅ 추가
         };
