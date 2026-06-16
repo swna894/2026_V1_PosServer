@@ -19,7 +19,9 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class SaleItemMapper {
@@ -93,8 +95,9 @@ public Product handleProductNotFound(SaleItemRequest request) {
         // Step 1: 요청 데이터 추출 및 검증
         // ===================================================
         String barcode = request.barcode();
+        String description = null;
+
         BigDecimal originalPrice = request.originalPrice();   // 정가
-        BigDecimal sellingPrice = request.sellingPrice(); 
             // 판매가 (할인 적용가)
         //BigDecimal discountValue = request.discountValue();   // 할인 금액
         
@@ -103,6 +106,14 @@ public Product handleProductNotFound(SaleItemRequest request) {
             throw ExceptionUtils.missingField("originalPrice");
         }
         
+        if (barcode != null && barcode.length() > 12 && barcode.contains("QUICK_")) {
+        // "QUICK_" 가 시작되는 인덱스를 찾고, "QUICK_"(6글자) 만큼 뒤에서부터 문자열을 자릅니다.
+            description = barcode.substring(barcode.indexOf("QUICK_") + 6);
+            description = String.format("UR Item : %s ($%.2f)", description, originalPrice);
+        } else {
+            description = String.format("Temporary Item - %.2f", originalPrice);
+        }
+        log.info("description : {} ", description);
         // 가격 음수 검증
         if (originalPrice.compareTo(BigDecimal.ZERO) < 0) {
             throw ExceptionUtils.invalidInputWithValue(
@@ -121,7 +132,6 @@ public Product handleProductNotFound(SaleItemRequest request) {
         // Step 3: 임시 상품 정보 생성
         // ===================================================
         String tempCode = "QUICK_" + System.currentTimeMillis();  // 고유 코드 생성
-        String description = String.format("Temp Product - %.2f", originalPrice);
         
         BigDecimal rate = new BigDecimal("0.7");
         // 원가(cost) 설정: 판매가가 있으면 판매가, 없으면 정가로 설정
