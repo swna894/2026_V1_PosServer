@@ -1,7 +1,6 @@
 package com.swna.server.auth.application.usecase;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
