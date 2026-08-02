@@ -13,6 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.swna.server.auth.jwt.JwtFilter;
 
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 
 /*
@@ -41,11 +42,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         return http
+                // 1. 불필요한 기본 인증 방식을 명시적으로 비활성화
                 .csrf(csrf -> csrf.disable())
+                .formLogin(form -> form.disable())
+                .httpBasic(basic -> basic.disable())
+                
+                // 2. 세션을 사용하지 않음 (Stateless)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
+                // 3. CORS 설정 (필요 시 주석 해제)
+                // .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+
+                // 4. 권한 설정
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -53,11 +62,19 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
 
+                // 5. 예외 처리 (401, 403 표준 응답 설정)
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint((request, response, authException) -> 
+                                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "인증에 실패했습니다."))
+                        .accessDeniedHandler((request, response, accessDeniedException) -> 
+                                response.sendError(HttpServletResponse.SC_FORBIDDEN, "권한이 없습니다."))
+                )
+
+                // 6. JWT 필터 배치
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    // 🔥 PasswordEncoder
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
