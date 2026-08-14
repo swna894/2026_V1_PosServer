@@ -18,7 +18,6 @@ import java.util.Optional;
  * @author SWNA
  * @version 1.0
  */
-@Repository
 public interface ProductStockRepository extends JpaRepository<ProductStock, Long> {
     
     // ===================================================
@@ -32,6 +31,9 @@ public interface ProductStockRepository extends JpaRepository<ProductStock, Long
      * @return Optional<ProductStock>
      */
     Optional<ProductStock> findByProduct(Product product);
+
+    @Query("SELECT ps FROM ProductStock ps WHERE ps.product.id IN :productIds")
+    List<ProductStock> findAllByProductIdIn(@Param("productIds") List<Long> productIds); // 🔥 Bulk 조회 추가
     
     /**
      * 특정 상품 ID로 재고 정보 조회

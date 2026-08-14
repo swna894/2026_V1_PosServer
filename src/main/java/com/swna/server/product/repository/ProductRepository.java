@@ -17,6 +17,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByBarcode(String barcode);
 
     List<Product> findByDeletedFalse();
+    List<Product> findAllByBarcodeIn(List<String> barcodes); // 🔥 Bulk 조회 추가
 
     /**
      * 랜덤 상품 조회 (기존)

@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
  * - Product 바코드 동기화 비즈니스 로직(isNewProduct)은 동작 변경 없이 그대로 유지.
  */
 @RestController
-@RequestMapping("/api/unpack")
+@RequestMapping("/api/unpacks")
 @RequiredArgsConstructor
 public class RestUnpackController {
 

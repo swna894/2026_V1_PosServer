@@ -14,7 +14,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
-@Repository
 public interface SupplierRepository extends JpaRepository<Supplier, Long> {
     
     // ===== 기본 조회 메서드 =====

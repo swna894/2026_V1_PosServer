@@ -54,11 +54,11 @@ public class UnpackService {
                 dto.items().forEach(itemDto -> unpack.addItem(itemDto.toEntity()));
             }
             return unpack;
-        }).collect(Collectors.toList());
+        }).toList();
 
         return unpackRepository.saveAll(unpacks).stream()
                 .map(UnpackDto::fromEntity)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<UnpackDto> getUnpacksByPeriod(Map<String, String> parameter) {
@@ -94,6 +94,7 @@ public class UnpackService {
             item.setPriceout(product.getPrice() != null ? product.getPrice().doubleValue() : 0.0);
             item.setMinOrderQty(12);
             item.setMinStock(6);
+            item.setOldPricein(product.getCost().doubleValue());
 
             if (sync == null || !sync) {
                 item.setAbbr(product.getAbbr());
