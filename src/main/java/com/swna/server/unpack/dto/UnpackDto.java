@@ -3,7 +3,6 @@ package com.swna.server.unpack.dto;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.swna.server.unpack.model.Unpack;
 
@@ -41,7 +40,7 @@ public record UnpackDto(
                 ? Collections.emptyList()
                 : entity.getItems().stream()
                     .map(UnpackItemDto::fromEntity)
-                    .collect(Collectors.toList());
+                    .toList();
 
         return UnpackDto.builder()
                 .id(entity.getId())

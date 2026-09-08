@@ -1,5 +1,8 @@
 package com.swna.server.product.entity;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,6 +43,12 @@ public class ProductStock {
 
     @Column(nullable = false, columnDefinition = "INT DEFAULT 12")
     private int minOrderQuantity = 12; // optional (0이면 미설정)
+
+    /**
+     * 🔥 재고 수량(quantity) 변경/주문 일자
+     */
+    @Column(name = "last_ordered_at")
+    private LocalDateTime lastOrderedAt;
 
     // =========================
     // Business Logic
@@ -128,5 +137,23 @@ public class ProductStock {
         }
 
         this.quantity -= amount;
+    }
+
+    // =========================
+    // LastOrderedAt 전용 변경 메서드
+    // =========================
+
+    /**
+     * 🔥 외부에서 지정한 특정 일시로 주문일자 변경
+     */
+    public void updateLastOrderedAt(LocalDateTime orderedAt) {
+        this.lastOrderedAt = orderedAt;
+    }
+
+    /**
+     * 🔥 현재 시간으로 주문일자 즉시 갱신
+     */
+    public void touchLastOrderedAt() {
+        this.lastOrderedAt = LocalDateTime.now(ZoneId.systemDefault());
     }
 }

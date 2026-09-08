@@ -41,6 +41,12 @@ public class Product extends BaseEntity {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal cost;
 
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal priceOld;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal costOld;
+
     private String abbr;
     private String comment;
 
@@ -60,13 +66,16 @@ public class Product extends BaseEntity {
             String barcode,
             String category
     ) {
-        validate(code, description, price);
+        validate(code, description, price, cost);
 
         Product product = new Product();
         product.code = code;
         product.description = description;
         product.price = price;
-        product.cost = price;
+        product.cost = cost;
+        // 초기 생성 시 이전 가격/원가는 현재 입력값으로 기본 지정 (필요 시 BigDecimal.ZERO 등으로 조정 가능)
+        product.priceOld = price;
+        product.costOld = cost;
         product.barcode = barcode;
         product.category = category;
         return product;
@@ -80,7 +89,16 @@ public class Product extends BaseEntity {
         if (newPrice == null || newPrice.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("가격은 0 이상이어야 합니다.");
         }
+        this.priceOld = this.price; // 변경 전 가격 저장
         this.price = newPrice;
+    }
+
+    public void changeCost(BigDecimal newCost) {
+        if (newCost == null || newCost.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("원가는 0 이상이어야 합니다.");
+        }
+        this.costOld = this.cost; // 변경 전 원가 저장
+        this.cost = newCost;
     }
 
     public void changeName(String description) {
@@ -105,7 +123,7 @@ public class Product extends BaseEntity {
     // =========================
     // 검증 로직
     // =========================
-    private static void validate(String code, String name, BigDecimal price) {
+    private static void validate(String code, String name, BigDecimal price, BigDecimal cost) {
 
         if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("상품코드는 필수입니다.");
@@ -118,10 +136,14 @@ public class Product extends BaseEntity {
         if (price == null || price.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("가격은 0 이상이어야 합니다.");
         }
+
+        if (cost == null || cost.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("원가는 0 이상이어야 합니다.");
+        }
     }
 
     // =========================
-    // 🔥 핵심: Category 변경 메서드
+    // Category 변경 메서드
     // =========================
     public void changeCategory(String category) {
         if (category == null) {

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -17,18 +18,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByBarcode(String barcode);
 
     List<Product> findByDeletedFalse();
-    List<Product> findAllByBarcodeIn(List<String> barcodes); // 🔥 Bulk 조회 추가
+    List<Product> findAllByBarcodeIn(List<String> barcodes);
 
-    /**
-     * 랜덤 상품 조회 (기존)
-     */
+    @Modifying
+    @Query("UPDATE Product p SET p.deleted = true WHERE p.id IN :ids AND p.deleted = false")
+    int deleteAllByIds(@Param("ids") List<Long> ids);
+
+    List<Product> findAllByIdInAndDeletedFalse(List<Long> ids);
+
     @Query(value = "SELECT * FROM products WHERE deleted = false ORDER BY RAND() LIMIT 65", nativeQuery = true)
     List<Product> findRandomProducts();
 
-    /**
-     * Product와 Supplier를 abbr로 조인하여 ProductLabelDto 리스트로 반환 (id, code 포함)
-     * JPQL 사용 - DTO 직접 매핑
-     */
     @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
@@ -44,11 +44,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         ORDER BY FUNCTION('RAND')
     """)
     List<ProductLabelDto> findRandomProductLabelsWithSupplier();
-    
-    /**
-     * 랜덤 상품 조회 (LIMIT 적용)
-     */
-    @Query(value = """
+
+    @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
             p.barcode,
@@ -62,11 +59,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         WHERE p.deleted = false
     """)
     List<ProductLabelDto> findRandomProductLabelsWithSupplierLimit(Pageable pageable);
-    
-    
-    /**
-     * 특정 company (supplier)의 상품만 조회
-     */
+
     @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
@@ -82,10 +75,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         ORDER BY FUNCTION('RAND')
     """)
     List<ProductLabelDto> findProductLabelsByCompany(@Param("company") String company);
-    
-    /**
-     * 특정 abbr 목록에 해당하는 상품 조회
-     */
+
     @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
@@ -100,10 +90,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         WHERE p.deleted = false AND p.abbr IN :abbrs
     """)
     List<ProductLabelDto> findProductLabelsByAbbrs(@Param("abbrs") List<String> abbrs);
-    
-    /**
-     * active 상태인 Supplier의 상품만 조회
-     */
+
     @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
@@ -119,10 +106,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         ORDER BY FUNCTION('RAND')
     """)
     List<ProductLabelDto> findRandomProductLabelsFromActiveSuppliers();
-    
-    /**
-     * 바코드로 단일 상품 라벨 DTO 조회 (company 포함)
-     */
+
     @Query("""
         SELECT new com.swna.server.product.dto.ProductLabelDto(
             p.id,
@@ -137,25 +121,84 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         WHERE p.barcode = :barcode AND p.deleted = false
     """)
     Optional<ProductLabelDto> findProductLabelByBarcode(@Param("barcode") String barcode);
-    
-    /**
-     * POS 바코드 상품 조회 (기존)
-     */
+
     @Query("""
-        select new com.swna.server.product.dto.ProductResponse(
+        SELECT new com.swna.server.product.dto.ProductResponse(
             p.code,
             p.barcode,
             p.description,
             p.price,
-            p.price,
-            coalesce(ps.quantity, 0)
+            p.cost,
+            p.priceOld,
+            p.costOld,
+            COALESCE(ps.quantity, 0),
+            COALESCE(ps.minStock, 0),
+            COALESCE(CASE WHEN ps.minOrderQuantity <= 0 THEN 12 ELSE ps.minOrderQuantity END, 12),
+            ps.lastOrderedAt
         )
-        from Product p
-        left join ProductStock ps on ps.product = p
-        where p.barcode = :barcode and p.deleted = false
+        FROM Product p
+        LEFT JOIN ProductStock ps ON ps.product = p
+        WHERE p.barcode = :barcode AND p.deleted = false
     """)
-    Optional<ProductResponse> findProductResponseByBarcode(
-            @Param("barcode") String barcode
-    );
+    Optional<ProductResponse> findProductResponseByBarcode(@Param("barcode") String barcode);
 
+    @Query("""
+        SELECT new com.swna.server.product.dto.ProductResponse(
+            p.code,
+            p.barcode,
+            p.description,
+            p.price,
+            p.cost,
+            p.priceOld,
+            p.costOld,
+            COALESCE(ps.quantity, 0),
+            COALESCE(ps.minStock, 0),
+            COALESCE(CASE WHEN ps.minOrderQuantity <= 0 THEN 12 ELSE ps.minOrderQuantity END, 12),
+            ps.lastOrderedAt
+        )
+        FROM Product p
+        LEFT JOIN ProductStock ps ON ps.product = p
+        WHERE p.id = :id AND p.deleted = false
+    """)
+    Optional<ProductResponse> findProductResponseById(@Param("id") Long id);
+
+    @Query("""
+        SELECT new com.swna.server.product.dto.ProductResponse(
+            p.code,
+            p.barcode,
+            p.description,
+            p.price,
+            p.cost,
+            p.priceOld,
+            p.costOld,
+            COALESCE(ps.quantity, 0),
+            COALESCE(ps.minStock, 0),
+            COALESCE(CASE WHEN ps.minOrderQuantity <= 0 THEN 12 ELSE ps.minOrderQuantity END, 12),
+            ps.lastOrderedAt
+        )
+        FROM Product p
+        LEFT JOIN ProductStock ps ON ps.product = p
+        WHERE p.deleted = false
+    """)
+    List<ProductResponse> findAllProductResponses();
+
+    @Query("""
+        SELECT new com.swna.server.product.dto.ProductResponse(
+            p.code,
+            p.barcode,
+            p.description,
+            p.price,
+            p.cost,
+            p.priceOld,
+            p.costOld,
+            COALESCE(ps.quantity, 0),
+            COALESCE(ps.minStock, 0),
+            COALESCE(CASE WHEN ps.minOrderQuantity <= 0 THEN 12 ELSE ps.minOrderQuantity END, 12),
+            ps.lastOrderedAt
+        )
+        FROM Product p
+        LEFT JOIN ProductStock ps ON ps.product = p
+        WHERE p.abbr = :abbr AND p.deleted = false
+    """)
+    List<ProductResponse> findProductResponsesByAbbr(@Param("abbr") String abbr);
 }

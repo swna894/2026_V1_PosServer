@@ -1,6 +1,7 @@
 package com.swna.server.product.entity;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -56,7 +57,7 @@ public class StockHistory {
         h.quantity = quantity;
         h.type = type;
         h.reference = ref;
-        h.createdAt = LocalDateTime.now();
+        h.createdAt = LocalDateTime.now(ZoneId.systemDefault());
         return h;
     }
 }

@@ -140,6 +140,7 @@ public class UnpackItemService {
                 ));
         if (qty > 0) {
             stock.increase(qty);
+            stock.touchLastOrderedAt();
         }
     }
 
