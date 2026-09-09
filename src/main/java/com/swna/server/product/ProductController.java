@@ -26,7 +26,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/products")
 @RequiredArgsConstructor
 public class ProductController {
 
@@ -105,7 +105,7 @@ public class ProductController {
 
     /**
      * 🔥 주문일자(lastOrderedAt) 단독 변경 API
-     * 예시: PATCH /api/v1/products/1/last-ordered-at?orderedAt=2026-09-08T10:00:00
+     * 예시: PATCH /products/1/last-ordered-at?orderedAt=2026-09-08T10:00:00
      */
     @PatchMapping("/{id}/last-ordered-at")
     public ApiResponse<ProductResponse> updateLastOrderedAt(
