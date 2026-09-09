@@ -63,7 +63,7 @@ public interface ProductStockRepository extends JpaRepository<ProductStock, Long
     @Query("UPDATE ProductStock ps SET ps.lastOrderedAt = :orderedAt WHERE ps.product.id = :productId")
     int updateLastOrderedAt(@Param("productId") Long productId, @Param("orderedAt") LocalDateTime orderedAt);
     
-    @Modifying
+   @Modifying(clearAutomatically = true)
     @Transactional
     @Query("UPDATE ProductStock ps SET ps.minStock = :minStock, ps.maxStock = :maxStock, ps.minOrderQuantity = :minOrderQuantity WHERE ps.product.id = :productId")
     void updateStockSettings(@Param("productId") Long productId, 

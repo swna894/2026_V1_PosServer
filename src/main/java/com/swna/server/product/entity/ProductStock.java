@@ -114,6 +114,12 @@ public class ProductStock {
         return stock;
     }
 
+    public void updateSettings(int minStock, int maxStock, int minOrderQuantity) {
+        this.minStock = minStock;
+        this.maxStock = maxStock;
+        this.minOrderQuantity = minOrderQuantity;
+    }
+
     // =========================
     // Stock Operations
     // =========================

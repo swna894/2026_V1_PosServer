@@ -271,11 +271,13 @@ public class ProductService {
 
     private void updateStockFields(Long productId, ProductStock stock, ProductUpdateRequest request) {
         if (request.quantity() != null || request.minStock() != null || request.maxStock() != null || request.minOrderQuantity() != null) {
+            
             int newMinStock = request.minStock() != null ? request.minStock() : stock.getMinStock();
             int newMaxStock = request.maxStock() != null ? request.maxStock() : stock.getMaxStock();
             int newMinOrderQty = request.minOrderQuantity() != null ? request.minOrderQuantity() : stock.getMinOrderQuantity();
 
-            productStockRepository.updateStockSettings(productId, newMinStock, newMaxStock, newMinOrderQty);
+            // 엔티티 내부 메서드를 통해 값 변경 (Dirty Checking 적용)
+            stock.updateSettings(newMinStock, newMaxStock, newMinOrderQty);
 
             if (request.quantity() != null) {
                 int diff = request.quantity() - stock.getQuantity();

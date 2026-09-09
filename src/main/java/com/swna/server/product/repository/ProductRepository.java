@@ -124,6 +124,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("""
         SELECT new com.swna.server.product.dto.ProductResponse(
+            p.id,
             p.code,
             p.barcode,
             p.description,
@@ -144,6 +145,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("""
         SELECT new com.swna.server.product.dto.ProductResponse(
+            p.id,
             p.code,
             p.barcode,
             p.description,
@@ -164,6 +166,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("""
         SELECT new com.swna.server.product.dto.ProductResponse(
+            p.id,
             p.code,
             p.barcode,
             p.description,
@@ -184,6 +187,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("""
         SELECT new com.swna.server.product.dto.ProductResponse(
+            p.id,
             p.code,
             p.barcode,
             p.description,

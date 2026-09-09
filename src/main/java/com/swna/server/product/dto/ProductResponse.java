@@ -6,6 +6,7 @@ import com.swna.server.product.entity.Product;
 import com.swna.server.product.entity.ProductStock;
 
 public record ProductResponse(
+        Long id,                 // 🔥 상품 식별자 ID 추가
         String code,
         String barcode,
         String description,
@@ -16,13 +17,14 @@ public record ProductResponse(
         int quantity,            // 현재 재고 수량
         int minStock,            // 적정/최소 재고 수량
         int minOrderQuantity,    // 최소 주문 수량
-        LocalDateTime lastOrderedAt // 🔥 주문/수량 변경 일자
+        LocalDateTime lastOrderedAt // 주문/수량 변경 일자
 ) {
     /**
      * Product와 ProductStock 엔티티를 모두 받아 DTO로 변환
      */
     public static ProductResponse from(Product product, ProductStock stock) {
         return new ProductResponse(
+                product.getId(),
                 product.getCode(),
                 product.getBarcode(),
                 product.getDescription(),
@@ -48,6 +50,7 @@ public record ProductResponse(
             LocalDateTime lastOrderedAt
     ) {
         return new ProductResponse(
+                product.getId(),
                 product.getCode(),
                 product.getBarcode(),
                 product.getDescription(),
