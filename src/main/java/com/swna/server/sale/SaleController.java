@@ -36,9 +36,6 @@ public class SaleController {
     private final ProcessSaleUseCase processSaleUseCase;
     private final SaleItemService saleItemService;
 
-
-
-
     /**
      * 주문 + 할인 + 결제 통합 처리 API
      * 클라이언트는 상품, 할인, 결제 정보를 SaleRequest 하나에 담아 전송합니다.
