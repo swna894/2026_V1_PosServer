@@ -1,4 +1,4 @@
-package com.swna.server.user.interfaces.controller;
+package com.swna.server.user;
 
 import org.springframework.lang.NonNull;
 import org.springframework.security.access.prepost.PostAuthorize;
