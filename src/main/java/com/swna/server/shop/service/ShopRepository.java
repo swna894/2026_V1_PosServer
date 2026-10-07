@@ -1,4 +1,4 @@
-package com.swna.server.shop.repository;
+package com.swna.server.shop.service;
 
 import com.swna.server.shop.entity.Shop;
 

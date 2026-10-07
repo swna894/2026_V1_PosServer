@@ -178,9 +178,6 @@ public class GlobalExceptionHandler {
     /**
      * 일반 예외 처리 (최종)
      */
-    /**
-     * 일반 예외 처리 (최종)
-     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Object>> handleException(
             Exception e,
