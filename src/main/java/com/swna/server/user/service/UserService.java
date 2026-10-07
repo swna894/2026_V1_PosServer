@@ -14,7 +14,6 @@ import com.swna.server.common.service.AbstractBaseService;
 import com.swna.server.user.dto.CreateUserRequest;
 import com.swna.server.user.dto.UserResponse;
 import com.swna.server.user.entity.model.User;
-import com.swna.server.user.entity.service.UserDomainService;
 import com.swna.server.user.security.SecurityUtils;
 import com.swna.server.user.security.UserPrincipal;
 

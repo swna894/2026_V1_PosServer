@@ -1,4 +1,4 @@
-package com.swna.server.user.entity.service;
+package com.swna.server.user.service;
 
 import org.springframework.stereotype.Service;
 
