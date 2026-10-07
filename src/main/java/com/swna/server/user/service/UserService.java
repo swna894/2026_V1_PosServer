@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.swna.server.common.service.AbstractBaseService;
 import com.swna.server.user.entity.model.User;
-import com.swna.server.user.infrastructure.repository.UserRepository;
+import com.swna.server.user.repository.UserRepository;
 import com.swna.server.user.security.UserPrincipal;
 
 import lombok.RequiredArgsConstructor;

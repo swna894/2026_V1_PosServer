@@ -12,7 +12,7 @@ import com.swna.server.auth.infrastructure.repository.RefreshTokenRepository;
 import com.swna.server.auth.jwt.JwtProvider;
 import com.swna.server.common.exception.ExceptionUtils;
 import com.swna.server.user.entity.model.User;
-import com.swna.server.user.infrastructure.repository.UserRepository;
+import com.swna.server.user.repository.UserRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

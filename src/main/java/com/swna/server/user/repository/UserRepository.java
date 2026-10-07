@@ -1,4 +1,4 @@
-package com.swna.server.user.infrastructure.repository;
+package com.swna.server.user.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
