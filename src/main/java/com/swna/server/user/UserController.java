@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.swna.server.user.application.usecase.CreateUserUseCase;
-import com.swna.server.user.application.usecase.GetUserUseCase;
-import com.swna.server.user.application.usecase.SignupUseCase;
 import com.swna.server.user.dto.CreateUserRequest;
 import com.swna.server.user.dto.SignupRequest;
 import com.swna.server.user.dto.UserResponse;
 import com.swna.server.user.security.UserPrincipal;
+import com.swna.server.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,18 +25,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final CreateUserUseCase createUserUseCase;
-    private final GetUserUseCase getUserUseCase;
-    private final SignupUseCase signupUseCase;
+    private final UserService userService;
 
     @PostMapping
     public UserResponse create(@RequestBody CreateUserRequest req) {
-        return createUserUseCase.execute(req);
+        return userService.createUser(req);
     }
 
     @GetMapping("/{id}")
     public UserResponse get(@NonNull @PathVariable Long id) {
-        return getUserUseCase.execute(id);
+        return userService.getUser(id);
     }
 
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
@@ -49,7 +45,7 @@ public class UserController {
 
     @PostMapping("/signup")
     public void signup(@RequestBody SignupRequest req) {
-        signupUseCase.execute(req.email(), req.password());
+        userService.signup(req.email(), req.password());
     }
 
 

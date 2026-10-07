@@ -15,8 +15,8 @@ import com.swna.server.auth.dto.request.TokenRequest;
 import com.swna.server.auth.dto.response.LoginResponse;
 import com.swna.server.auth.dto.response.TokenResponse;
 import com.swna.server.common.response.ApiResponse;
-import com.swna.server.user.application.usecase.SignupUseCase;
 import com.swna.server.user.security.UserPrincipal;
+import com.swna.server.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,7 +28,7 @@ public class AuthController {
     private final LoginUseCase loginUseCase;
     private final ReissueTokenUseCase reissueUseCase;
     private final LogoutUseCase logoutUseCase;
-    private final SignupUseCase signupUseCase;
+    private final UserService userService;
 
     @PostMapping("/login")
     public ApiResponse<LoginResponse> login(@RequestBody LoginRequest req) {
@@ -50,7 +50,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ApiResponse<Void> signup(@RequestParam String email,
                                    @RequestParam String password) {
-        signupUseCase.execute(email, password);
+        userService.signup(email, password);
         return ApiResponse.success(null);
     }
 }
