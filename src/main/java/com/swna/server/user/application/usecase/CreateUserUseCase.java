@@ -7,7 +7,7 @@ import com.swna.server.user.dto.CreateUserRequest;
 import com.swna.server.user.dto.UserResponse;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.entity.service.UserDomainService;
-import com.swna.server.user.repository.UserRepository;
+import com.swna.server.user.service.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

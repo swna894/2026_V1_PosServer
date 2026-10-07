@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.swna.server.user.dto.UserResponse;
 import com.swna.server.user.entity.model.User;
-import com.swna.server.user.repository.UserRepository;
+import com.swna.server.user.service.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 

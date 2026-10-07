@@ -8,7 +8,7 @@ import com.swna.server.shop.entity.Shop;
 import com.swna.server.shop.service.ShopRepository;
 import com.swna.server.user.entity.model.Role;
 import com.swna.server.user.entity.model.User;
-import com.swna.server.user.repository.UserRepository;
+import com.swna.server.user.service.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
