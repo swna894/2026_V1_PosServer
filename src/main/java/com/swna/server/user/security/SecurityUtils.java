@@ -1,10 +1,11 @@
-package com.swna.server.user.infrastructure.security;
+package com.swna.server.user.security;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.swna.server.user.security.UserPrincipal;
-
 public class SecurityUtils {
+
+    private SecurityUtils() {
+    }
 
     public static Long getCurrentUserId() {
 

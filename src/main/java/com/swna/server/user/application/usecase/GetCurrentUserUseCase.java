@@ -2,7 +2,7 @@ package com.swna.server.user.application.usecase;
 
 import org.springframework.stereotype.Service;
 
-import com.swna.server.user.infrastructure.security.SecurityUtils;
+import com.swna.server.user.security.SecurityUtils;
 
 @Service
 public class GetCurrentUserUseCase {
