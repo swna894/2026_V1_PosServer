@@ -158,7 +158,7 @@ public class SupplierController {
      */
     @PutMapping("/{id}")
     public ApiResponse<SupplierResponseRecord> updateSupplier(
-            @PathVariable Long id,
+            @PathVariable("id") Long id,
             @Valid @RequestBody SupplierRequestRecord request) {
         
         log.info("[API] PUT /api/suppliers/{} - Updating supplier", id);
@@ -180,7 +180,7 @@ public class SupplierController {
      * PATCH /api/suppliers/{id}/deactivate
      */
     @PatchMapping("/{id}/deactivate")
-    public ApiResponse<SupplierResponseRecord> deactivateSupplier(@PathVariable Long id) {
+    public ApiResponse<SupplierResponseRecord> deactivateSupplier(@PathVariable("id") Long id) {
         log.info("[API] PATCH /api/suppliers/{}/deactivate", id);
         
         SupplierResponseRecord supplier = supplierService.deactivate(id);
@@ -217,7 +217,7 @@ public class SupplierController {
      */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ApiResponse<Void> deleteSupplier(@PathVariable Long id) {
+    public ApiResponse<Void> deleteSupplier(@PathVariable("id") Long id) {
         log.info("[API] DELETE /api/suppliers/{}", id);
         
         supplierService.delete(id);

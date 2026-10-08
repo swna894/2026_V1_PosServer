@@ -388,6 +388,10 @@ public class SupplierService {
     // 유틸리티/검증 메서드
     // =========================================================
     
+    /** 약어 허용 문자: 대문자, 숫자, 특수문자(ASCII 기호). SupplierRequestRecord 의 @Pattern 및 클라이언트 규칙과 동일. */
+    private static final java.util.regex.Pattern ABBR_PATTERN =
+            java.util.regex.Pattern.compile("^[A-Z0-9\\p{Punct}]+$");
+
     /**
      * 약어 유효성 검증
      */
@@ -407,11 +411,11 @@ public class SupplierService {
             ));
         }
         
-        if (!abbr.matches("^[A-Z0-9]+$")) {
+        if (!ABBR_PATTERN.matcher(abbr).matches()) {
             throw ErrorCode.INVALID_INPUT.withDetails(Map.of(
                     "field", "abbr",
                     "value", abbr,
-                    "message", "Supplier abbreviation must contain only uppercase letters and numbers"
+                    "message", "Supplier abbreviation must contain only uppercase letters, numbers and special characters (no spaces)"
             ));
         }
     }
