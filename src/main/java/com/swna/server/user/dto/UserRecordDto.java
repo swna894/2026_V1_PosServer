@@ -10,7 +10,7 @@ public record UserRecordDto(
     Role role,
     String city,
     String street,
-    String zipcode,
+    String surburb,
     String phone,
     String mobile
 ) {
@@ -29,7 +29,7 @@ public record UserRecordDto(
             user.getRole(),
             user.getAddress() != null ? user.getAddress().getCity() : null,
             user.getAddress() != null ? user.getAddress().getStreet() : null,
-            user.getAddress() != null ? user.getAddress().getZipcode() : null,
+            user.getAddress() != null ? user.getAddress().getSurburb() : null,
             user.getContact() != null ? user.getContact().getPhone() : null,
             user.getContact() != null ? user.getContact().getMobile() : null
         );

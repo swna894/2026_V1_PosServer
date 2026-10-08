@@ -26,7 +26,9 @@ import com.swna.server.user.security.UserPrincipal;
 import com.swna.server.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
@@ -38,26 +40,19 @@ public class UserController {
     // Create
     // ==========================================
 
+
     /**
      * 사용자 신규 등록 (POST /users)
      * UserApiClient.createUser 대응
      */
     @PostMapping
     public ApiResponse<UserRecordDto> create(@RequestBody UserRecordDto request) {
-        // 회원가입 처리를 통해 기본 유저 생성
-        userService.signup(request.email(), "defaultPassword"); // 필요 시 임시 비밀번호 정책 적용
+        log.info("[API] POST /users - Creating user with email: {}", request.email());
         
-        User user = userService.findByEmail(request.email())
-                .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + request.email()));
-        
-        // 주소 및 연락처 정보가 함께 전달된 경우 업데이트 반영
-        if (request.city() != null || request.phone() != null) {
-            user.updateAddress(new Address(request.city(), request.street(), request.zipcode()));
-            user.updateContact(new ContactInfo(request.phone(), request.mobile()));
-            user = userService.saveUser(user);
-        }
+        // 서비스에서 중복 검증 및 생성, DTO 변환을 일괄 처리
+        UserRecordDto createdUser = userService.createUserFromDto(request);
 
-        return ApiResponse.success(UserRecordDto.from(user));
+        return ApiResponse.success(createdUser);
     }
 
     /**
@@ -131,7 +126,7 @@ public class UserController {
     public ApiResponse<UserRecordDto> updateUser(@PathVariable Long id, @RequestBody UserRecordDto request) {
         User user = userService.findUserById(id);
                 
-        user.updateAddress(new Address(request.city(), request.street(), request.zipcode()));
+        user.updateAddress(new Address(request.city(), request.street(), request.surburb()));
         user.updateContact(new ContactInfo(request.phone(), request.mobile()));
         
         User savedUser = userService.saveUser(user);
@@ -148,14 +143,14 @@ public class UserController {
             if (req.id() == null) return null;
             try {
                 User user = userService.findUserById(req.id());
-                user.updateAddress(new Address(req.city(), req.street(), req.zipcode()));
+                user.updateAddress(new Address(req.city(), req.street(), req.surburb()));
                 user.updateContact(new ContactInfo(req.phone(), req.mobile()));
                 User saved = userService.saveUser(user);
                 return UserRecordDto.from(saved);
             } catch (Exception e) {
                 return null;
             }
-        }).filter(java.util.Objects::nonNull).collect(Collectors.toList());
+        }).filter(java.util.Objects::nonNull).toList();
 
         return ApiResponse.success(updatedList);
     }

@@ -15,7 +15,10 @@ import com.swna.server.common.exception.BusinessException;
 import com.swna.server.common.exception.ErrorCode;
 import com.swna.server.common.service.AbstractBaseService;
 import com.swna.server.user.dto.CreateUserRequest;
+import com.swna.server.user.dto.UserRecordDto;
 import com.swna.server.user.dto.UserResponse;
+import com.swna.server.user.entity.model.Address;
+import com.swna.server.user.entity.model.ContactInfo;
 import com.swna.server.user.entity.model.Role;
 import com.swna.server.user.entity.model.User;
 import com.swna.server.user.security.SecurityUtils;
@@ -64,6 +67,34 @@ public class UserService extends AbstractBaseService<User, Long> {
         return UserResponse.from(savedResult);
     }
 
+    /**
+     * 클라이언트(관리자 화면 등)에서 전달된 DTO를 기반으로 사용자 신규 등록
+     */
+    @Transactional
+    public UserRecordDto createUserFromDto(UserRecordDto req) {
+        // 1. 이메일 중복 검증 (이미 존재하면 예외 처리)
+        if (userRepository.existsByEmail(req.email())) {
+            throw new IllegalArgumentException("Email already exists: " + req.email());
+        }
+
+        // 2. 임시 비밀번호 암호화
+        String encodedPassword = passwordEncoder.encode(req.email()); // 이메일을 임시 비밀번호로 사용 (실제 서비스에서는 별도의 비밀번호를 받아야 함)
+
+        // 3. User 엔티티 생성 (이름, 이메일, 주소, 연락처 등 포함)
+        User user = User.builder()
+                .name(req.name())
+                .email(req.email())
+                .password(encodedPassword)
+                .role(req.role() != null ? req.role() : Role.USER)
+                .address(new Address(req.city(), req.street(), req.surburb()))
+                .contact(new ContactInfo(req.phone(), req.mobile()))
+                .build();
+
+        // 4. DB 저장 후 DTO로 변환하여 반환
+        User savedUser = userRepository.save(user);
+        return UserRecordDto.from(savedUser);
+    }
+    
     /**
      * 3. 사용자 조회 (ID)
      */
