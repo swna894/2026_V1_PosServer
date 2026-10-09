@@ -83,7 +83,7 @@ public class UserController {
      * UserApiClient.getUserByEmail 대응
      */
     @GetMapping("/email/{email}")
-    public ApiResponse<UserRecordDto> getByEmail(@PathVariable String email) {
+    public ApiResponse<UserRecordDto> getByEmail(@PathVariable("email") String email) {
         User user = userService.findByEmail(email)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + email));
         return ApiResponse.success(UserRecordDto.from(user));
@@ -97,7 +97,7 @@ public class UserController {
     public ApiResponse<List<UserRecordDto>> getAllUsers() {
         List<UserRecordDto> list = userService.findAll().stream()
                 .map(UserRecordDto::from)
-                .collect(Collectors.toList());
+                .toList();
         return ApiResponse.success(list);
     }
 
@@ -106,11 +106,11 @@ public class UserController {
      * UserApiClient.getUsersByRole 대응
      */
     @GetMapping("/role/{role}")
-    public ApiResponse<List<UserRecordDto>> getUsersByRole(@PathVariable String role) {
+    public ApiResponse<List<UserRecordDto>> getUsersByRole(@PathVariable("role") String role) {
         Role targetRole = Role.valueOf(role.toUpperCase());
         List<UserRecordDto> list = userService.findByRole(targetRole).stream()
                 .map(UserRecordDto::from)
-                .collect(Collectors.toList());
+                  .toList();
         return ApiResponse.success(list);
     }
 
@@ -123,7 +123,7 @@ public class UserController {
      * UserApiClient.updateUser 대응
      */
     @PutMapping("/{id}")
-    public ApiResponse<UserRecordDto> updateUser(@PathVariable Long id, @RequestBody UserRecordDto request) {
+    public ApiResponse<UserRecordDto> updateUser(@PathVariable("id") Long id, @RequestBody UserRecordDto request) {
         User user = userService.findUserById(id);
                 
         user.updateAddress(new Address(request.city(), request.street(), request.surburb()));
@@ -165,7 +165,7 @@ public class UserController {
      */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ApiResponse<Void> deleteUser(@PathVariable Long id) {
+    public ApiResponse<Void> deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
         return ApiResponse.success(null);
     }

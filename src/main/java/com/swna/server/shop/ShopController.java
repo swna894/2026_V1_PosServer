@@ -54,7 +54,7 @@ public class ShopController {
 
     // R: Read (단건)
     @GetMapping("/{id:\\d+}")
-    public ResponseEntity<ApiResponse<Shop>> get(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Shop>> get(@PathVariable("id") Long id) {
         Shop shop = shopService.getShop(id);
         return ResponseEntity.ok(ApiResponse.success("SHOP_FOUND", shop));
     }
@@ -62,7 +62,7 @@ public class ShopController {
     // U: Update
     @PutMapping("/{id:\\d+}")
     public ResponseEntity<ApiResponse<Void>> update(
-            @PathVariable Long id,
+            @PathVariable("id") Long id,
             @RequestBody @Valid ShopDto request) {
         shopService.updateShop(id, request);
         return ResponseEntity.ok(ApiResponse.success("SHOP_UPDATED", null));
@@ -71,15 +71,15 @@ public class ShopController {
     // U: Status Toggle
     @PatchMapping("/{id}/status")
     public ResponseEntity<ApiResponse<Void>> toggle(
-            @PathVariable Long id,
-            @RequestParam boolean active) {
+            @PathVariable("id") Long id,
+            @RequestParam("active") boolean active) {
         shopService.toggleStatus(id, active);
         return ResponseEntity.ok(ApiResponse.success("SHOP_STATUS_UPDATED", null));
     }
 
     // D: Delete
     @DeleteMapping("/{id:\\d+}")
-    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<Void>> delete(@PathVariable("id") Long id) {
         shopService.deleteShop(id);
         return ResponseEntity.ok(ApiResponse.success("SHOP_DELETED", null));
     }
