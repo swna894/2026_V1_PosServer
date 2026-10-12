@@ -15,8 +15,6 @@ public record ShopDto(
         String street,
         String suburb,
         String city,
-        String comment,
-        String backupFolder,
-        String reportFolder
+        String comment
 ) {
 }

@@ -34,8 +34,6 @@ public class Shop {
     private String suburb;
     private String city;
     private String comment;
-    private String backupFolder;
-    private String reportFolder;
 
     @Builder.Default
     private boolean active = true;
@@ -55,9 +53,7 @@ public class Shop {
             String street,
             String suburb,
             String city,
-            String comment,
-            String backupFolder,
-            String reportFolder
+            String comment
     ) {
         Shop shop = new Shop();
         shop.company = company;
@@ -72,8 +68,6 @@ public class Shop {
         shop.suburb = suburb;
         shop.city = city;
         shop.comment = comment;
-        shop.backupFolder = backupFolder;
-        shop.reportFolder = reportFolder;
         shop.active = true;
 
         return shop;
@@ -94,9 +88,7 @@ public class Shop {
             String street,
             String suburb,
             String city,
-            String comment,
-            String backupFolder,
-            String reportFolder
+            String comment
     ) {
         this.company = company;
         this.businessNo = businessNo;
@@ -110,8 +102,6 @@ public class Shop {
         this.suburb = suburb;
         this.city = city;
         this.comment = comment;
-        this.backupFolder = backupFolder;
-        this.reportFolder = reportFolder;
     }
 
     public void deactivate() {

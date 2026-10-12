@@ -1,16 +1,16 @@
 package com.swna.server.shop.service;
 
-import com.swna.server.shop.dto.ShopDto;
-import com.swna.server.shop.entity.Shop;
-import com.swna.server.shop.service.ShopRepository;
+import java.util.List;
+import java.util.Objects;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Objects;
+import com.swna.server.shop.dto.ShopDto;
+import com.swna.server.shop.entity.Shop;
+
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -33,9 +33,7 @@ public class ShopService {
                 request.street(),
                 request.suburb(),
                 request.city(),
-                request.comment(),
-                request.backupFolder(),
-                request.reportFolder()
+                request.comment()
         );
 
         Shop savedShop = shopRepository.save(shop);
@@ -77,9 +75,7 @@ public class ShopService {
                 request.street(),
                 request.suburb(),
                 request.city(),
-                request.comment(),
-                request.backupFolder(),
-                request.reportFolder()
+                request.comment()
         );
     }
 

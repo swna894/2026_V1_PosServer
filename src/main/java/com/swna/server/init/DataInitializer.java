@@ -47,8 +47,6 @@ public class DataInitializer implements CommandLineRunner {
                     .suburb("Gore")
                     .city("Southland")
                     .comment("Default initial shop")
-                    .backupFolder("/backup")
-                    .reportFolder("/report")
                     .active(true)
                     .build();
 
