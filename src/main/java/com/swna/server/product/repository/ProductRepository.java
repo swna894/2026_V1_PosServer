@@ -160,6 +160,28 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         )
         FROM Product p
         LEFT JOIN ProductStock ps ON ps.product = p
+        WHERE p.deleted = false
+        ORDER BY p.barcode ASC
+    """)
+    List<ProductResponse> findAllProductResponsesOrderByBarcodeAsc();
+    
+    @Query("""
+        SELECT new com.swna.server.product.dto.ProductResponse(
+            p.id,
+            p.code,
+            p.barcode,
+            p.description,
+            p.price,
+            p.cost,
+            p.priceOld,
+            p.costOld,
+            COALESCE(ps.quantity, 0),
+            COALESCE(ps.minStock, 0),
+            COALESCE(CASE WHEN ps.minOrderQuantity <= 0 THEN 12 ELSE ps.minOrderQuantity END, 12),
+            ps.lastOrderedAt
+        )
+        FROM Product p
+        LEFT JOIN ProductStock ps ON ps.product = p
         WHERE p.id = :id AND p.deleted = false
     """)
     Optional<ProductResponse> findProductResponseById(@Param("id") Long id);

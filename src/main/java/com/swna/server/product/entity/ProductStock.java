@@ -45,7 +45,7 @@ public class ProductStock {
     private int minOrderQuantity = 12; // optional (0이면 미설정)
 
     /**
-     * 🔥 재고 수량(quantity) 변경/주문 일자
+     * 🔥 제품(quantity) 주문 일자
      */
     @Column(name = "last_ordered_at")
     private LocalDateTime lastOrderedAt;

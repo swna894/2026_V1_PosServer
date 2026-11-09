@@ -138,6 +138,12 @@ public class ProductService {
         if (abbr == null || abbr.isBlank()) {
             return List.of();
         }
+
+        // 🔥 "ALL" 요청인 경우 전체 제품을 바코드 오름차순으로 조회
+        if ("ALL".equalsIgnoreCase(abbr)) {
+            return productRepository.findAllProductResponsesOrderByBarcodeAsc();
+        }
+        
         return productRepository.findProductResponsesByAbbr(abbr);
     }
 
